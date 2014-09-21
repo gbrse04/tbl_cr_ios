@@ -22,10 +22,17 @@
 
 //===================WEBSERVICE CONFIG======================//
 
-#define kBaseUrl @"http://track.rimonit.com/"
+#define kBaseUrl @"http://domain/client-api/"
 
-#define kUrlLogin @"api_userInfo.php"
-#define kUrlSendLocation @"api_call.php"
+#define kUrlLogin @"login"
+#define kUrlRegister @"register"
+#define kUrlLogout @"logout"
+#define kUrlChangePass @"changePassword"
+#define kUrlGetListArea @"getAreas"
+#define kUrlGetUserInfo @"getUserInfo"
+#define kUrlUpdateProfile @"updateUser"
+#define kUrlSearchRestaurant @"searchRestaurant"
+#define kUrlGetNotification @"getNotification"
 
 
 //Refresh GridView

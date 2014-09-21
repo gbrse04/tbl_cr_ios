@@ -169,6 +169,7 @@
 		7429650019CA04EC00B75700 /* ic_search_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 742964F019CA04EC00B75700 /* ic_search_map.png */; };
 		7429650119CA04EC00B75700 /* ic_search_map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 742964F119CA04EC00B75700 /* ic_search_map@2x.png */; };
 		7429650519CA067200B75700 /* IQActionSheetPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7429650419CA067200B75700 /* IQActionSheetPickerView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7445D66319CF328500E3B6A8 /* Validator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7445D66219CF328500E3B6A8 /* Validator.m */; };
 		7456AF0D19CD182400FDA8D9 /* bg_info_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7456AF0C19CD182400FDA8D9 /* bg_info_bar@2x.png */; };
 		7456AF1019CD4F0F00FDA8D9 /* ConfirmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7456AF0F19CD4F0F00FDA8D9 /* ConfirmView.m */; };
 		7456AF1219CD4F2100FDA8D9 /* ConfirmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7456AF1119CD4F2100FDA8D9 /* ConfirmView.xib */; };
@@ -507,6 +508,8 @@
 		742964F119CA04EC00B75700 /* ic_search_map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_search_map@2x.png"; path = "Resources/Images/ic_search_map@2x.png"; sourceTree = "<group>"; };
 		7429650319CA067200B75700 /* IQActionSheetPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQActionSheetPickerView.h; sourceTree = "<group>"; };
 		7429650419CA067200B75700 /* IQActionSheetPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQActionSheetPickerView.m; sourceTree = "<group>"; };
+		7445D66119CF328500E3B6A8 /* Validator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validator.h; sourceTree = "<group>"; };
+		7445D66219CF328500E3B6A8 /* Validator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Validator.m; sourceTree = "<group>"; };
 		7456AF0C19CD182400FDA8D9 /* bg_info_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg_info_bar@2x.png"; path = "Resources/Images/bg_info_bar@2x.png"; sourceTree = "<group>"; };
 		7456AF0E19CD4F0F00FDA8D9 /* ConfirmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfirmView.h; path = ViewControllers/ConfirmView.h; sourceTree = "<group>"; };
 		7456AF0F19CD4F0F00FDA8D9 /* ConfirmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfirmView.m; path = ViewControllers/ConfirmView.m; sourceTree = "<group>"; };
@@ -1157,6 +1160,8 @@
 		749B7B9A19C5EB7700710605 /* CommonHelper */ = {
 			isa = PBXGroup;
 			children = (
+				7445D66119CF328500E3B6A8 /* Validator.h */,
+				7445D66219CF328500E3B6A8 /* Validator.m */,
 				749B7B9B19C5EB7700710605 /* Logging.h */,
 				749B7B9C19C5EB7700710605 /* Macros.h */,
 				749B7B9D19C5EB7700710605 /* Util.h */,
@@ -1917,6 +1922,7 @@
 				749B7BA719C5EB7700710605 /* UIColor+Colours.m in Sources */,
 				74FEEC4019C75DA4005B8DE2 /* UIView+AutoLayout.m in Sources */,
 				749B7BDA19C5EBA700710605 /* UIImageView+AFNetworking.m in Sources */,
+				7445D66319CF328500E3B6A8 /* Validator.m in Sources */,
 				749B7B8219C5EA8700710605 /* RestaurantDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

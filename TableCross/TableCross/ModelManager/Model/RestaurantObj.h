@@ -16,10 +16,13 @@
 @property (nonatomic,retain) NSString *openHour;
 
 @property (nonatomic,retain) NSString *description;
-@property (nonatomic,assign) double  latitude;
-@property (nonatomic,assign) double longitude;
+@property (nonatomic,retain) NSString  *latitude;
+@property (nonatomic,retain) NSString *longitude;
 @property (nonatomic,retain) NSString *imageUrl;
 @property (nonatomic,retain) NSString *website;
 @property (nonatomic,retain) NSString *phone;
+@property (nonatomic,retain) NSString *orderDate;
+
+-(id)initWithDict:(NSDictionary*)dict;
 
 @end

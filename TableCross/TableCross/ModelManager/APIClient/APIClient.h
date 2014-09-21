@@ -16,16 +16,17 @@ typedef void(^TTResponseFailure)(AFHTTPRequestOperation *operation, NSError *err
 
 + (APIClient *)sharedClient;
 
-+ (void)login:(NSString*)email pass:(NSString*)pass loginType:(NSString*)type withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
++ (void)login:(NSString*)email pass:(NSString*)pass loginType:(NSString*)type areaId:(NSString*)areaId withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 
-+ (void)registerWithEmail:(NSString*)email pass:(NSString*)pass regionId:(NSString*)regionId withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
++ (void)registerWithEmail:(NSString*)email pass:(NSString*)pass regionId:(NSString*)regionId refUserId:(NSString*)refId withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 
 
-+ (void)getAllRegionWithSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
-+ (void)searchByKeyWord:(NSString*)keyword withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
-+ (void)searchByKeyWord:(NSString*)keyword withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
-+ (void)searchByKeyWord:(NSString*)keyword withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
-+ (void)getNewsFeatureWithSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
++ (void)logout:(NSString*)token succes:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
++ (void)changePass:(NSString*)oldPass newPass:(NSString*)newPass success:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
++ (void)getListAresWithSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
++ (void)getUserInfoWithSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
++ (void)searchByKeyWord:(NSString*)keyword type:(NSString*)searchType latitude:(double)lat longitude:(double)longitude distance:(int)radius total:(int)total withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
++ (void)updateUserEmail:(NSString*)email phone:(NSString*)phone birthday:(NSString*)birthday sucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 
 
 @end

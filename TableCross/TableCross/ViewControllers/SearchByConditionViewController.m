@@ -2,7 +2,7 @@
 //  SearchByConditionViewController.m
 //  TableCross
 //
-//  Created by DANGLV on 14/09/2014.
+//  Created by TableCross on 14/09/2014.
 //  Copyright (c) Năm 2014 Lemon. All rights reserved.
 //
 
@@ -10,6 +10,9 @@
 #import "SearchResultViewController.h"
 
 @interface SearchByConditionViewController ()
+{
+    NSMutableArray *arrRecent;
+}
 
 @end
 
@@ -30,11 +33,11 @@
     // Do any additional setup after loading the view from its nib.
     
     [self setupTitle:@"条件から探す" isShowSetting:YES andBack:YES];
-    [self.lblSearch1 setShouldUnderline:YES];
-    [self.lblSearch2 setShouldUnderline:YES];
-    [self.lblSearch3 setShouldUnderline:YES];
-    [self.lblSearch4 setShouldUnderline:YES];
     [self.txtSearch setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    
+    arrRecent = [[NSMutableArray alloc] initWithObjects:@"Pizza",@"Hotdog",@"KFC",@"Humberger", nil];
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -64,13 +67,65 @@
     
     if(![textField.text isEqualToString:@""])
     {
+        
+        [self makeSearch:textField.text];
+    }
+
+    return  YES;
+}
+
+#pragma mark - Tableview Delegate and DataSources
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    //    return [self.arrData count];
+    return [arrRecent count];
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *simpleTableIdentifier = @"RecentSearchCell";
+    
+    RecentSearchCell *cell = (RecentSearchCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RecentSearchCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+   
+    cell.lblContent.text = [arrRecent objectAtIndex:indexPath.row];
+    [cell.contentView setBackgroundColor:[UIColor clearColor]];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+       return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 32;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+   
+    [self makeSearch:@""];
+//     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+}
+
+-(void)makeSearch:(NSString*)keyword {
+    
+    START_LOADING;
+    [[APIClient sharedClient] searchByKeyWord:keyword type:@"2" latitude:@"" longitude:@"" distance:2 total:@"-1" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        STOP_LOADING;
         SearchResultViewController *vc =[[SearchResultViewController alloc] initWithNibName:@"SearchResultViewController" bundle:nil];
         vc.searchType = SearchByCondition ;
         [self.navigationController pushViewController:vc animated:YES];
         
-    }
-    
-    return  YES;
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        STOP_LOADING;
+        SHOW_NETWORK_ERROR;
+    }];
+
 }
+
+
 
 @end

@@ -2,7 +2,7 @@
 //  RegisterViewController.m
 //  TableCross
 //
-//  Created by DANGLV on 15/09/2014.
+//  Created by TableCross on 15/09/2014.
 //  Copyright (c) Năm 2014 Lemon. All rights reserved.
 //
 
@@ -12,8 +12,7 @@
 
 @end
 
-#define COLOR_ACTIVE [UIColor grayColor]
-#define COLOR_INACTIVE [UIColor whiteColor]
+
 
 @implementation RegisterViewController
 
@@ -30,21 +29,27 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.hidesBackButton = YES;
-    
+
+    [self.navigationController setNavigationBarHidden:NO];
+    self.navigationItem.title = @"Register";
     [self.txtEmail setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.txtPassword setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-
-    
+    [self.txtRefId setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+  
     [self initTabbar];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    [self.navigationItem.backBarButtonItem setTitle:@"ログイン"];
+}
 
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
@@ -52,18 +57,72 @@
 	[keyBoardController addToolbarToKeyboard];
 }
 
-- (IBAction)onRegisterFacebook:(id)sender {
-    
-    [self pushToHomeView];
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
 }
+
 
 - (IBAction)onLogin:(id)sender {
-        [self pushToHomeView];
+        if(![self.txtEmail.text isEqualToString:@""] && ![self.txtPassword.text isEqualToString:@""])
+            
+        {
+            START_LOADING ;
+            
+            [[APIClient sharedClient] registerWithEmail:self.txtEmail.text pass:self.txtPassword.text regionId:[Util valueForKey:KEY_AREAID] refUserId:@"" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                STOP_LOADING;
+                if([[responseObject objectForKey:@"success"] boolValue])
+                {
+                }
+                else
+                {
+                    [Util showError:responseObject];
+                }
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                STOP_LOADING;
+                SHOW_NETWORK_ERROR;
+            }];
+        }
+        else {
+            
+            [Util showMessage:@"Please input email and password to continue" withTitle:@"Notice"];
+        }
 }
-
-- (IBAction)onLinkClick:(id)sender {
+-(void)login :(NSString*)email andPass:(NSString*)pass {
     
-    [self pushToHomeView];
+    START_LOADING;
+    
+    [[APIClient sharedClient] login:email pass:pass loginType:@"0" areaId:[Util valueForKey:KEY_AREAID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        STOP_LOADING;
+        if([[responseObject objectForKey:@"success"] boolValue])
+        {
+            //Save username and pass
+            [Util setValue:self.txtEmail.text  forKey:KEY_EMAIL];
+            [Util setValue:self.txtPassword.text  forKey:KEY_PASSWORD];
+            
+            [Util setValue:[responseObject objectForKey:@"phone"] forKey:KEY_PHONE];
+            [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
+            [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
+            [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
+            
+            
+            [self pushToHomeView];
+        }
+        else
+        {
+            [Util showError:responseObject];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        STOP_LOADING;
+        SHOW_NETWORK_ERROR;
+    }];
+    
+
+    
+    
 }
 
 -(void)initTabbar

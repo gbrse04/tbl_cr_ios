@@ -2,7 +2,7 @@
 //  RegisterViewController.h
 //  TableCross
 //
-//  Created by DANGLV on 15/09/2014.
+//  Created by TableCross on 15/09/2014.
 //  Copyright (c) Năm 2014 Lemon. All rights reserved.
 //
 
@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 
+@property (weak, nonatomic) IBOutlet UITextField *txtRefId;
 
 @property (nonatomic,retain) UITabBarController *tabbarController;
 @property (nonatomic,retain) UINavigationController *notifNavigationViewController;

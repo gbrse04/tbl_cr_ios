@@ -2,7 +2,7 @@
 //  LoginViewController.h
 //  TableCross
 //
-//  Created by DANGLV on 17/09/2014.
+//  Created by TableCross on 17/09/2014.
 //  Copyright (c) Năm 2014 Lemon. All rights reserved.
 //
 
@@ -15,10 +15,15 @@
 #import "ShareViewController.h"
 #import "UIKeyboardViewController.h"
 #import "HomeViewController.h"
+#import <FacebookSDK/FacebookSDK.h>
+#import "RegisterViewController.h"
+
+
 @interface LoginViewController : BaseViewController<UITabBarControllerDelegate,UITextFieldDelegate,UIKeyboardViewControllerDelegate>
 {
     UIKeyboardViewController *keyBoardController;
 }
+- (IBAction)onRegister:(id)sender;
 - (IBAction)onRegisterFacebook:(id)sender;
 - (IBAction)onLogin:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;

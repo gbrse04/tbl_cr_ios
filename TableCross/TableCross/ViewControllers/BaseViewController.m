@@ -2,7 +2,7 @@
 //  BaseViewController.m
 //  TableCross
 //
-//  Created by DANGLV on 14/09/2014.
+//  Created by TableCross on 14/09/2014.
 //  Copyright (c) Năm 2014 Lemon. All rights reserved.
 //
 
@@ -118,6 +118,49 @@
 }
 
 #pragma mark - Share functions
+#pragma mark - Share SMS
+
+- (void)openSMSWithContent:(NSString*)body {
+    //check if the device can send text messages
+    if(![MFMessageComposeViewController canSendText]) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device cannot send text messages" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    //set receipients
+    NSArray *recipients = [NSArray arrayWithObjects: nil];
+    
+    //set message text
+    NSString * message = [NSString stringWithFormat: @"%@ : %@",shareAppMessage,shareAppUrl];
+    
+    MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+    messageController.messageComposeDelegate = self;
+    [messageController setRecipients:message];
+    [messageController setBody:message];
+    
+    // Present message view controller on screen
+    [self presentViewController:messageController animated:YES completion:nil];
+    
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result {
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    switch (result) {
+        case MessageComposeResultCancelled: break;
+            
+        case MessageComposeResultFailed:
+            
+            break;
+            
+        case MessageComposeResultSent: break;
+            
+        default: break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - share Mail
 
 - (void)openMailWithBody:(NSString*)body andSubject:(NSString*)subject

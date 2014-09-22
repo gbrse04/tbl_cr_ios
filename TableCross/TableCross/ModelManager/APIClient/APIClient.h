@@ -2,7 +2,7 @@
 //  APIClient.h
 //  TableCross
 //
-//  Created by DangLV on 9/18/14.
+//  Created by TableCross on 9/18/14.
 //  Copyright (c) 2014 Lemon. All rights reserved.
 //
 

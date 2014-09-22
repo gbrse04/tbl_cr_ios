@@ -3,7 +3,7 @@
 //
 //
 //  Created by Dang Luu on 12/9/13.
-//  Copyright 2011 danglv.hut@gmail.com., Ltd. All rights reserved.
+//  Copyright 2011 TableCross.hut@gmail.com., Ltd. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -18,6 +18,8 @@
 + (Util *)sharedUtil;
 //+ (AppDelegate *)appDelegate;
 +(BOOL)isConnectNetwork;
+
++ (void)showError:(NSDictionary*)dict;
 
 //Auto dismiss alert
 +(void)showAutoDismissAlert:(NSString*)message title:(NSString*)string time:(NSInteger)timeToDismiss;
@@ -44,6 +46,8 @@
 
 //NSUserDefaults functions
 + (void)setValue:(id)value forKey:(NSString *)key;
++ (void)setBoolValue:(BOOL)value forKey:(NSString *)key;
++ (BOOL)getBoolValueForKey:(NSString *)key;
 + (void)setValue:(id)value forKeyPath:(NSString *)keyPath;
 + (void)setObject:(id)obj forKey:(NSString *)key;
 + (id)valueForKey:(NSString *)key;

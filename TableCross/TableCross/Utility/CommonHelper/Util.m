@@ -3,7 +3,7 @@
 //
 //
 //  Created by Dang Luu on 12/1/11.
-//  Copyright 2011 danglv.hut@gmail.com., Ltd. All rights reserved.
+//  Copyright 2011 TableCross.hut@gmail.com., Ltd. All rights reserved.
 //
 
 #import "Util.h"
@@ -43,6 +43,49 @@
     [NSURLConnection sendSynchronousRequest:request returningResponse:&response error: NULL];
     
     return ([response statusCode] == 200) ? YES : NO;
+    
+}
++ (void)showError:(NSDictionary*)dict {
+    
+    NSInteger errorCode = [[dict objectForKey:@"errorCode"] integerValue];
+    
+    switch (errorCode) {
+        case 0:
+            [self showMessage:@"Email not exist" withTitle:@"Error"];
+            break;
+        case 2:
+            [self showMessage:@"User not login" withTitle:@"Error"];
+            break;
+
+        case 3:
+            [self showMessage:@"Old password invalid" withTitle:@"Error"];
+            break;
+
+        case 4:
+            [self showMessage:@"New password invalid" withTitle:@"Error"];
+            break;
+
+        case 5:
+            [self showMessage:@"UserId not exist" withTitle:@"Error"];
+            break;
+        case 6:
+            [self showMessage:@"Invalid params" withTitle:@"Error"];
+            break;
+
+        case 7:
+            [self showMessage:@"Email already exist" withTitle:@"Error"];
+            break;
+
+        case 8:
+            [self showMessage:@"Wrong password" withTitle:@"Error"];
+            break;
+        case 99:
+            [self showMessage:@"System error" withTitle:@"Error"];
+            break;
+
+        default:
+            break;
+    }
     
 }
 #pragma mark Auto Dismiss alert
@@ -184,6 +227,14 @@
 {
     [[NSUserDefaults standardUserDefaults] setValue:value forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void)setBoolValue:(BOOL)value forKey:(NSString *)key {
+    [[NSUserDefaults standardUserDefaults] setBool:value forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
++ (BOOL)getBoolValueForKey:(NSString *)key {
+   return [[NSUserDefaults standardUserDefaults] boolForKey:key];
 }
 
 + (void)setValue:(id)value forKeyPath:(NSString *)keyPath

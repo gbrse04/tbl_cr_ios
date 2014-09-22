@@ -3,7 +3,7 @@
 //  SOS APP
 //
 //  Created by Mr.Lemon on 9/4/13.
-//  Copyright (c) 2013 danglv.hut@gmail.com. All rights reserved.
+//  Copyright (c) 2013 TableCross.hut@gmail.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -22,7 +22,7 @@
 
 //===================WEBSERVICE CONFIG======================//
 
-#define kBaseUrl @"http://domain/client-api/"
+#define kBaseUrl @"http://tablecross.jp:8081/client-api/"
 
 #define kUrlLogin @"login"
 #define kUrlRegister @"register"
@@ -56,6 +56,23 @@
 #define kColorBgMenu [UIColor colorFromHexString:@"#58585A"]
 
 #define  kColorOrange  [UIColor colorWithRed:228.0/255.0 green:142.0f/255.0 blue:7.0f/255.0 alpha:1]
+
+
+// KEY CONFIG
+#define  KEY_AREAID @"KEY_AREAID"
+#define  KEY_AREA_NAME @"KEY_AREA_NAME"
+#define  KEY_EMAIL @"KEY_EMAIL"
+#define  KEY_PASSWORD @"KEY_PASSWORD"
+#define  KEY_NAME @"KEY_NAME"
+#define  KEY_PHONE @"KEY_PHONE"
+#define  KEY_BIRTHDAY @"KEY_BIRTHDAY"
+#define  KEY_POINT @"KEY_POINT"
+#define  KEY_USER_ID @"KEY_USER_ID"
+#define  KEY_SESSION_ID @"KEY_SESSION_ID"
+
+#define  KEY_NOTIF_SETTING_1 @"KEY_NOTIF_SETTING_1"
+#define  KEY_NOTIF_SETTING_2 @"KEY_NOTIF_SETTING_2"
+#define  KEY_NOTIF_SETTING_3 @"KEY_NOTIF_SETTING_3"
 
 
 @end

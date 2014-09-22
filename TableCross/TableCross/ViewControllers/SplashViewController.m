@@ -2,12 +2,14 @@
 //  SplashViewController.m
 //  TableCross
 //
-//  Created by DANGLV on 14/09/2014.
+//  Created by TableCross on 14/09/2014.
 //  Copyright (c) Năm 2014 Lemon. All rights reserved.
 //
 
 #import "SplashViewController.h"
 #import "ChooseRegionViewController.h"
+#import "ChooseRegionViewController.h"
+#import "HomeViewController.h"
 @interface SplashViewController ()
 
 @end
@@ -28,27 +30,44 @@
 
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-}
--(void)viewWillAppear:(BOOL)animated {
     
-    [super viewWillAppear:animated];
+//    [self performSelector:@selector(loadListRegion) withObject:nil afterDelay:3];
+}
+-(void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
     if(gIsHasNetwork)
        [self loadListRegion];
     else
         SHOW_POUP_NETWORK;
-        
+    
 }
 - (void)loadListRegion{
     
     [[APIClient sharedClient] getListAresWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if(responseObject && [responseObject objectForKey:@""])
+        
+        if([[responseObject objectForKey:@"success"] boolValue])
         {
+          NSArray *arrData =[responseObject objectForKey:@"items"];
+            
+            SelectRegionViewController *vc=[[SelectRegionViewController alloc] initWithNibName:@"SelectRegionViewController" bundle:nil];
+            vc.arrRegion = arrData;
+            [self.navigationController pushViewController:vc animated:YES];
+            
+//            HomeViewController *vc=[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+//            [self.navigationController pushViewController:vc animated:YES];
+
+            
+         }
+        else
+        {
+            [Util showError:responseObject];
         }
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        SHOW_POUP_NETWORK;
+       // SHOW_POUP_NETWORK;
         
     }];
 
@@ -58,11 +77,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)goNext {
-    
-    ChooseRegionViewController *vc=[[ChooseRegionViewController alloc] initWithNibName:@"ChooseRegionViewController" bundle:nil];
-    
-    [self.navigationController pushViewController:vc animated:YES];
-    
-}
+
 @end

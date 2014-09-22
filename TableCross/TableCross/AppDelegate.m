@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  TableCross
 //
-//  Created by DANGLV on 14/09/2014.
+//  Created by TableCross on 14/09/2014.
 //  Copyright (c) Năm 2014 Lemon. All rights reserved.
 //
 
@@ -10,6 +10,7 @@
 #import "SplashViewController.h"
 #import "MTReachabilityManager.h"
 #import "Reachability.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @implementation AppDelegate
 
@@ -95,11 +96,57 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    [self initCoreLocation];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+#pragma mark  - Handle facebook open 
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [FBSession.activeSession handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [FBSession.activeSession handleOpenURL:url];
+}
+
+
+#pragma mark INIT LOCATION MANAGER
+
+
+-(void)initCoreLocation
+{
+    if (![CLLocationManager locationServicesEnabled]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Message" message:@"Location service is now disable." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alertView show];
+        gIsEnableLocation = NO;
+    }
+    else
+    {
+        gIsEnableLocation = YES;
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.distanceFilter = kCLHeadingFilterNone;
+        //        self.locationManager.purpose = @"To calculate the distance to dealer";
+        self.locationManager.delegate = self;
+        [self.locationManager startUpdatingLocation];
+    }
+}
+
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    CLLocation *location = [locations lastObject];
+    gCurrentLatitude = location.coordinate.latitude;
+    gCurrentLongitude = location.coordinate.longitude;
+    
+    [self.locationManager stopUpdatingLocation];
+}
+
+
 
 @end

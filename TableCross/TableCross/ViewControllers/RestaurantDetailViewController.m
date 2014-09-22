@@ -2,14 +2,20 @@
 //  RestaurantDetailViewController.m
 //  TableCross
 //
-//  Created by DANGLV on 14/09/2014.
+//  Created by TableCross on 14/09/2014.
 //  Copyright (c) Năm 2014 Lemon. All rights reserved.
 //
 
 #import "RestaurantDetailViewController.h"
 #import "Util.h"
-@interface RestaurantDetailViewController ()
 
+
+
+@interface RestaurantDetailViewController ()
+{
+    UIPopoverListView *poplistview;
+
+}
 @end
 
 @implementation RestaurantDetailViewController
@@ -34,6 +40,11 @@
     [self setupTitle:@"お店の情報" isShowSetting:YES andBack:YES];
     [self addShareButton];
 }
+- (void)bindData {
+    
+    
+}
+
 -(void)addShareButton
 {
     
@@ -50,7 +61,7 @@
 -(void)onClickShare
 {
     
-    [Util showMessage:@"Coming Soon" withTitle:@"Share this restaurant"];
+    [self showSharePopup];
 }
 -(void)viewWillAppear:(BOOL)animated {
     
@@ -73,7 +84,8 @@
 
 - (IBAction)onShowLocation:(id)sender {
     
-    [Util showMessage:@"Coming soon" withTitle:@"Notice"];
+    //[Util showMessage:@"Coming soon" withTitle:@"Notice"];
+    [self showPointOnMap:self.restaurant];
 }
 
 - (IBAction)onShowCalendar:(id)sender {
@@ -101,6 +113,31 @@
     [picker setActionSheetPickerStyle:IQActionSheetPickerStyleDatePicker];
     [picker showInView:self.view];
 }
+
+
+#pragma mark - Show Share Popup
+
+-(void)showSharePopup {
+    
+    if(!poplistview)
+    {
+        CGFloat xWidth = self.view.bounds.size.width - 20.0f;
+        CGFloat yHeight = 233;
+        CGFloat yOffset = (self.view.bounds.size.height - yHeight)/2.0f;
+        
+        poplistview = [[UIPopoverListView alloc] initWithFrame:CGRectMake(10, yOffset, xWidth, yHeight)];
+        poplistview.delegate = self;
+        [poplistview setTitleBackground:kColorOrange];
+        poplistview.datasource = self;
+        poplistview.listView.scrollEnabled = NO;
+        
+        [poplistview setTitle:@"Share with"];
+    }
+    
+    [poplistview show];
+    
+}
+
 
 #pragma mark - IQActionSheetPickerViewDelegate
 
@@ -132,9 +169,149 @@
   } else {
      [Util showMessage:@"Your device not support this feature" withTitle:@"Error"];
   }
-      
+}
+
+-(void)showPointOnMap:(RestaurantObj*)resObj
+{
+    NSString* versionNum = [[UIDevice currentDevice] systemVersion];
+    NSString *nativeMapScheme = @"maps.apple.com";
+    if ([versionNum compare:@"6.0" options:NSNumericSearch] == NSOrderedAscending)
+        nativeMapScheme = @"maps.google.com";
+    double userLatitude;
+    double userLongitude;
+    if (gIsEnableLocation)
+    {
+        userLatitude = gCurrentLatitude;
+        userLongitude = gCurrentLongitude;
+    }
+    
+    NSString* url = [NSString stringWithFormat: @"http://%@/maps?q=%f,%f", nativeMapScheme, [resObj.latitude floatValue], [resObj.longitude floatValue]];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+}
+
+
+#pragma mark - UIPopoverListViewDataSource
+
+- (UITableViewCell *)popoverListView:(UIPopoverListView *)popoverListView
+                    cellForIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"cell";
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                   reuseIdentifier:identifier];
+    NSInteger row = indexPath.row;
+    
+    switch (row) {
+        case 0:
+            cell.textLabel.text=@"Facebook";
+            break;
+
+        case 1:
+            cell.textLabel.text=@"Twitter";
+            break;
+
+        case 2:
+            cell.textLabel.text=@"Google+";
+            break;
+
+        case 3:
+            cell.textLabel.text=@"SMS";
+            break;
+        case 4:
+            cell.textLabel.text=@"Email";
+            break;
+
+
+        default:
+            break;
+    }
+   
+    //    [cell.textLabel setTextColor:[UIColor blackColor]];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    
+    return cell;
+}
+
+- (NSInteger)popoverListView:(UIPopoverListView *)popoverListView
+       numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+#pragma mark - UIPopoverListViewDelegate
+- (void)popoverListView:(UIPopoverListView *)popoverListView
+     didSelectIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *msg = @"Please go and enjoy ";
+        NSString *url = @"http://www.tripadvisor.com/Restaurant_Review-g1066443-d4668409-Reviews-Japanese_Cuisine_Shimonoseki_Shunpanro_Tokyo-Chiyoda_Tokyo_Tokyo_Prefecture_Kant.html";
+    switch (indexPath.row) {
+        case 0:
+            [self postToFacebookWithText:msg andImage:nil andURL:url];
+            break;
+        case 1:
+            [self postToTwitterWithText:msg andImage:nil andURL:url];
+            break;
+        case 2:
+            [self postToFacebookWithText:msg andImage:nil andURL:url];
+            break;
+        case 3:
+            [self openSMS:[NSString stringWithFormat:@"%@ :%@",msg,url]];
+            break;
+        case 4:
+           [self openMailWithBody:[NSString stringWithFormat:@"%@ :%@",msg,url] andSubject:@"Share Restaurant"];
+            break;
+        default:
+            break;
+    }
+}
+
+- (CGFloat)popoverListView:(UIPopoverListView *)popoverListView
+   heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40;
+}
+-(void)openSMS:(NSString*)content {
+    
+    if(![MFMessageComposeViewController canSendText]) {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device cannot send text messages" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    //set receipients
+    NSArray *recipients = [NSArray arrayWithObjects: nil];
+    
+    //set message text
+    NSString * message = [NSString stringWithFormat: @"%@ : %@",shareAppMessage,shareAppUrl];
+    
+    MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+    messageController.messageComposeDelegate = self;
+    [messageController setRecipients:recipients];
+    [messageController setBody:message];
+    
+    // Present message view controller on screen
+    [self presentViewController:messageController animated:YES completion:nil];
     
 }
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result {
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    switch (result) {
+        case MessageComposeResultCancelled: break;
+            
+        case MessageComposeResultFailed:
+            
+            break;
+            
+        case MessageComposeResultSent: break;
+            
+        default: break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 
 
 @end

@@ -2,7 +2,7 @@
 //  APIClient.m
 //  TableCross
 //
-//  Created by DangLV on 9/18/14.
+//  Created by TableCross on 9/18/14.
 //  Copyright (c) 2014 Lemon. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 #import "APIClient.h"
 
-static NSString * const BASE_URL = @"http://api.thethao247.vn/";
+static NSString * const BASE_URL = kBaseUrl ;
 
 @implementation APIClient
 

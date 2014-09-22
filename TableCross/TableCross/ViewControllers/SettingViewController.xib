@@ -7,6 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController">
             <connections>
+                <outlet property="txtBirthday" destination="1fM-B0-Bqq" id="46L-gR-9V9"/>
+                <outlet property="txtEmail" destination="akU-zq-O6a" id="MII-4h-R3d"/>
+                <outlet property="txtPhone" destination="NR5-OI-JjC" id="C0u-jk-SEQ"/>
+                <outlet property="txtUserId" destination="9sg-Py-bV5" id="EP0-cR-Ffe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,7 +33,7 @@
                             <rect key="frame" x="35" y="58" width="250" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="フォン" minimumFontSize="17" background="bg_text.png" id="NR5-OI-JjC" customClass="CustomizeTextField">
                             <rect key="frame" x="35" y="96" width="250" height="30"/>
@@ -71,7 +75,7 @@
                                 <action selector="onSave:" destination="-1" eventType="touchUpInside" id="3w1-rH-Qld"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aZb-lk-Pm1">
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aZb-lk-Pm1">
                             <rect key="frame" x="246" y="235" width="39" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="checkbox_off.png">
@@ -82,7 +86,7 @@
                                 <action selector="onSetttingChange:" destination="-1" eventType="touchUpInside" id="jqe-7N-UNp"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xhh-CC-X6e">
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xhh-CC-X6e">
                             <rect key="frame" x="239" y="271" width="54" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="checkbox_off.png">

@@ -18,6 +18,6 @@
     #import "Logging.h"
     #import "BaseViewController.h"
     #import "Util.h"
-
+    #import "APIClient.h"
 
 #endif

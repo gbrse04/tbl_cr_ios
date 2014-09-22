@@ -20,6 +20,8 @@ typedef  enum {
 #define COLOR_ACTIVE [UIColor whiteColor]
 #define COLOR_INACTIVE [UIColor whiteColor]
 
+#define SHOW_POUP_NETWORK  [Util showMessage:@"No internet connection.Please enable network and try again !" withTitle:@"Error"];
+
 //=========================GLOBAL VALUE=========================//
 
 extern NSString *gMemberId;

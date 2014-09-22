@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F195B1819CAAEFE006114F1 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F195B1719CAAEFE006114F1 /* APIClient.m */; };
+		0F195B1819CAAEFE006114F1 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F195B1719CAAEFE006114F1 /* APIClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		74069D4019C89B9C00190037 /* SearchLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74069D3E19C89B9C00190037 /* SearchLocationViewController.m */; };
 		74069D4119C89B9C00190037 /* SearchLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74069D3F19C89B9C00190037 /* SearchLocationViewController.xib */; };
 		74069D4519C89D2100190037 /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 74069D4219C89D2100190037 /* arrow_down.png */; };

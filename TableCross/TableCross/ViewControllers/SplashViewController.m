@@ -25,12 +25,34 @@
 
 - (void)viewDidLoad
 {
+
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    [self performSelector:@selector(goNext) withObject:nil afterDelay:2.0];
 }
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    if(gIsHasNetwork)
+       [self loadListRegion];
+    else
+        SHOW_POUP_NETWORK;
+        
+}
+- (void)loadListRegion{
+    
+    [[APIClient sharedClient] getListAresWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if(responseObject && [responseObject objectForKey:@""])
+        {
+        }
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        SHOW_POUP_NETWORK;
+        
+    }];
 
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

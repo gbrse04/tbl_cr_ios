@@ -25,7 +25,7 @@ typedef void(^TTResponseFailure)(AFHTTPRequestOperation *operation, NSError *err
 + (void)changePass:(NSString*)oldPass newPass:(NSString*)newPass success:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 + (void)getListAresWithSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 + (void)getUserInfoWithSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
-+ (void)searchByKeyWord:(NSString*)keyword type:(NSString*)searchType latitude:(double)lat longitude:(double)longitude distance:(int)radius total:(int)total withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
++ (void)searchByKeyWord:(NSString*)keyword type:(NSString*)searchType latitude:(NSString*)lat longitude:(NSString*)longitude distance:(int)radius total:(NSString*)total withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 + (void)updateUserEmail:(NSString*)email phone:(NSString*)phone birthday:(NSString*)birthday sucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 
 

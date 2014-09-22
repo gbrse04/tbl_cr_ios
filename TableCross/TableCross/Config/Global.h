@@ -26,6 +26,9 @@ extern NSString *gMemberId;
 extern BOOL gIsLogin;
 extern BOOL gIsHasNetwork;
 
+extern NSString *shareAppMessage;
+extern NSString *shareAppUrl;
+
 
 
 

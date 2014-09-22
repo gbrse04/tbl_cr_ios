@@ -37,9 +37,42 @@ static NSString * const BASE_URL = @"http://api.thethao247.vn/";
     return self;
 }
 
+//
+////+ (void)getNewsInCategory:(NSString *)categoryId page:(NSString *)page pageSize:(NSString *)pageSize success:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+////    [[TheThao247APIClient sharedClient] getPath:NEWS_CATEGORY parameters:@{@"cat_id": categoryId, @"page": page, @"pagesize": pageSize} success:success failure:failure];
+////}
 
-//+ (void)getNewsInCategory:(NSString *)categoryId page:(NSString *)page pageSize:(NSString *)pageSize success:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
-//    [[TheThao247APIClient sharedClient] getPath:NEWS_CATEGORY parameters:@{@"cat_id": categoryId, @"page": page, @"pagesize": pageSize} success:success failure:failure];
-//}
++ (void)login:(NSString*)email pass:(NSString*)pass loginType:(NSString*)type areaId:(NSString*)areaId withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+    
+    [[APIClient sharedClient] getPath:kUrlLogin parameters:@{@"email": email, @"password": pass, @"loginType": type, @"areaId":areaId} success:success failure:failure];
+}
+
++ (void)registerWithEmail:(NSString*)email pass:(NSString*)pass regionId:(NSString*)regionId refUserId:(NSString*)refId withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+    
+      [[APIClient sharedClient] getPath:kUrlRegister parameters:@{@"email": email, @"password": pass, @"refUserId": refId, @"areaId":regionId} success:success failure:failure];
+}
+
+
++ (void)logout:(NSString*)token succes:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+      [[APIClient sharedClient] getPath:kUrlLogout parameters:nil success:success failure:failure];
+}
++ (void)changePass:(NSString*)oldPass newPass:(NSString*)newPass success:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+      [[APIClient sharedClient] getPath:kUrlChangePass parameters:@{@"oldPassword": oldPass, @"newPassword": newPass} success:success failure:failure];
+}
++ (void)getListAresWithSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+      [[APIClient sharedClient] getPath:kUrlGetListArea parameters:nil  success:success failure:failure];
+}
++ (void)getUserInfoWithSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+    
+    [[APIClient sharedClient] getPath:kUrlGetUserInfo parameters:nil success:success failure:failure];
+    
+}
++ (void)searchByKeyWord:(NSString*)keyword type:(NSString*)searchType latitude:(NSString*)lat longitude:(NSString*)longitude distance:(int)radius total:(NSString*)total withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+      [[APIClient sharedClient] getPath:kUrlSearchRestaurant parameters:@{@"searchType": searchType, @"searchKey": keyword, @"longitude":longitude, @"latitude":lat,@"distance":[NSString stringWithFormat:@"%d",radius],@"total":@"-1"} success:success failure:failure];
+    
+}
++ (void)updateUserEmail:(NSString*)email phone:(NSString*)phone birthday:(NSString*)birthday sucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+      [[APIClient sharedClient] getPath:kUrlUpdateProfile parameters:@{@"email": email, @"mobile": phone, @"birthday": birthday} success:success failure:failure];
+}
 
 @end

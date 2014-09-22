@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Social/Social.h>
+#import <MessageUI/MessageUI.h>
 
-@interface BaseViewController : UIViewController
+@interface BaseViewController : UIViewController<MFMailComposeViewControllerDelegate>
 
 - (void) setupTitle:(NSString*)title isShowSetting:(BOOL)showSetting andBack:(BOOL)isShowBack;
 - (void) setupTitle:(NSString*)title isShowSetting:(BOOL)showSetting andBack:(BOOL)isShowBack andBackTitle:(NSString*)title;
+
+- (void)openMailWithBody:(NSString*)body andSubject:(NSString*)subject;
+- (void)postToTwitterWithText:(NSString*)text andImage:(UIImage*)img andURL:(NSString*)url;
+- (void)postToFacebookWithText:(NSString*)text andImage:(UIImage*)img andURL:(NSString*)url;
 
 @end

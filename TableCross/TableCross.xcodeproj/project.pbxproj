@@ -2045,7 +2045,7 @@
 				INFOPLIST_FILE = "TableCross/TableCross-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "58d9ceb8-56cd-448e-9664-b72921ddac3e";
+				PROVISIONING_PROFILE = "551bbec6-3ded-4b44-b205-b769d438ea21";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2060,7 +2060,7 @@
 				INFOPLIST_FILE = "TableCross/TableCross-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "58d9ceb8-56cd-448e-9664-b72921ddac3e";
+				PROVISIONING_PROFILE = "551bbec6-3ded-4b44-b205-b769d438ea21";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

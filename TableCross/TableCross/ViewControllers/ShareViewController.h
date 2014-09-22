@@ -8,6 +8,11 @@
 
 #import "BaseViewController.h"
 
-@interface ShareViewController : BaseViewController
+@interface ShareViewController : BaseViewController<MFMessageComposeViewControllerDelegate>
+- (IBAction)onShareFacebook:(id)sender;
+- (IBAction)onShareTwitter:(id)sender;
+- (IBAction)onShareGooglePlus:(id)sender;
+- (IBAction)onShareSMS:(id)sender;
+- (IBAction)onShareEmail:(id)sender;
 
 @end

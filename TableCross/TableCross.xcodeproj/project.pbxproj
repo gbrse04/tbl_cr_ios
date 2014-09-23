@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0F195B1819CAAEFE006114F1 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F195B1719CAAEFE006114F1 /* APIClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0FF1FFE819D11D6C00FEE462 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF1FFE519D11D6C00FEE462 /* SSKeychain.m */; };
+		0FF1FFE919D11D6C00FEE462 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF1FFE719D11D6C00FEE462 /* SSKeychainQuery.m */; };
 		74069D4019C89B9C00190037 /* SearchLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74069D3E19C89B9C00190037 /* SearchLocationViewController.m */; };
 		74069D4119C89B9C00190037 /* SearchLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74069D3F19C89B9C00190037 /* SearchLocationViewController.xib */; };
 		74069D4519C89D2100190037 /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 74069D4219C89D2100190037 /* arrow_down.png */; };
@@ -331,6 +333,10 @@
 /* Begin PBXFileReference section */
 		0F195B1619CAAEFE006114F1 /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIClient.h; path = ModelManager/APIClient/APIClient.h; sourceTree = "<group>"; };
 		0F195B1719CAAEFE006114F1 /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIClient.m; path = ModelManager/APIClient/APIClient.m; sourceTree = "<group>"; };
+		0FF1FFE419D11D6C00FEE462 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		0FF1FFE519D11D6C00FEE462 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		0FF1FFE619D11D6C00FEE462 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
+		0FF1FFE719D11D6C00FEE462 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
 		74069D3D19C89B9C00190037 /* SearchLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchLocationViewController.h; path = ViewControllers/SearchLocationViewController.h; sourceTree = "<group>"; };
 		74069D3E19C89B9C00190037 /* SearchLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchLocationViewController.m; path = ViewControllers/SearchLocationViewController.m; sourceTree = "<group>"; };
 		74069D3F19C89B9C00190037 /* SearchLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchLocationViewController.xib; path = ViewControllers/SearchLocationViewController.xib; sourceTree = "<group>"; };
@@ -746,6 +752,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FF1FFE319D11D5800FEE462 /* SSKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				0FF1FFE419D11D6C00FEE462 /* SSKeychain.h */,
+				0FF1FFE519D11D6C00FEE462 /* SSKeychain.m */,
+				0FF1FFE619D11D6C00FEE462 /* SSKeychainQuery.h */,
+				0FF1FFE719D11D6C00FEE462 /* SSKeychainQuery.m */,
+			);
+			name = SSKeychain;
+			path = Libs/SSKeychain;
+			sourceTree = "<group>";
+		};
 		7420410119C9D15000F87C0B /* CustomizeTextField */ = {
 			isa = PBXGroup;
 			children = (
@@ -927,6 +945,7 @@
 		749B7B3C19C5E85400710605 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				0FF1FFE319D11D5800FEE462 /* SSKeychain */,
 				7429650219CA067200B75700 /* IQActionSheetPickerView */,
 				742964C819CA038100B75700 /* PMCalendar */,
 				742964BA19C9F2DE00B75700 /* UnderLineLabel */,
@@ -1886,6 +1905,7 @@
 				749B7BA519C5EB7700710605 /* NSDate+Additions.m in Sources */,
 				74FEEC4E19C75EE6005B8DE2 /* NSString+FontAwesome.m in Sources */,
 				74A8E3FA19C879A600298E5E /* ShareViewController.m in Sources */,
+				0FF1FFE919D11D6C00FEE462 /* SSKeychainQuery.m in Sources */,
 				749B7BD619C5EBA700710605 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				749B7BA619C5EB7700710605 /* NSString+Extension.m in Sources */,
 				74FEEC5219C75EE6005B8DE2 /* UIImage+FontAwesome.m in Sources */,
@@ -1917,6 +1937,7 @@
 				742964DC19CA038100B75700 /* PMCalendarBackgroundView.m in Sources */,
 				749B7BDE19C5EBA700710605 /* Toast+UIView.m in Sources */,
 				74FEEC3E19C75DA4005B8DE2 /* UIAwesomeButton.m in Sources */,
+				0FF1FFE819D11D6C00FEE462 /* SSKeychain.m in Sources */,
 				749B7BAF19C5EB8900710605 /* Config.m in Sources */,
 				74FEEC2B19C75116005B8DE2 /* NotificationCell.m in Sources */,
 				749B7BA719C5EB7700710605 /* UIColor+Colours.m in Sources */,

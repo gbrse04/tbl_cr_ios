@@ -13,12 +13,7 @@
 @end
 
 
-
-
-
 @implementation LoginViewController
-
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

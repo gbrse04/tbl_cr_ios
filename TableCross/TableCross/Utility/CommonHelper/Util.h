@@ -21,6 +21,10 @@
 
 +(NSString*)getUDID;
 
++(NSMutableArray*)getRecentSearch;
++(void)storeRecentSearch:(NSMutableArray*)data;
+
+
 + (void)showError:(NSDictionary*)dict;
 
 //Auto dismiss alert

@@ -48,6 +48,8 @@
 }
 
 - (IBAction)onShareGooglePlus:(id)sender {
+    
+    [Util showMessage:@"Coming soon" withTitle:@"Notice"];
 }
 
 - (IBAction)onShareSMS:(id)sender {

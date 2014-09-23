@@ -10,6 +10,10 @@
 #import "Config.h"
 
 @interface SearchLocationViewController ()
+{
+    
+    NSString *currentDistance;
+}
 
 @end
 
@@ -35,6 +39,7 @@ int numberResult;
     [self setupTitle:@"履現在地から探す歴" isShowSetting:YES andBack:YES];
     [self.txtSearch setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     numberResult = 0;
+    currentDistance = @"1.5";
     [tblResult reloadData];
 }
 
@@ -64,21 +69,22 @@ int numberResult;
     
     NSArray *arrTab = @[@{@"text":@"1.5km", @"icon":[UIImage imageNamed:@"square"]},@{@"text":@"3km", @"icon":[UIImage imageNamed:@"square"]},@{@"text":@"10km", @"icon":[UIImage imageNamed:@"square"]}];
     
-    
+    if(!segmented)
+    {
+        
     segmented = [[PPiFlatSegmentedControl alloc] initWithFrame:CGRectMake(20, 50, 280, 30)
                                                          items:arrTab
                                                   iconPosition:IconPositionLeft
                                              andSelectionBlock:^(NSUInteger segmentIndex) {
                                                  
-                                                 NSString *distance = @"1.5";
                                                  if(segmentIndex==0)
-                                                     distance = @"1.5";
+                                                     currentDistance = @"1.5";
                                                  else if(segmentIndex==1)
-                                                     distance = @"3";
+                                                     currentDistance = @"3";
                                                  else if(segmentIndex==2)
-                                                     distance = @"10";
+                                                     currentDistance = @"10";
                                                  
-                                                 [self makeSearch:self.txtSearch.text   distance:distance];
+                                                 [self makeSearch:self.txtSearch.text   distance:currentDistance];
                                                  
                                                  
                                                  
@@ -104,6 +110,7 @@ int numberResult;
     
     [self.view addSubview:segmented];
     [segmented setEnabled:YES forSegmentAtIndex:0];
+    }
     
 }
 
@@ -152,23 +159,21 @@ int numberResult;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     if(![self.txtSearch.text isEqualToString:@""])
-       numberResult =  10;
-  else
-       numberResult = 0;
-    
-       [tblResult reloadData];
+    {
         [self.lblGuide setHidden:YES];
         [self setupView];
+        [self makeSearch:self.txtSearch.text distance:currentDistance];
+    }
     return  YES;
     
 }
 
 -(void)makeSearch:(NSString*)keyword distance:(NSString*)distance{
     
-
+    
     START_LOADING;
-    [[APIClient sharedClient] searchByKeyWord:keyword type:@"2" latitude:[NSString stringWithFormat:@"%f",gCurrentLatitude] longitude:[NSString stringWithFormat:@"%f",gCurrentLongitude] distance:distance total:@"-1" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
+    [[APIClient sharedClient] searchByKeyWord:keyword type:@"1" latitude:[NSString stringWithFormat:@"%f",gCurrentLatitude] longitude:[NSString stringWithFormat:@"%f",gCurrentLongitude] distance:distance total:@"-1" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"Response : %@",responseObject);
         STOP_LOADING;
         if([[responseObject objectForKey:@"success"] boolValue])
             

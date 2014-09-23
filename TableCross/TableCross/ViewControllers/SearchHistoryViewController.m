@@ -10,6 +10,7 @@
 
 @interface SearchHistoryViewController ()
 
+
 @end
 
 @implementation SearchHistoryViewController
@@ -100,10 +101,8 @@
     
     
     START_LOADING;
-    [[APIClient sharedClient] searchByKeyWord:keyword type:@"2" latitude:@"" longitude:@"" distance:@"" total:@"-1" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        STOP_LOADING;
-        
+    [[APIClient sharedClient] searchByKeyWord:keyword type:@"0" latitude:@"" longitude:@"" distance:@"" total:@"-1" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Response : %@",responseObject);
         STOP_LOADING;
         if([[responseObject objectForKey:@"success"] boolValue])
             

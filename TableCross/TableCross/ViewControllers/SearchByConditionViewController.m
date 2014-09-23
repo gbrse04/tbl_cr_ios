@@ -12,6 +12,7 @@
 @interface SearchByConditionViewController ()
 {
     NSMutableArray *arrRecent;
+    NSArray *arrDisplay;
 }
 
 @end
@@ -27,6 +28,8 @@
     return self;
 }
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -35,9 +38,16 @@
     [self setupTitle:@"条件から探す" isShowSetting:YES andBack:YES];
     [self.txtSearch setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     
-    arrRecent = [[NSMutableArray alloc] initWithObjects:@"Pizza",@"Hotdog",@"KFC",@"Humberger", nil];
+//    arrRecent = [[NSMutableArray alloc] initWithObjects:@"Pizza",@"Hotdog",@"KFC",@"Humberger", nil];
     
+    [self displayRecentSearch];
+}
+
+-(void)displayRecentSearch {
     
+    arrRecent = [Util getRecentSearch];
+    arrDisplay = [[arrRecent reverseObjectEnumerator] allObjects];
+    [self.tblRecentSearch reloadData];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -78,7 +88,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     //    return [self.arrData count];
-    return [arrRecent count];
+    if([arrDisplay count] <10)
+        return [arrDisplay count];
+    else
+        return 10;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -91,7 +104,7 @@
         cell = [nib objectAtIndex:0];
     }
    
-    cell.lblContent.text = [arrRecent objectAtIndex:indexPath.row];
+    cell.lblContent.text = [arrDisplay objectAtIndex:indexPath.row];
     [cell.contentView setBackgroundColor:[UIColor clearColor]];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
        return cell;
@@ -104,17 +117,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    
-    [self makeSearch:@""];
+    [self makeSearch:[arrDisplay objectAtIndex:indexPath.row]];
 //     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
 -(void)makeSearch:(NSString*)keyword {
 
-    
+
     START_LOADING;
     [[APIClient sharedClient] searchByKeyWord:keyword type:@"2" latitude:@"" longitude:@"" distance:@"" total:@"-1" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         STOP_LOADING;
+        
+        NSLog(@"Response :%@ ",responseObject);
         SearchResultViewController *vc =[[SearchResultViewController alloc] initWithNibName:@"SearchResultViewController" bundle:nil];
         vc.searchType = SearchByCondition ;
         
@@ -124,7 +139,13 @@
         if([vc.arrData count]==0)
                [Util showMessage:@"No result found" withTitle:@"Notice"];
          else
-        [self.navigationController pushViewController:vc animated:YES];
+         {
+             if(![arrRecent containsObject:self.txtSearch.text])
+             [arrRecent addObject:self.txtSearch.text];
+              [Util storeRecentSearch:arrRecent];
+             [self displayRecentSearch];
+          [self.navigationController pushViewController:vc animated:YES];
+         }
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

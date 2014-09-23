@@ -36,15 +36,12 @@
 -(void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
-    if(gIsHasNetwork)
-       [self performSelector:@selector(loadListRegion) withObject:nil afterDelay:0.5];
-//       [self loadListRegion];
-    else
-        SHOW_POUP_NETWORK;
-    
+    [self performSelector:@selector(loadListRegion) withObject:nil afterDelay:2];
+
 }
 - (void)loadListRegion{
-    
+    if(gIsHasNetwork)
+    {
     [[APIClient sharedClient] getListAresWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if([[responseObject objectForKey:@"success"] boolValue])
@@ -72,7 +69,9 @@
         SHOW_POUP_NETWORK;
         
     }];
-
+    }
+    else
+        SHOW_POUP_NETWORK;
 }
 - (void)didReceiveMemoryWarning
 {

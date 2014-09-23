@@ -44,6 +44,38 @@
     }
 
     [self bindDataCombobox];
+    [self checkLogin];
+    
+}
+ -(void)checkLogin
+{
+        if([Util valueForKey:KEY_USER_ID] && ![[NSString stringWithFormat:@"%@",[Util valueForKey:KEY_USER_ID]] isEqualToString:@""])
+    {
+        
+        START_LOADING;
+        [[APIClient sharedClient] login:[Util valueForKey:KEY_EMAIL] pass:[Util valueForKey:KEY_PASSWORD] loginType:@"1" areaId:[Util valueForKey:KEY_AREAID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            STOP_LOADING;
+            if([[responseObject objectForKey:@"success"] boolValue])
+            {
+                
+                gNavigationViewController  = self.navigationController;
+                
+                
+                HomeViewController *home =[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+                [self.navigationController pushViewController:home animated:NO];
+            }
+            else
+                [Util showError:responseObject];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            STOP_LOADING;
+            SHOW_POUP_NETWORK;
+            
+        }];
+        
+       
+    }
 }
 
 - (void)bindDataCombobox {
@@ -71,7 +103,7 @@
     
     LoginViewController *vc=[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     
-    [self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController pushViewController:vc animated:NO];
     
 }
 

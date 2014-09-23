@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
     [self setupTitle:@"検索" isShowSetting:YES andBack:FALSE];
-
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {

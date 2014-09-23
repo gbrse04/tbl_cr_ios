@@ -35,7 +35,9 @@
     [self.txtEmail setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.txtPassword setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.txtRefId setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-  
+ 
+    self.navigationItem.hidesBackButton = NO;
+    
     [self initTabbar];
 }
 

@@ -33,6 +33,26 @@
     [self initTabbar];
     self.navigationItem.hidesBackButton = YES;
 //    [self performSelector:@selector(pushToHomeView) withObject:nil afterDelay:2];
+
+   [self getUserInfo];
+
+}
+
+-(void)getUserInfo {
+    
+    [[APIClient sharedClient] getUserInfoWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if([[responseObject objectForKey:@"success"] boolValue])
+        {
+            [Util setValue:[responseObject objectForKey:@"mobile"] forKey:KEY_PHONE];
+            [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
+            [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
+            [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning

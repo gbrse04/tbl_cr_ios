@@ -25,29 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TableCross/ViewControllers/SplashViewController.m"
-            timestampString = "433140614.203514"
+            filePath = "TableCross/ViewControllers/BaseViewController.m"
+            timestampString = "432546879.094333"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "-loadListRegion"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TableCross/TableViewCells/RestaurantCellTableViewCell.m"
-            timestampString = "433146338.275033"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "-fillData:"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "-gotoSetting"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

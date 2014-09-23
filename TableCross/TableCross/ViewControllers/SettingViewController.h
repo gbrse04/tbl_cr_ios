@@ -11,7 +11,7 @@
 #import "CustomizeTextField.h"
 
 
-@interface SettingViewController : BaseViewController<UITextFieldDelegate,UIKeyboardViewControllerDelegate>
+@interface SettingViewController : BaseViewController<UITextFieldDelegate,UIKeyboardViewControllerDelegate,UIAlertViewDelegate>
 {
     UIKeyboardViewController *keyBoardController;
 }

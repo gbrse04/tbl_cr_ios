@@ -51,8 +51,8 @@
 #pragma mark - Tableview Delegate and DataSources
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    //    return [self.arrData count];
-    return 10;
+      return [self.arrData count];
+  
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -66,9 +66,7 @@
         cell = [nib objectAtIndex:0];
     }
     
-    //    cell.lblCompany.text=item.companyName;
-    //    cell.lblProgress.text=item.status;
-    //    cell.lblTime.text=[LMDateTimeUtility reformat:item.startDate inputFormat:@"yyyy-MM-dd HH:mm" withFormat:@"hh:mm aa"];
+    [cell fillData:[self.arrData  objectAtIndex:indexPath.row]];
     
     [cell.contentView setBackgroundColor:[UIColor clearColor]];
     return cell;
@@ -88,9 +86,49 @@
 #pragma mark  - UITextField Delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
     [textField resignFirstResponder];
+    if(![self.txtSearchBar.text isEqualToString:@""])
+    {
+        [self makeSearch:self.txtSearchBar.text];
+    }
     return  YES;
 }
+
+
+-(void)makeSearch:(NSString*)keyword {
+    
+    
+    START_LOADING;
+    [[APIClient sharedClient] searchByKeyWord:keyword type:@"2" latitude:@"" longitude:@"" distance:@"" total:@"-1" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        STOP_LOADING;
+        
+        STOP_LOADING;
+        if([[responseObject objectForKey:@"success"] boolValue])
+            
+        {
+            self.arrData = [APIClient parserListRestaunt:responseObject];
+            if([self.arrData count]== 0)
+            {
+                [Util showMessage:@"No result found" withTitle:@"Result"];
+                return ;
+            }
+            
+            [self.tblData reloadData];
+        }
+        else
+            [Util showError:responseObject];
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        STOP_LOADING;
+        SHOW_NETWORK_ERROR;
+    }];
+    
+}
+
+
 
 
 @end

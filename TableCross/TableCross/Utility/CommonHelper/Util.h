@@ -19,6 +19,8 @@
 //+ (AppDelegate *)appDelegate;
 +(BOOL)isConnectNetwork;
 
++(NSString*)getUDID;
+
 + (void)showError:(NSDictionary*)dict;
 
 //Auto dismiss alert

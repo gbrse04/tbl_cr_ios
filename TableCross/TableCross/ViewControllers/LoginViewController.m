@@ -164,8 +164,8 @@
     [[APIClient sharedClient] login:self.txtEmail.text pass:self.txtPassword.text loginType:@"0" areaId:[Util valueForKey:KEY_AREAID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         STOP_LOADING;
-//        if([[responseObject objectForKey:@"success"] boolValue])
-//        {
+        if([[responseObject objectForKey:@"success"] boolValue])
+        {
             //Save username and pass
             [Util setValue:self.txtEmail.text  forKey:KEY_EMAIL];
             [Util setValue:self.txtPassword.text  forKey:KEY_PASSWORD];
@@ -174,14 +174,14 @@
             [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
             [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
             [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
-
+            [Util setValue:[responseObject objectForKey:@"shareLink"] forKey:KEY_SHARELINK];
             
             [self pushToHomeView];
-//        }
-//        else
-//        {
-//             [Util showError:responseObject];
-//        }
+        }
+        else
+        {
+             [Util showError:responseObject];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         STOP_LOADING;
         SHOW_NETWORK_ERROR;
@@ -198,8 +198,8 @@
     [[APIClient sharedClient] login:email pass:@"" loginType:@"1" areaId:[Util valueForKey:KEY_AREAID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         STOP_LOADING;
         gIsLoginFacebook = TRUE;
-//        if([[responseObject objectForKey:@"success"] boolValue])
-//        {
+        if([[responseObject objectForKey:@"success"] boolValue])
+        {
             //Save username and pass
             [Util setValue:self.txtEmail.text  forKey:KEY_EMAIL];
             [Util setValue:self.txtPassword.text  forKey:KEY_PASSWORD];
@@ -208,14 +208,15 @@
             [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
             [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
             [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
+            [Util setValue:[responseObject objectForKey:@"shareLink"] forKey:KEY_SHARELINK];
             
             
             [self pushToHomeView];
-//        }
-//        else
-//        {
-//            [Util showMessage:[responseObject objectForKey:@"errorMess"] withTitle:@"Error"];
-//        }
+        }
+        else
+        {
+            [Util showMessage:[responseObject objectForKey:@"errorMess"] withTitle:@"Error"];
+        }
 
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

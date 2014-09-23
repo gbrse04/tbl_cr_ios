@@ -260,7 +260,7 @@
      didSelectIndexPath:(NSIndexPath *)indexPath
 {
     NSString *msg = @"Please go and enjoy ";
-        NSString *url = @"http://www.tripadvisor.com/Restaurant_Review-g1066443-d4668409-Reviews-Japanese_Cuisine_Shimonoseki_Shunpanro_Tokyo-Chiyoda_Tokyo_Tokyo_Prefecture_Kant.html";
+        NSString *url = self.restaurant.shareLink;
     switch (indexPath.row) {
         case 0:
             [self postToFacebookWithText:msg andImage:nil andURL:url];

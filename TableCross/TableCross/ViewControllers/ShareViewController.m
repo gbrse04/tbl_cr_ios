@@ -28,6 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setupTitle:@"シェア" isShowSetting:TRUE andBack:FALSE];
+    
+    shareAppUrl  = [Util valueForKey:KEY_SHARELINK];
 }
 
 - (void)didReceiveMemoryWarning

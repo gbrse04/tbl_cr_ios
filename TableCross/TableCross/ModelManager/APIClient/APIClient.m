@@ -49,7 +49,7 @@ static NSString * const BASE_URL = kBaseUrl ;
 
 - (void)registerWithEmail:(NSString*)email pass:(NSString*)pass regionId:(NSString*)regionId refUserId:(NSString*)refId withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
     
-      [[APIClient sharedClient] getPath:kUrlRegister parameters:@{@"email": email, @"password": pass, @"refUserId": refId, @"areaId":regionId} success:success failure:failure];
+      [[APIClient sharedClient] getPath:kUrlRegister parameters:@{@"email": email, @"password": pass, @"deviceId": refId, @"areaId":regionId} success:success failure:failure];
 }
 
 
@@ -67,7 +67,7 @@ static NSString * const BASE_URL = kBaseUrl ;
     [[APIClient sharedClient] getPath:kUrlGetUserInfo parameters:nil success:success failure:failure];
     
 }
-- (void)searchByKeyWord:(NSString*)keyword type:(NSString*)searchType latitude:(NSString*)lat longitude:(NSString*)longitude distance:(int)radius total:(NSString*)total withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+- (void)searchByKeyWord:(NSString*)keyword type:(NSString*)searchType latitude:(NSString*)lat longitude:(NSString*)longitude distance:(NSString*)radius total:(NSString*)total withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
       [[APIClient sharedClient] getPath:kUrlSearchRestaurant parameters:@{@"searchType": searchType, @"searchKey": keyword, @"longitude":longitude, @"latitude":lat,@"distance":[NSString stringWithFormat:@"%d",radius],@"total":@"-1"} success:success failure:failure];
     
 }

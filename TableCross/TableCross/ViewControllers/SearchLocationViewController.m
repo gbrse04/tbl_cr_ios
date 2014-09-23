@@ -69,6 +69,20 @@ int numberResult;
                                                          items:arrTab
                                                   iconPosition:IconPositionLeft
                                              andSelectionBlock:^(NSUInteger segmentIndex) {
+                                                 
+                                                 NSString *distance = @"1.5";
+                                                 if(segmentIndex==0)
+                                                     distance = @"1.5";
+                                                 else if(segmentIndex==1)
+                                                     distance = @"3";
+                                                 else if(segmentIndex==2)
+                                                     distance = @"10";
+                                                 
+                                                 [self makeSearch:self.txtSearch.text   distance:distance];
+                                                 
+                                                 
+                                                 
+                                                 
                                              }
                                                 iconSeparation:0];
     
@@ -96,8 +110,8 @@ int numberResult;
 #pragma mark - Tableview Delegate and DataSources
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    //    return [self.arrData count];
-    return numberResult;
+   return [self.arrData count];
+//    return numberResult;
 
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -148,5 +162,39 @@ int numberResult;
     return  YES;
     
 }
+
+-(void)makeSearch:(NSString*)keyword distance:(NSString*)distance{
+    
+
+    START_LOADING;
+    [[APIClient sharedClient] searchByKeyWord:keyword type:@"2" latitude:[NSString stringWithFormat:@"%f",gCurrentLatitude] longitude:[NSString stringWithFormat:@"%f",gCurrentLongitude] distance:distance total:@"-1" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        STOP_LOADING;
+        if([[responseObject objectForKey:@"success"] boolValue])
+            
+        {
+            self.arrData = [APIClient parserListRestaunt:responseObject];
+            if([self.arrData count]== 0)
+            {
+                    [Util showMessage:@"No result found" withTitle:@"Result"];
+                    return ;
+            }
+            
+            [tblResult reloadData];
+            [self.lblGuide setHidden:YES];
+            [self setupView];
+        }
+        else
+            [Util showError:responseObject];
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        STOP_LOADING;
+        SHOW_NETWORK_ERROR;
+    }];
+    
+}
+
+
 
 @end

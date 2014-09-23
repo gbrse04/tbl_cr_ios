@@ -109,17 +109,21 @@
 }
 
 -(void)makeSearch:(NSString*)keyword {
+
     
     START_LOADING;
-    [[APIClient sharedClient] searchByKeyWord:keyword type:@"2" latitude:@"" longitude:@"" distance:2 total:@"-1" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[APIClient sharedClient] searchByKeyWord:keyword type:@"2" latitude:@"" longitude:@"" distance:@"" total:@"-1" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         STOP_LOADING;
         SearchResultViewController *vc =[[SearchResultViewController alloc] initWithNibName:@"SearchResultViewController" bundle:nil];
         vc.searchType = SearchByCondition ;
         
         
-//        vc.arrData = [APIClient parserListRestaunt:responseObject];
-        vc.arrData = gArrRestaurant;
+        vc.arrData = [APIClient parserListRestaunt:responseObject];
+       // vc.arrData = gArrRestaurant;
+        if([vc.arrData count]==0)
+               [Util showMessage:@"No result found" withTitle:@"Notice"];
+         else
         [self.navigationController pushViewController:vc animated:YES];
         
         

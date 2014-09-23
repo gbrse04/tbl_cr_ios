@@ -70,17 +70,17 @@
         {
             START_LOADING ;
             
-            [[APIClient sharedClient] registerWithEmail:self.txtEmail.text pass:self.txtPassword.text regionId:[Util valueForKey:KEY_AREAID] refUserId:@"" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [[APIClient sharedClient] registerWithEmail:self.txtEmail.text pass:self.txtPassword.text regionId:[Util valueForKey:KEY_AREAID] refUserId:[Util getUDID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                 STOP_LOADING;
-//                if([[responseObject objectForKey:@"success"] boolValue])
-//                {
+                if([[responseObject objectForKey:@"success"] boolValue])
+                {
                 
                     [self login:self.txtEmail.text andPass:self.txtPassword.text];
-//                }
-//                else
-//                {
-//                    [Util showError:responseObject];
-//                }
+                }
+                else
+                {
+                    [Util showError:responseObject];
+                }
                 
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 STOP_LOADING;
@@ -99,8 +99,8 @@
     [[APIClient sharedClient] login:email pass:pass loginType:@"0" areaId:[Util valueForKey:KEY_AREAID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         STOP_LOADING;
-//        if([[responseObject objectForKey:@"success"] boolValue])
-//        {
+        if([[responseObject objectForKey:@"success"] boolValue])
+        {
             //Save username and pass
             [Util setValue:self.txtEmail.text  forKey:KEY_EMAIL];
             [Util setValue:self.txtPassword.text  forKey:KEY_PASSWORD];
@@ -109,14 +109,14 @@
             [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
             [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
             [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
-            
+            [Util setValue:[responseObject objectForKey:@"shareLink"] forKey:KEY_SHARELINK];
             
             [self pushToHomeView];
-//        }
-//        else
-//        {
-//            [Util showError:responseObject];
-//        }
+        }
+        else
+        {
+            [Util showError:responseObject];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         STOP_LOADING;
         SHOW_NETWORK_ERROR;

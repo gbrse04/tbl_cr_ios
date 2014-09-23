@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgRestaurant;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress;
+@property (weak, nonatomic) IBOutlet UIImageView *imgClock;
 @property (weak, nonatomic) IBOutlet UILabel *lblDateTime;
 -(void)fillData:(RestaurantObj*)obj;
 @end

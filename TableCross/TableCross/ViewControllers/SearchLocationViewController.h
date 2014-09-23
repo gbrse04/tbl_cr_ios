@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtSearch;
 @property (weak, nonatomic) IBOutlet UITableView *tblResult;
 @property (weak, nonatomic) IBOutlet UILabel *lblGuide;
+@property (retain,nonatomic) NSMutableArray *arrData;
 
 @end

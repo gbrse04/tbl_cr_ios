@@ -10,6 +10,7 @@
 //#import "NSString+Extension.h"
 #import "NSDate+Additions.h"
 #import "Macros.h"
+#import "SSKeychain.h"
 
 #define kCalendarType NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit | NSWeekOfMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSTimeZoneCalendarUnit
 
@@ -30,6 +31,20 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     return appDelegate;
+}
++(NSString*)getUDID {
+    
+    NSString *appName=[[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
+    
+    NSString *strApplicationUUID = [SSKeychain passwordForService:appName account:@"tablecross"];
+    if (strApplicationUUID == nil)
+    {
+        strApplicationUUID  = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+        [SSKeychain setPassword:strApplicationUUID forService:appName account:@"tablecross"];
+    }
+    
+    return strApplicationUUID;
+
 }
 
 +(BOOL)isConnectNetwork{
@@ -87,6 +102,8 @@
             break;
     }
     
+    
+    [self showMessage:[dict objectForKey:@"errorMess"] withTitle:@"Error"];
 }
 #pragma mark Auto Dismiss alert
 +(void)showAutoDismissAlert:(NSString*)message title:(NSString*)string time:(NSInteger)timeToDismiss{

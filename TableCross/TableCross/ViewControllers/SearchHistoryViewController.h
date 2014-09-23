@@ -16,4 +16,5 @@
 @property (weak, nonatomic) IBOutlet UITableView *tblData;
 @property (weak, nonatomic) IBOutlet UITextField *txtSearchBar;
 
+
 @end

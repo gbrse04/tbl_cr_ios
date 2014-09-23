@@ -22,6 +22,7 @@
 @property (nonatomic,retain) NSString *website;
 @property (nonatomic,retain) NSString *phone;
 @property (nonatomic,retain) NSString *orderDate;
+@property (nonatomic,retain) NSString *shareLink;
 
 -(id)initWithDict:(NSDictionary*)dict;
 

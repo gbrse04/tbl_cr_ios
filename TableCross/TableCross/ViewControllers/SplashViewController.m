@@ -37,7 +37,8 @@
     
     [super viewDidAppear:animated];
     if(gIsHasNetwork)
-       [self loadListRegion];
+       [self performSelector:@selector(loadListRegion) withObject:nil afterDelay:0.5];
+//       [self loadListRegion];
     else
         SHOW_POUP_NETWORK;
     
@@ -67,7 +68,8 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-       // SHOW_POUP_NETWORK;
+
+        SHOW_POUP_NETWORK;
         
     }];
 

@@ -49,7 +49,8 @@
 
 - (IBAction)onShareGooglePlus:(id)sender {
     
-    [Util showMessage:@"Coming soon" withTitle:@"Notice"];
+//    [Util showMessage:@"Coming soon" withTitle:@"Notice"];
+    [self postToLineWithText:shareAppUrl];
 }
 
 - (IBAction)onShareSMS:(id)sender {

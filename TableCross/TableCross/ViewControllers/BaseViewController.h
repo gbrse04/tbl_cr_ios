@@ -20,5 +20,6 @@
 - (void)openSMSWithContent:(NSString*)body;
 - (void)postToTwitterWithText:(NSString*)text andImage:(UIImage*)img andURL:(NSString*)url;
 - (void)postToFacebookWithText:(NSString*)text andImage:(UIImage*)img andURL:(NSString*)url;
+- (void)postToLineWithText:(NSString*)text;
 
 @end

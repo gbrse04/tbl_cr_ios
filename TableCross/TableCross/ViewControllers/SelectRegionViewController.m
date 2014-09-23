@@ -43,7 +43,7 @@
         [arrTitle addObject:[dict objectForKey:@"areaName"]];
     }
 
-    [self bindDataCombobox];
+    
     [self checkLogin];
     
 }
@@ -59,10 +59,13 @@
             {
                 
                 gNavigationViewController  = self.navigationController;
-                
-                
                 HomeViewController *home =[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
-                [self.navigationController pushViewController:home animated:NO];
+                double delayInSeconds = 0.4;
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                    [self.navigationController pushViewController:home animated:YES];
+                });
+               
             }
             else
                 [Util showError:responseObject];
@@ -76,6 +79,8 @@
         
        
     }
+    
+     [self bindDataCombobox];
 }
 
 - (void)bindDataCombobox {
@@ -95,15 +100,19 @@
     [Util setValue:[arrTitle objectAtIndex:indexPath.row] forKey:KEY_AREA_NAME];
     [Util setValue:[[self.arrRegion objectAtIndex:indexPath.row] objectForKey:@"areaId"] forKey:KEY_AREAID];
     
-    [self goNext];
     
-    //[self performSelector:@selector(goNext) withObject:nil afterDelay:0.2];
+   [self goNext];
+    
+//    [self performSelector:@selector(goNext) withObject:nil afterDelay:0.5];
 }
 -(void)goNext {
     
-    LoginViewController *vc=[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    
-    [self.navigationController pushViewController:vc animated:NO];
+    double delayInSeconds = 0.4;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        LoginViewController *home =[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        [self.navigationController pushViewController:home animated:YES];
+    });
     
 }
 

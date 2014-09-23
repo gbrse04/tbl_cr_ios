@@ -140,16 +140,16 @@
         [[APIClient sharedClient] logout:@"" succes:^(AFHTTPRequestOperation *operation, id responseObject) {
             STOP_LOADING;
                     NSLog(@"Response : %@",responseObject);
-            //        if([[responseObject objectForKey:@"success"] boolValue])
-            //        {
+            if([[responseObject objectForKey:@"success"] boolValue])
+                {
             
             [Util setValue:@"" forKey:KEY_USER_ID];
             [gNavigationViewController popToViewController:[[gNavigationViewController viewControllers]objectAtIndex:1] animated:YES];
             
-            //            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGOUT object:nil];
-            //        }
-            //        else
-            //             [Util showError:responseObject];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGOUT object:nil];
+                }
+                else
+        [Util showError:responseObject];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             STOP_LOADING;

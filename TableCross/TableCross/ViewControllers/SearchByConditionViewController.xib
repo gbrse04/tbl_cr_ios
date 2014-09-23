@@ -7,10 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchByConditionViewController">
             <connections>
-                <outlet property="lblSearch1" destination="mle-Df-J7K" id="o0l-MF-SwH"/>
-                <outlet property="lblSearch2" destination="wvl-sA-AcZ" id="snT-Mn-8Kf"/>
-                <outlet property="lblSearch3" destination="znt-28-isH" id="iQS-dg-TIh"/>
-                <outlet property="lblSearch4" destination="vej-rb-QqC" id="cov-vz-SaG"/>
+                <outlet property="tblRecentSearch" destination="9nI-Nk-3AX" id="8Re-Yh-tsP"/>
                 <outlet property="txtSearch" destination="ccy-jm-l5N" id="6Pa-4y-KAZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -50,34 +47,16 @@
                         <outlet property="delegate" destination="-1" id="972-WU-b1K"/>
                     </connections>
                 </textField>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日本食 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mle-Df-J7K" customClass="UnderLineLabel">
-                    <rect key="frame" x="20" y="105" width="228" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.32941177490000001" green="0.22745099660000001" blue="0.85490202900000001" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="六本大" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wvl-sA-AcZ" customClass="UnderLineLabel">
-                    <rect key="frame" x="20" y="134" width="228" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.32941177490000001" green="0.22745099660000001" blue="0.85490202900000001" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="夜遅くまでやっている店" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="znt-28-isH" customClass="UnderLineLabel">
-                    <rect key="frame" x="20" y="163" width="228" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.32941177490000001" green="0.22745099660000001" blue="0.85490202900000001" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" ランチ " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vej-rb-QqC" customClass="UnderLineLabel">
-                    <rect key="frame" x="19" y="192" width="228" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.32941177487373352" green="0.22745099663734436" blue="0.85490202903747559" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9nI-Nk-3AX">
+                    <rect key="frame" x="24" y="107" width="270" height="287"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Seg-E9-Gbs"/>
+                        <outlet property="delegate" destination="-1" id="zLd-9v-k1N"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

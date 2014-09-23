@@ -2,7 +2,7 @@
 //  LoginViewController.m
 //  TableCross
 //
-//  Created by DANGLV on 17/09/2014.
+//  Created by TableCross on 17/09/2014.
 //  Copyright (c) Năm 2014 Lemon. All rights reserved.
 //
 
@@ -33,9 +33,34 @@
     [self.txtEmail setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.txtPassword setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     
+    gNavigationViewController = self.navigationController;
+    self.navigationItem.title = @"ログイン";
     
-    [self initTabbar];
+    
+    [self createFakeData];
 }
+
+
+-(void)createFakeData {
+    gArrRestaurant = [[NSMutableArray alloc] init];
+    
+    RestaurantObj *obj = [[RestaurantObj alloc] init];
+    
+    obj.name = @"McDonald's Kagurazaka ";
+    obj.address = @"124-6 Yaraicho Shinjuku, Tokyo 162-0805";
+    obj.imageUrl = @"http://www.sott.net/image/s5/109922/medium/mcdonalds.jpg";
+    obj.description = @"Classic, long-running fast-food chain known for its burgers, fries & shakes";
+    obj.phone = @"+81 3-5206-1836";
+    obj.website = @"http://www.mcdonalds.co.jp/";
+    obj.orderDate = @"2014/09/23";
+    obj.latitude = @"35.7037931";
+    obj.longitude = @"139.7402782";
+    
+    [gArrRestaurant addObject:obj];
+}
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -46,23 +71,160 @@
 
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
 	keyBoardController=[[UIKeyboardViewController alloc] initWithControllerDelegate:self];
 	[keyBoardController addToolbarToKeyboard];
 }
 
+- (IBAction)onRegister:(id)sender {
+    
+    RegisterViewController *vc = [[RegisterViewController alloc] initWithNibName:@"RegisterViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (IBAction)onRegisterFacebook:(id)sender {
     
-    [self pushToHomeView];
+  
+    //Clear old session
+    [FBSession.activeSession closeAndClearTokenInformation];
+    
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for(NSHTTPCookie *cookie in [storage cookies])
+    {
+        NSString *domainName = [cookie domain];
+        NSRange domainRange = [domainName rangeOfString:@"facebook"];
+        if(domainRange.length > 0)
+        {
+            [storage deleteCookie:cookie];
+        }
+    }
+    START_LOADING;
+    NSArray *permissions = [NSArray arrayWithObjects:@"user_checkins",@"email", @"user_about_me",@"user_birthday"/*,@"publish_actions"*/,nil];
+    // if the session is closed, then we open it here, and establish a handler for state changes
+    [FBSession openActiveSessionWithReadPermissions:permissions
+                                       allowLoginUI:YES
+                                  completionHandler:^(FBSession *session,
+                                                      FBSessionState state,
+                                                      NSError *error) {
+                                      
+                                      if (error) {
+                                          STOP_LOADING;
+                                          [FBSession.activeSession closeAndClearTokenInformation];
+                                          NSLog(@"error:%@",error);
+                                          [Util showMessage:@"Login error" withTitle:@"Error"];
+                                      } else if (session.isOpen) {
+                                          [[FBRequest requestForMe] startWithCompletionHandler:^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *user, NSError *error) {
+                                              if (!error)
+                                              {
+                                                  //NSString *storeUserName = user.name;
+                                                  
+                                                  NSString *storeEmail = [user objectForKey:@"email"];
+                                                  NSString *storeFirstname = user.first_name;
+                                                  NSString *storeLastname = user.last_name;
+                                                  NSString *storeBirthdate = user.birthday;
+                                                  
+                                                  
+                                                  NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+                                                  
+                                                  [userDefault setValue:user.id forKey:@"facebookID"];
+                                                  [userDefault setValue:storeEmail forKey:@"FBemail"];
+                                                  [userDefault setValue:storeFirstname forKey:@"FBfirst_name"];
+                                                  [userDefault setValue:storeLastname forKey:@"FBlast_name"];
+                                                  [userDefault setValue:storeBirthdate forKey:@"FBbirthdate"];
+                                                  [userDefault synchronize];
+                                                  
+                                                  DebugLog(@"%@----%@", user.id, storeEmail);
+                                                  
+                                                  [self loginFacebook:storeEmail];
+                                               
+                                              }
+                                          }];
+                                          // If the Facebook app isn't available, show the Feed dialog as a fallback
+                                          
+                                          
+                                      }
+                                      
+                                  }];
+    
+    
 }
 
 - (IBAction)onLogin:(id)sender {
-    [self pushToHomeView];
+   
+    
+    if([self.txtEmail.text isEqualToString:@""] && [self.txtPassword.text isEqualToString:@""])
+        [Util showMessage:@"Please input your email and password" withTitle:@"Error"];
+    
+    else if(![Util isValidEmail:self.txtEmail.text])
+       [Util showMessage:@"Invalid email address" withTitle:@"Error"];
+    else
+    {
+    START_LOADING;
+    
+    [[APIClient sharedClient] login:self.txtEmail.text pass:self.txtPassword.text loginType:@"0" areaId:[Util valueForKey:KEY_AREAID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        STOP_LOADING;
+//        if([[responseObject objectForKey:@"success"] boolValue])
+//        {
+            //Save username and pass
+            [Util setValue:self.txtEmail.text  forKey:KEY_EMAIL];
+            [Util setValue:self.txtPassword.text  forKey:KEY_PASSWORD];
+            
+            [Util setValue:[responseObject objectForKey:@"phone"] forKey:KEY_PHONE];
+            [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
+            [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
+            [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
+
+            
+            [self pushToHomeView];
+//        }
+//        else
+//        {
+//             [Util showError:responseObject];
+//        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        STOP_LOADING;
+        SHOW_NETWORK_ERROR;
+    }];
+    
+    }
+    
+//    [self pushToHomeView];
 }
 
-- (IBAction)onLinkClick:(id)sender {
+-(void)loginFacebook:(NSString*)email {
+    START_LOADING;
     
-    [self pushToHomeView];
+    [[APIClient sharedClient] login:email pass:@"" loginType:@"1" areaId:[Util valueForKey:KEY_AREAID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        STOP_LOADING;
+        gIsLoginFacebook = TRUE;
+//        if([[responseObject objectForKey:@"success"] boolValue])
+//        {
+            //Save username and pass
+            [Util setValue:self.txtEmail.text  forKey:KEY_EMAIL];
+            [Util setValue:self.txtPassword.text  forKey:KEY_PASSWORD];
+            
+            [Util setValue:[responseObject objectForKey:@"phone"] forKey:KEY_PHONE];
+            [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
+            [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
+            [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
+            
+            
+            [self pushToHomeView];
+//        }
+//        else
+//        {
+//            [Util showMessage:[responseObject objectForKey:@"errorMess"] withTitle:@"Error"];
+//        }
+
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+       
+        STOP_LOADING;
+        SHOW_NETWORK_ERROR;
+    }];
 }
+
 
 -(void)initTabbar
 {

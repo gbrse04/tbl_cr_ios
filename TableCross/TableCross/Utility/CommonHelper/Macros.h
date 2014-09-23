@@ -2,8 +2,8 @@
 //  Macros.h
 //  SOS APP
 //
-//  Created by danglv.hut@gmail.com on 9/1/13.
-//  Copyright (c) 2013 danglv.hut@gmail.com. All rights reserved.
+//  Created by TableCross.hut@gmail.com on 9/1/13.
+//  Copyright (c) 2013 TableCross.hut@gmail.com. All rights reserved.
 //
 #import "Util.h"
 #import "Config.h"

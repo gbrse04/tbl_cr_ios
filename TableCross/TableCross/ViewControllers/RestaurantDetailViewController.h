@@ -2,7 +2,7 @@
 //  RestaurantDetailViewController.h
 //  TableCross
 //
-//  Created by DANGLV on 14/09/2014.
+//  Created by TableCross on 14/09/2014.
 //  Copyright (c) Năm 2014 Lemon. All rights reserved.
 //
 
@@ -12,7 +12,10 @@
 #import "IQActionSheetPickerView.h"
 #import "RestaurantObj.h"
 #import "ConfirmView.h"
-@interface RestaurantDetailViewController : BaseViewController<UIAlertViewDelegate,UIKeyboardViewControllerDelegate,PMCalendarControllerDelegate,IQActionSheetPickerView,ConfirmDelegate>
+#import "UIPopoverListView.h"
+
+
+@interface RestaurantDetailViewController : BaseViewController<UIAlertViewDelegate,UIKeyboardViewControllerDelegate,PMCalendarControllerDelegate,IQActionSheetPickerView,ConfirmDelegate,UIPopoverListViewDelegate,UIPopoverListViewDataSource>
 {
     UIKeyboardViewController *keyBoardController;
 }

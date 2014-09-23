@@ -2,7 +2,7 @@
 //  OrderObj.m
 //  TableCross
 //
-//  Created by DANGLV on 20/09/2014.
+//  Created by TableCross on 20/09/2014.
 //  Copyright (c) Năm 2014 Lemon. All rights reserved.
 //
 
@@ -17,10 +17,10 @@
     
     if(dict)
     {
-        self.restaurantId = [Validator getSafeString:[dict objectForKey:@""]];
-        self.openHour = [Validator getSafeString:[dict objectForKey:@""]];
-                self.name = [Validator getSafeString:[dict objectForKey:@""]];
-                self.address = [Validator getSafeString:[dict objectForKey:@""]];
+        self.restaurantId = [Validator getSafeString:[dict objectForKey:@"restaurantId"]];
+        self.openHour = [Validator getSafeString:[dict objectForKey:@"openHour"]];
+                self.name = [Validator getSafeString:[dict objectForKey:@"restaurantName"]];
+                self.address = [Validator getSafeString:[dict objectForKey:@"address"]];
                 self.website = [Validator getSafeString:[dict objectForKey:@"website"]];
                 self.phone = [Validator getSafeString:[dict objectForKey:@"phone"]];
                 self.latitude = [Validator getSafeString:[dict objectForKey:@"latitude"]];

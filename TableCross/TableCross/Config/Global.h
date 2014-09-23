@@ -36,6 +36,7 @@ extern double gCurrentLatitude;
 extern double gCurrentLongitude;
 
 extern BOOL gIsEnableLocation;
+extern NSMutableArray *gArrRestaurant;
 
 
 

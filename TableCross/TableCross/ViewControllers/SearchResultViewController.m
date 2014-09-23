@@ -30,13 +30,6 @@
     [self setupTitle:@"履歴" isShowSetting:YES andBack:YES andBackTitle:self.backTitle];
 }
 
-//-(void)viewWillAppear:(BOOL)animated {
-//    
-//    [self viewWillAppear:animated];
-//    // Set title
-//    self.navigationItem.title=@"履歴";
-//}
-
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationItem.title = @"履歴結果" ;
@@ -51,8 +44,8 @@
 #pragma mark - Tableview Delegate and DataSources
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return [self.arrData count];
-    return 10;
+    return [self.arrData count];
+//    return 10;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -66,9 +59,7 @@
         cell = [nib objectAtIndex:0];
     }
     
-    //    cell.lblCompany.text=item.companyName;
-    //    cell.lblProgress.text=item.status;
-    //    cell.lblTime.text=[LMDateTimeUtility reformat:item.startDate inputFormat:@"yyyy-MM-dd HH:mm" withFormat:@"hh:mm aa"];
+    [cell fillData:[self.arrData objectAtIndex:indexPath.row]];
     
     [cell.contentView setBackgroundColor:[UIColor clearColor]];
     return cell;
@@ -82,6 +73,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     RestaurantDetailViewController *detail=[[RestaurantDetailViewController alloc] initWithNibName:@"RestaurantDetailViewController" bundle:nil];
     detail.backTitle = @"履歴結果";
+    detail.restaurant = [self.arrData objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:detail animated:YES];
 }
 

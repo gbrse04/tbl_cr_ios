@@ -121,12 +121,12 @@
     START_LOADING;
     [[APIClient sharedClient] logout:@"" succes:^(AFHTTPRequestOperation *operation, id responseObject) {
         STOP_LOADING;
-        if([[responseObject objectForKey:@"success"] boolValue])
-        {
+//        if([[responseObject objectForKey:@"success"] boolValue])
+//        {
          [gNavigationViewController popViewControllerAnimated:YES];
-        }
-        else
-             [Util showError:responseObject];
+//        }
+//        else
+//             [Util showError:responseObject];
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         STOP_LOADING;

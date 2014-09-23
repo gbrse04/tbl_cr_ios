@@ -8,7 +8,7 @@
 
 #import "RestaurantDetailViewController.h"
 #import "Util.h"
-
+#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 
 
 @interface RestaurantDetailViewController ()
@@ -39,9 +39,26 @@
     
     [self setupTitle:@"お店の情報" isShowSetting:YES andBack:YES];
     [self addShareButton];
+    
+    [self bindData];
+    
 }
 - (void)bindData {
-    
+    if(self.restaurant)
+    {
+        if([self.restaurant.imageUrl rangeOfString:@"http:"].location == NSNotFound)
+            self.restaurant.imageUrl = @"http://www.sott.net/image/s5/109922/medium/mcdonalds.jpg";
+        
+        [self.imgRestaurant setImageWithURL:[NSURL URLWithString:self.restaurant.imageUrl] placeholderImage:[UIImage imageNamed:@"img_restaurant"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            
+            if(image)
+                [self.imgRestaurant setImage:image];
+        }];
+        
+        self.lblAddress.text = self.restaurant.name;
+        self.lblName.text =self.restaurant.address;
+       
+    }
     
 }
 
@@ -78,7 +95,7 @@
 
 - (IBAction)onOpenWeb:(id)sender {
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.google.com"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: self.restaurant.website]];
 
 }
 
@@ -154,7 +171,7 @@
     
     if(buttonIndex ==1)
     {
-        NSURL *phoneNumber = [[NSURL alloc] initWithString: @"tel:123456789"];
+        NSURL *phoneNumber = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"tel:%@",self.restaurant.phone]];
         [[UIApplication sharedApplication] openURL: phoneNumber];
     }
 }
@@ -164,7 +181,7 @@
 
 - (void)onCall:(NSInteger)value {
    if(IS_IPHONE) {
-       NSURL *phoneNumber = [[NSURL alloc] initWithString: @"tel:123456789"];
+       NSURL *phoneNumber = [[NSURL alloc] initWithString: [NSString stringWithFormat:@"tel:%@",self.restaurant.phone]];
        [[UIApplication sharedApplication] openURL: phoneNumber];
   } else {
      [Util showMessage:@"Your device not support this feature" withTitle:@"Error"];

@@ -116,6 +116,10 @@
         STOP_LOADING;
         SearchResultViewController *vc =[[SearchResultViewController alloc] initWithNibName:@"SearchResultViewController" bundle:nil];
         vc.searchType = SearchByCondition ;
+        
+        
+//        vc.arrData = [APIClient parserListRestaunt:responseObject];
+        vc.arrData = gArrRestaurant;
         [self.navigationController pushViewController:vc animated:YES];
         
         

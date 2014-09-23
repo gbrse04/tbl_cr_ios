@@ -145,6 +145,8 @@
     gCurrentLongitude = location.coordinate.longitude;
     
     [self.locationManager stopUpdatingLocation];
+    
+    
 }
 
 

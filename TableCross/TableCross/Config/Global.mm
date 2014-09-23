@@ -18,3 +18,5 @@ NSString *shareAppUrl = @"https://itunes.apple.com/us/app/candy-crush-saga/id553
 double gCurrentLatitude = 0.0;
 double gCurrentLongitude = 0.0;
 BOOL gIsEnableLocation = YES;
+
+ NSMutableArray *gArrRestaurant=nil;

@@ -40,7 +40,32 @@
     
     gNavigationViewController = self.navigationController;
     self.navigationItem.title = @"ログイン";
+    
+    
+    [self createFakeData];
 }
+
+
+-(void)createFakeData {
+    gArrRestaurant = [[NSMutableArray alloc] init];
+    
+    RestaurantObj *obj = [[RestaurantObj alloc] init];
+    
+    obj.name = @"McDonald's Kagurazaka ";
+    obj.address = @"124-6 Yaraicho Shinjuku, Tokyo 162-0805";
+    obj.imageUrl = @"http://www.sott.net/image/s5/109922/medium/mcdonalds.jpg";
+    obj.description = @"Classic, long-running fast-food chain known for its burgers, fries & shakes";
+    obj.phone = @"+81 3-5206-1836";
+    obj.website = @"http://www.mcdonalds.co.jp/";
+    obj.orderDate = @"2014/09/23";
+    obj.latitude = @"35.7037931";
+    obj.longitude = @"139.7402782";
+    
+    [gArrRestaurant addObject:obj];
+}
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -132,44 +157,44 @@
 - (IBAction)onLogin:(id)sender {
    
     
-//    if([self.txtEmail.text isEqualToString:@""] && [self.txtPassword.text isEqualToString:@""])
-//        [Util showMessage:@"Please input your email and password" withTitle:@"Error"];
-//    
-//    else if(![Util isValidEmail:self.txtEmail.text])
-//       [Util showMessage:@"Invalid email address" withTitle:@"Error"];
-//    else
-//    {
-//    START_LOADING;
-//    
-//    [[APIClient sharedClient] login:self.txtEmail.text pass:self.txtPassword.text loginType:@"0" areaId:[Util valueForKey:KEY_AREAID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        
-//        STOP_LOADING;
+    if([self.txtEmail.text isEqualToString:@""] && [self.txtPassword.text isEqualToString:@""])
+        [Util showMessage:@"Please input your email and password" withTitle:@"Error"];
+    
+    else if(![Util isValidEmail:self.txtEmail.text])
+       [Util showMessage:@"Invalid email address" withTitle:@"Error"];
+    else
+    {
+    START_LOADING;
+    
+    [[APIClient sharedClient] login:self.txtEmail.text pass:self.txtPassword.text loginType:@"0" areaId:[Util valueForKey:KEY_AREAID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        STOP_LOADING;
 //        if([[responseObject objectForKey:@"success"] boolValue])
 //        {
-//            //Save username and pass
-//            [Util setValue:self.txtEmail.text  forKey:KEY_EMAIL];
-//            [Util setValue:self.txtPassword.text  forKey:KEY_PASSWORD];
-//            
-//            [Util setValue:[responseObject objectForKey:@"phone"] forKey:KEY_PHONE];
-//            [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
-//            [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
-//            [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
-//
-//            
-//            [self pushToHomeView];
+            //Save username and pass
+            [Util setValue:self.txtEmail.text  forKey:KEY_EMAIL];
+            [Util setValue:self.txtPassword.text  forKey:KEY_PASSWORD];
+            
+            [Util setValue:[responseObject objectForKey:@"phone"] forKey:KEY_PHONE];
+            [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
+            [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
+            [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
+
+            
+            [self pushToHomeView];
 //        }
 //        else
 //        {
 //             [Util showError:responseObject];
 //        }
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        STOP_LOADING;
-//        SHOW_NETWORK_ERROR;
-//    }];
-//    
-//    }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        STOP_LOADING;
+        SHOW_NETWORK_ERROR;
+    }];
     
-    [self pushToHomeView];
+    }
+    
+//    [self pushToHomeView];
 }
 
 -(void)loginFacebook:(NSString*)email {

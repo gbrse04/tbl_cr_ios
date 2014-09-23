@@ -83,7 +83,7 @@ static NSString * const BASE_URL = kBaseUrl ;
     
     if(dict)
     {
-        NSArray *arr = [dict objectForKey:@""];
+        NSArray *arr = [dict objectForKey:@"items"];
         RestaurantObj *obj;
         for (NSDictionary *item in arr) {
             obj = [[RestaurantObj alloc] initWithDict:item];

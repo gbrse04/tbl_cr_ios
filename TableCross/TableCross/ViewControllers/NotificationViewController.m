@@ -36,25 +36,10 @@
     // Set Badge number
     [[super.tabBarController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = @"5";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getUserInfo) name:@"GET_USER_INFO" object:nil];
-    [self getUserInfo];
+   
 
 }
--(void)getUserInfo {
-    
-    [[APIClient sharedClient] getUserInfoWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-       
-        if([[responseObject objectForKey:@"success"] boolValue])
-        {
-            [Util setValue:[responseObject objectForKey:@"phone"] forKey:KEY_PHONE];
-            [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
-            [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
-            [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
-        }
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-    }];
-}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

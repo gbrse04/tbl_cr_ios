@@ -47,6 +47,23 @@
 
 }
 
++(NSMutableArray*)getRecentSearch {
+
+   NSString *recent = [self valueForKey:@"SEARCH_HISTORY"];
+    return [NSMutableArray arrayWithArray: [recent componentsSeparatedByString:@","]];
+    
+}
++(void)storeRecentSearch:(NSMutableArray*)data{
+    
+    
+    NSString *recent = [data componentsJoinedByString:@","];
+    
+    [self setValue:recent forKey:@"SEARCH_HISTORY"];
+    
+    
+}
+
+
 +(BOOL)isConnectNetwork{
     
     NSString *urlString = @"http://www.google.com/";
@@ -64,43 +81,43 @@
     
     NSInteger errorCode = [[dict objectForKey:@"errorCode"] integerValue];
     
-    switch (errorCode) {
-        case 0:
-            [self showMessage:@"Email not exist" withTitle:@"Error"];
-            break;
-        case 2:
-            [self showMessage:@"User not login" withTitle:@"Error"];
-            break;
-
-        case 3:
-            [self showMessage:@"Old password invalid" withTitle:@"Error"];
-            break;
-
-        case 4:
-            [self showMessage:@"New password invalid" withTitle:@"Error"];
-            break;
-
-        case 5:
-            [self showMessage:@"UserId not exist" withTitle:@"Error"];
-            break;
-        case 6:
-            [self showMessage:@"Invalid params" withTitle:@"Error"];
-            break;
-
-        case 7:
-            [self showMessage:@"Email already exist" withTitle:@"Error"];
-            break;
-
-        case 8:
-            [self showMessage:@"Wrong password" withTitle:@"Error"];
-            break;
-        case 99:
-            [self showMessage:@"System error" withTitle:@"Error"];
-            break;
-
-        default:
-            break;
-    }
+//    switch (errorCode) {
+//        case 0:
+//            [self showMessage:@"Email not exist" withTitle:@"Error"];
+//            break;
+//        case 2:
+//            [self showMessage:@"User not login" withTitle:@"Error"];
+//            break;
+//
+//        case 3:
+//            [self showMessage:@"Old password invalid" withTitle:@"Error"];
+//            break;
+//
+//        case 4:
+//            [self showMessage:@"New password invalid" withTitle:@"Error"];
+//            break;
+//
+//        case 5:
+//            [self showMessage:@"UserId not exist" withTitle:@"Error"];
+//            break;
+//        case 6:
+//            [self showMessage:@"Invalid params" withTitle:@"Error"];
+//            break;
+//
+//        case 7:
+//            [self showMessage:@"Email already exist" withTitle:@"Error"];
+//            break;
+//
+//        case 8:
+//            [self showMessage:@"Wrong password" withTitle:@"Error"];
+//            break;
+//        case 99:
+//            [self showMessage:@"System error" withTitle:@"Error"];
+//            break;
+//
+//        default:
+//            break;
+//    }
     
     
     [self showMessage:[dict objectForKey:@"errorMess"] withTitle:@"Error"];

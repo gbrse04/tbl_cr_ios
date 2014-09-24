@@ -29,11 +29,24 @@
     // Do any additional setup after loading the view from its nib.
     [self setupTitle:@"設定" isShowSetting:NO andBack:YES];
     [self initDefaulSetting];
+    
+    
+    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+    [datePicker setDate:[NSDate date]];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    [datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
+    [self.txtBirthday setInputView:datePicker];
+    
+}
+-(void)updateTextField:(UIDatePicker *)dtPicker{
+    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+    [timeFormatter setDateFormat:@"dd/MM/yyyy"];
+    self.txtBirthday.text = [timeFormatter stringFromDate:dtPicker.date];
 }
  -(void)initDefaulSetting {
      
-     self.txtUserId.text =[Util valueForKey:KEY_USER_ID];
-     self.txtEmail.text =[Util valueForKey:KEY_EMAIL];
+     self.txtUserId.text = [NSString stringWithFormat:@"%@",[Util valueForKey:KEY_USER_ID]];
+     self.txtEmail.text = [Util valueForKey:KEY_EMAIL];
      self.txtPhone.text= [Util valueForKey:KEY_PHONE];
      self.txtBirthday.text = [Util valueForKey:KEY_BIRTHDAY];
      
@@ -91,7 +104,7 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         STOP_LOADING;
-        
+        SHOW_NETWORK_ERROR;
     }];
     
     
@@ -118,21 +131,31 @@
 
 - (IBAction)onSaveBottom:(id)sender {
     
-    START_LOADING;
-    [[APIClient sharedClient] logout:@"" succes:^(AFHTTPRequestOperation *operation, id responseObject) {
-        STOP_LOADING;
-        if([[responseObject objectForKey:@"success"] boolValue])
-        {
-            [gNavigationViewController popViewControllerAnimated:YES];
-        }
-        else
-             [Util showError:responseObject];
-
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        STOP_LOADING;
-        SHOW_NETWORK_ERROR;
-    }];
-    
+    [Util showMessage:@"Are you sure ?" withTitle:@"Logout" cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK" delegate:self andTag:1];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex ==1)
+    {
+        START_LOADING;
+        [[APIClient sharedClient] logout:@"" succes:^(AFHTTPRequestOperation *operation, id responseObject) {
+            STOP_LOADING;
+                    NSLog(@"Response : %@",responseObject);
+            if([[responseObject objectForKey:@"success"] boolValue])
+                {
+            
+            [Util setValue:@"" forKey:KEY_USER_ID];
+            [gNavigationViewController popToViewController:[[gNavigationViewController viewControllers]objectAtIndex:1] animated:YES];
+            
+                        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGOUT object:nil];
+                }
+                else
+        [Util showError:responseObject];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            STOP_LOADING;
+            SHOW_NETWORK_ERROR;
+        }];
+    }
     
 }
 

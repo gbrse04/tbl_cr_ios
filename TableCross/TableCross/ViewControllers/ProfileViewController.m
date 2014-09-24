@@ -29,8 +29,14 @@
     // Do any additional setup after loading the view from its nib.
     [self setupTitle:@"マイページ" isShowSetting:YES andBack:FALSE];
     
+    [self setupData];
 }
 
+-(void)setupData{
+    
+    [self.number3 setTitle:[NSString stringWithFormat:@"%@",[Util valueForKey:KEY_POINT]] forState:UIControlStateNormal];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

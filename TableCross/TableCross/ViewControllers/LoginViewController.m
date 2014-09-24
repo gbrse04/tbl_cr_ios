@@ -36,10 +36,13 @@
     gNavigationViewController = self.navigationController;
     self.navigationItem.title = @"ログイン";
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutApp) name:NOTIF_LOGOUT object:nil];
     
-    [self createFakeData];
 }
-
+-(void)logoutApp {
+    
+    [self.navigationController popViewControllerAnimated:NO];
+}
 
 -(void)createFakeData {
     gArrRestaurant = [[NSMutableArray alloc] init];
@@ -345,6 +348,8 @@
 
 -(void) pushToHomeView
 {
+    
+    gNavigationViewController = self.navigationController;
     
     HomeViewController *vc = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
     

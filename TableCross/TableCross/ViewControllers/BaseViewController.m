@@ -253,5 +253,14 @@
     [self presentViewController:controller animated:YES completion:Nil];
 }
 
+#pragma mark - SHARE LINE
+- (void)postToLineWithText:(NSString*)text {
+    
+    
+    NSString* url = [NSString stringWithFormat: @"http://line.me/R/msg/text/?%@", text];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+
+}
 
 @end

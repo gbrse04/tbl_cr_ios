@@ -39,7 +39,7 @@
     
     [self setupTitle:@"お店の情報" isShowSetting:YES andBack:YES];
     [self addShareButton];
-    
+    shareAppUrl = [Util valueForKey:KEY_SHARELINK];
     [self bindData];
     
 }
@@ -269,7 +269,7 @@
             [self postToTwitterWithText:msg andImage:nil andURL:url];
             break;
         case 2:
-            [self postToFacebookWithText:msg andImage:nil andURL:url];
+            [self postToLineWithText:shareAppUrl];
             break;
         case 3:
             [self openSMS:[NSString stringWithFormat:@"%@ :%@",msg,url]];

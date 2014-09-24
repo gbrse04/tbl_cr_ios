@@ -43,14 +43,18 @@
         [arrTitle addObject:[dict objectForKey:@"areaName"]];
     }
 
-    
-    [self checkLogin];
-    
 }
- -(void)checkLogin
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self checkLogin];
+}
+
+- (void)checkLogin
 {
         if([Util valueForKey:KEY_USER_ID] && ![[NSString stringWithFormat:@"%@",[Util valueForKey:KEY_USER_ID]] isEqualToString:@""])
-    {
+        {
         
         START_LOADING;
         [[APIClient sharedClient] login:[Util valueForKey:KEY_EMAIL] pass:[Util valueForKey:KEY_PASSWORD] loginType:@"1" areaId:[Util valueForKey:KEY_AREAID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -110,6 +114,8 @@
     double delayInSeconds = 0.4;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
+        [self.navigationController setNavigationBarHidden:YES];
         LoginViewController *home =[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
         [self.navigationController pushViewController:home animated:YES];
     });

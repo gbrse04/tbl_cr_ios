@@ -68,12 +68,25 @@ static NSString * const BASE_URL = kBaseUrl ;
     
 }
 - (void)searchByKeyWord:(NSString*)keyword type:(NSString*)searchType latitude:(NSString*)lat longitude:(NSString*)longitude distance:(NSString*)radius total:(NSString*)total withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
-      [[APIClient sharedClient] getPath:kUrlSearchRestaurant parameters:@{@"searchType": searchType, @"searchKey": keyword, @"longitude":longitude, @"latitude":lat,@"distance":[NSString stringWithFormat:@"%d",radius],@"total":@"-1"} success:success failure:failure];
+      [[APIClient sharedClient] getPath:kUrlSearchRestaurant parameters:@{@"searchType": searchType, @"searchKey": keyword, @"longitude":longitude, @"latitude":lat,@"distance":radius,@"total":@"-1"} success:success failure:failure];
     
 }
 - (void)updateUserEmail:(NSString*)email phone:(NSString*)phone birthday:(NSString*)birthday sucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
       [[APIClient sharedClient] getPath:kUrlUpdateProfile parameters:@{@"email": email, @"mobile": phone, @"birthday": birthday} success:success failure:failure];
 }
+
+
+- (void)getListNotifyAllStart:(NSString*)from total:(NSString*)total sucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+     [[APIClient sharedClient] getPath:kUrlGetListNotification parameters:@{@"from": from, @"total": total} success:success failure:failure];
+}
+- (void)getListUnpushNotifiycationWithsucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+    [[APIClient sharedClient] getPath:kUrlGetUnpushNotification parameters:nil success:success failure:failure];
+}
+
+- (void)getRestaurantInfo:(NSString*)resId withsucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+    [[APIClient sharedClient] getPath:kUrlGetRestaurantDetail parameters:@{@"restaurantId":resId} success:success failure:failure];
+}
+
 
 #pragma mark - Parser Functions
 

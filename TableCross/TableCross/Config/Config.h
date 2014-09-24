@@ -32,7 +32,9 @@
 #define kUrlGetUserInfo @"getUserInfo"
 #define kUrlUpdateProfile @"updateUser"
 #define kUrlSearchRestaurant @"searchRestaurant"
-#define kUrlGetNotification @"getNotification"
+#define kUrlGetListNotification @"getNotifyList"
+#define kUrlGetUnpushNotification @"getNotifyUnPushList"
+#define kUrlGetRestaurantDetail @"getRestaurantInfo"
 
 
 //Refresh GridView
@@ -42,6 +44,9 @@
 #define kReleaseToRefresh @"Release to update..."
 #define kLoading @"Loading..."
 
+
+#define NUMBER_RECORD_PER_PAGE 10
+#define TIME_REFRESH 20
 
 //=================FORMAT CONFIG=======================//
 
@@ -68,6 +73,7 @@
 #define  KEY_BIRTHDAY @"KEY_BIRTHDAY"
 #define  KEY_SHARELINK @"KEY_SHARELINK"
 #define  KEY_POINT @"KEY_POINT"
+#define  KEY_TOTAL_MEAL @"orderCount"
 #define  KEY_USER_ID @"KEY_USER_ID"
 #define  KEY_SESSION_ID @"KEY_SESSION_ID"
 
@@ -76,6 +82,15 @@
 #define  KEY_NOTIF_SETTING_3 @"KEY_NOTIF_SETTING_3"
 
 #define  NOTIF_LOGOUT @"KEY_NOTIF_LOGOUT"
+
+
+#define  NOTIFY_TYPE_BEFORE_DATE @"NOTIFY_TYPE_BEFORE_DATE"
+
+#define  NOTIFY_TYPE_NEWS @"NOTIFY_TYPE_NEWS"
+
+#define  NOTIFY_TYPE_ORDER_SUCCESS @"NOTIFY_TYPE_ORDER_SUCCESS"
+
+#define  NOTIFY_TYPE_REGISTER @"NOTIFY_TYPE_REGISTER"
 
 
 

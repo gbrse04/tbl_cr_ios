@@ -35,7 +35,40 @@
 //    [self performSelector:@selector(pushToHomeView) withObject:nil afterDelay:2];
 
    [self getUserInfo];
+    [self getHomeRestaurant];
 
+}
+
+-(void)getHomeRestaurant {
+    
+    START_LOADING;
+    
+    [[APIClient sharedClient] getRestaurantInfo:@"-1" withsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        STOP_LOADING;
+        
+        if([[responseObject objectForKey:@"success"] boolValue])
+        {
+            
+            NSDictionary *resDict = [responseObject objectForKey:@"restaurant"];
+            [self.imgRestaurant setImageWithURL:[NSURL URLWithString:[resDict objectForKey:@"imageUrl"]] placeholderImage:[UIImage imageNamed:@"img_restaurant"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                
+                if(image)
+                    [self.imgRestaurant setImage:image];
+            }];
+            
+            self.lblAddress.text = [resDict objectForKey:@"address"];
+            self.lblName.text = [resDict objectForKey:@"restaurantName"];
+        }
+        else
+            [Util showError:responseObject];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+       
+        STOP_LOADING;
+        SHOW_POUP_NETWORK;
+    }];
+    
 }
 
 -(void)getUserInfo {
@@ -47,13 +80,39 @@
             [Util setValue:[responseObject objectForKey:@"mobile"] forKey:KEY_PHONE];
             [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
             [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
+            [Util setValue:[responseObject objectForKey:@"orderCount"] forKey:KEY_TOTAL_MEAL];
             [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
+            
+            NSString *numberPoint = [NSString stringWithFormat:@"%@",[Util objectForKey:KEY_TOTAL_MEAL]];
+
+            if([numberPoint length]==1)
+            {
+                [self.number3 setTitle:numberPoint forState:UIControlStateNormal];
+            }
+            else if([numberPoint length]==2)
+            {
+                 [self.number2 setTitle: [NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:0]] forState:UIControlStateNormal];
+                 [self.number3 setTitle:[NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:1]] forState:UIControlStateNormal];
+            }
+            else if([numberPoint length] > 2)
+            {
+                [self.number1 setTitle: [NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:0]] forState:UIControlStateNormal];
+                [self.number2 setTitle: [NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:1]] forState:UIControlStateNormal];
+                [self.number3 setTitle:[NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:2]] forState:UIControlStateNormal];
+
+                
+            }
+            
+            
+            
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -181,9 +240,39 @@
 
 -(void) pushToHomeView
 {
+    
     [self.navigationController setNavigationBarHidden:YES];
     [self.navigationController pushViewController:_tabbarController animated:YES];
+    [self getNumberNotificationUnPush];
+
 }
+
+
+//Refresh Number Unpush each REFRESH_TIME
+
+-(void)startTrackingNumberUnpush{
+    
+    [NSTimer scheduledTimerWithTimeInterval:TIME_REFRESH target:self selector:@selector(getNumberNotificationUnPush) userInfo:nil repeats:YES];
+
+}
+
+-(void)getNumberNotificationUnPush{
+    
+    [[APIClient sharedClient] getListUnpushNotifiycationWithsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if([[responseObject objectForKey:@"success"] boolValue])
+        {
+            NSInteger numberBadge = [[responseObject objectForKey:@"items"] count];
+            // Set Badge number
+            if(numberBadge>0)
+                [[super.tabBarController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = [NSString stringWithFormat:@"%d",numberBadge];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+}
+
 
 - (IBAction)onTabOne:(id)sender {
     

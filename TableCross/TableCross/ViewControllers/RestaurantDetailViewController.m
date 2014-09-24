@@ -228,7 +228,7 @@
             break;
 
         case 2:
-            cell.textLabel.text=@"Google+";
+            cell.textLabel.text=@"LINE";
             break;
 
         case 3:

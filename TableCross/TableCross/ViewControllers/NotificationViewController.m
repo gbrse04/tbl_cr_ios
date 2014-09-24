@@ -9,7 +9,15 @@
 #import "NotificationViewController.h"
 #import "RestaurantDetailViewController.h"
 #import "HomeViewController.h"
+
+
+
+
 @interface NotificationViewController ()
+{
+    NSArray *arrOnePage;
+    NSInteger currentPage;
+}
 
 @end
 
@@ -28,16 +36,49 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-   
-//    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(onClickLeftButton:)];
-    //self.navigationItem.leftBarButtonItem = leftButton;
     [self setupTitle:@"お知らせ" isShowSetting:TRUE andBack:FALSE];
-    
-    // Set Badge number
-    [[super.tabBarController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = @"5";
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getUserInfo) name:@"GET_USER_INFO" object:nil];
-   
+ 
+    [self getDataWithPage:0];
+//    
+//    [self getNumberNotificationUnPush];
+}
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    if(self.arrNotification)
+       [self.arrNotification removeAllObjects];
+    currentPage= 0;
+    [super viewDidAppear:animated];
+    [self getDataWithPage:currentPage];
+}
+
+-(void)getDataWithPage:(NSInteger)page {
+    
+    START_LOADING;
+    [[APIClient sharedClient] getListNotifyAllStart:[NSString stringWithFormat:@"%d",(int)page *NUMBER_RECORD_PER_PAGE] total:[NSString stringWithFormat:@"%d",NUMBER_RECORD_PER_PAGE] sucess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        STOP_LOADING;
+        
+        if([[responseObject objectForKey:@"success"] boolValue])
+        {
+            arrOnePage =[responseObject objectForKey:@"items"];
+            if([arrOnePage count] >0)
+            {
+                if(!self.arrNotification)
+                    self.arrNotification = [[NSMutableArray alloc] init];
+                [self.arrNotification addObjectsFromArray:arrOnePage];
+                [self.tblNotification reloadData];
+                
+               
+            }
+        }
+        else
+            [Util showError:responseObject];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        STOP_LOADING;
+        SHOW_NETWORK_ERROR;
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,8 +92,8 @@
 #pragma mark - Tableview Delegate and DataSources
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return [self.arrNotification count];
-    return  5;
+   return [self.arrNotification count];
+//    return  5;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -65,10 +106,11 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"NotificationCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
+    NSDictionary *dict =[self.arrNotification objectAtIndex:indexPath.row];
     
-//    cell.lblCompany.text=item.companyName;
-//    cell.lblProgress.text=item.status;
-//    cell.lblTime.text=[LMDateTimeUtility reformat:item.startDate inputFormat:@"yyyy-MM-dd HH:mm" withFormat:@"hh:mm aa"];
+    cell.lblTitle.text = [dict objectForKey:@"notifyShort"];
+    cell.lblTime.text = [dict objectForKey:@"notifyDate"];
+    cell.lblContent.text= [dict objectForKey:@"notifyLong"];
     
     [cell.contentView setBackgroundColor:[UIColor clearColor]];
     return cell;

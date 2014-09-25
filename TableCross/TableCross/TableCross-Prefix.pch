@@ -19,5 +19,6 @@
     #import "BaseViewController.h"
     #import "Util.h"
     #import "APIClient.h"
+    #import "NSString+TextSize.h"
 
 #endif

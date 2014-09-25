@@ -13,17 +13,20 @@
 #import "NotificationViewController.h"
 #import "ShareViewController.h"
 #import "UIKeyboardViewController.h"
+#import "HomeViewController.h"
 
 @interface RegisterViewController : BaseViewController<UITabBarControllerDelegate,UITextFieldDelegate,UIKeyboardViewControllerDelegate>
 {
     UIKeyboardViewController *keyBoardController;
 }
-- (IBAction)onRegisterFacebook:(id)sender;
+
 - (IBAction)onLogin:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 
-@property (weak, nonatomic) IBOutlet UITextField *txtRefId;
+@property (weak, nonatomic) IBOutlet CustomizeTextField *txtPasswordConfirm;
+
+@property (weak, nonatomic) IBOutlet CustomizeTextField *txtPhone;
 
 @property (nonatomic,retain) UITabBarController *tabbarController;
 @property (nonatomic,retain) UINavigationController *notifNavigationViewController;

@@ -122,9 +122,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    RestaurantDetailViewController *detail=[[RestaurantDetailViewController alloc] initWithNibName:@"RestaurantDetailViewController" bundle:nil];
-//    
-//    [self.navigationController pushViewController:detail animated:YES];
+    NotificationDetailViewController *detail=[[NotificationDetailViewController alloc] initWithNibName:@"NotificationDetailViewController" bundle:nil];
+    detail.dictDetail = [self.arrNotification objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

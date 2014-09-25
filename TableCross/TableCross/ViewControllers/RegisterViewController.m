@@ -31,10 +31,11 @@
     // Do any additional setup after loading the view from its nib.
 
     [self.navigationController setNavigationBarHidden:NO];
-    self.navigationItem.title = @"Register";
-    [self.txtEmail setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [self.txtPassword setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [self.txtRefId setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    self.navigationItem.title = @"サインアップ";
+    [self.txtEmail setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [self.txtPassword setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [self.txtPasswordConfirm setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [self.txtPhone setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
  
     self.navigationItem.hidesBackButton = NO;
     
@@ -67,12 +68,31 @@
 
 
 - (IBAction)onLogin:(id)sender {
+    
+    
+    if(![Util isValidEmail:self.txtEmail.text])
+    {
+        [Util showMessage:@"Invalid email address" withTitle:kAppNameManager];
+        return;
+    }
+    if([self.txtEmail.text isEqualToString:@""] || [self.txtPassword.text isEqualToString:@""])
+    {
+        [Util showMessage:@"Please input your email and password to continue" withTitle:kAppNameManager];
+        return;
+    }
+     if(![self.txtPassword.text isEqualToString:self.txtPasswordConfirm.text])
+     {
+         [Util showMessage:@"Password and confirm password not the same" withTitle:kAppNameManager];
+         return;
+     }
+
+    
         if(![self.txtEmail.text isEqualToString:@""] && ![self.txtPassword.text isEqualToString:@""])
             
         {
             START_LOADING ;
             
-            [[APIClient sharedClient] registerWithEmail:self.txtEmail.text pass:self.txtPassword.text regionId:[Util valueForKey:KEY_AREAID] refUserId:[Util getUDID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [[APIClient sharedClient] registerWithEmail:self.txtEmail.text pass:self.txtPassword.text phone:@"2412412" regionId:[Util valueForKey:KEY_AREAID] refUserId:[Util getUDID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                 STOP_LOADING;
                 if([[responseObject objectForKey:@"success"] boolValue])
                 {
@@ -248,7 +268,12 @@
 -(void) pushToHomeView
 {
     
-    [self.navigationController pushViewController:_tabbarController animated:YES];
+    gNavigationViewController = self.navigationController;
+    
+    HomeViewController *vc = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+//    [self.navigationController pushViewController:_tabbarController animated:YES];
 }
 
 @end

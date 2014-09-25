@@ -9,6 +9,8 @@
 #import "BaseViewController.h"
 #import "UIKeyboardViewController.h"
 #import "CustomizeTextField.h"
+#import "ChangePassViewController.h"
+
 
 
 @interface SettingViewController : BaseViewController<UITextFieldDelegate,UIKeyboardViewControllerDelegate,UIAlertViewDelegate>
@@ -20,6 +22,7 @@
 
 - (IBAction)onSetttingChange:(id)sender;
 - (IBAction)onSaveBottom:(id)sender;
+- (IBAction)onChangePass:(id)sender;
 
 
 @property (weak, nonatomic) IBOutlet CustomizeTextField *txtPhone;

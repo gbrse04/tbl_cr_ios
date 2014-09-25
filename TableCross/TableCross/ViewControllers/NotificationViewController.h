@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "NotificationCell.h"
+#import "NotificationDetailViewController.h"
 
 @interface NotificationViewController : BaseViewController
 @property (weak, nonatomic) IBOutlet UITableView *tblNotification;

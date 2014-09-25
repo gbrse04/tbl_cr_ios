@@ -16,6 +16,26 @@
 
 @implementation Util
 
++(CGFloat)getHeightForText:(NSString*)string andHeight:(CGFloat)width  andFont:(UIFont*)font {
+    
+    
+    if(IS_IOS7) {
+        CGRect frame = [string boundingRectWithSize:CGSizeMake(width,1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil];
+     CGFloat height =   frame.size.height;
+        return height;
+    }
+    else
+    {
+        CGSize maximumSize = CGSizeMake(width, 9999);
+        CGSize myStringSize = [string sizeWithFont:font
+                                   constrainedToSize:maximumSize
+                                       lineBreakMode:NSLineBreakByWordWrapping];
+        
+        return  myStringSize.height;
+    }
+    
+}
+
 + (Util *)sharedUtil {
     DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
         return [[self alloc] init];

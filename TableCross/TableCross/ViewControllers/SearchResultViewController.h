@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "RestaurantCellTableViewCell.h"
 #import "RestaurantDetailViewController.h"
+#import "NSString+TextSize.h"
 
 @interface SearchResultViewController : BaseViewController
 @property (nonatomic,retain) NSString *backTitle;

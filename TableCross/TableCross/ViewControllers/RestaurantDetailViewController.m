@@ -57,7 +57,23 @@
         
         self.lblAddress.text = self.restaurant.name;
         self.lblName.text =self.restaurant.address;
-       
+        self.lblNumberMeal.text =self.restaurant.numberOrder;
+        
+        self.lblDescription.text = self.restaurant.description;
+        self.lblDescription.numberOfLines = 0 ;
+        [self.lblDescription sizeToFit];
+        CGFloat descriptionHeight = [self.restaurant.description heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:16.0] andWidth:300];
+        
+        self.viewTop.frame = CGRectMake(self.viewTop.frame.origin.x, self.viewTop.frame.origin.y, self.viewTop.frame.size.width, descriptionHeight + 120);
+        
+        CGRect currenFrame = self.viewBottom.frame;
+        
+        currenFrame.origin.y  = self.viewTop.frame.size.height;
+        
+        [self.viewBottom setFrame:currenFrame];
+        
+        [self.scrollViewMain setContentSize:CGSizeMake(self.scrollViewMain.frame.size.width, self.viewTop.frame.size.height + self.viewBottom.frame.size.height + 25)];
+        
     }
     
 }
@@ -95,7 +111,7 @@
 
 - (IBAction)onOpenWeb:(id)sender {
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: self.restaurant.website]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: self.restaurant.orderWebUrl]];
 
 }
 

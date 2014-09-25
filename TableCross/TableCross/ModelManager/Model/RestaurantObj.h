@@ -23,6 +23,8 @@
 @property (nonatomic,retain) NSString *phone;
 @property (nonatomic,retain) NSString *orderDate;
 @property (nonatomic,retain) NSString *shareLink;
+@property (nonatomic,retain) NSString *orderWebUrl;
+@property (nonatomic,retain) NSString *numberOrder;
 
 -(id)initWithDict:(NSDictionary*)dict;
 

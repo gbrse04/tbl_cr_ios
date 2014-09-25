@@ -15,6 +15,8 @@
 @interface Util : NSObject
 @property (strong, nonatomic) MBProgressHUD *progressView;
 
++(CGFloat)getHeightForText:(NSString*)dict andHeight:(CGFloat)height andFont:(UIFont*)font;
+
 + (Util *)sharedUtil;
 //+ (AppDelegate *)appDelegate;
 +(BOOL)isConnectNetwork;
@@ -76,12 +78,12 @@
 
 //Slide view animation
 
-+(void)slideUpView:(UIView*)view offset:(CGFloat)offset;
-+(void)slideDownView:(UIView*)view offset:(CGFloat)offset;
-+(void)increaseHeight:(CGFloat)offset withView:(UIView*)view;
-+(void)decreaseHeight:(CGFloat)offset withView:(UIView*)view;
-+(void)moveViewUp:(CGFloat)offset withView:(UIView*)view;
-+(void)moveViewDown:(CGFloat)offset withView:(UIView*)view;
+//+(void)slideUpView:(UIView*)view offset:(CGFloat)offset;
+//+(void)slideDownView:(UIView*)view offset:(CGFloat)offset;
+//+(void)increaseHeight:(CGFloat)offset withView:(UIView*)view;
+//+(void)decreaseHeight:(CGFloat)offset withView:(UIView*)view;
+//+(void)moveViewUp:(CGFloat)offset withView:(UIView*)view;
+//+(void)moveViewDown:(CGFloat)offset withView:(UIView*)view;
 
 
 @end

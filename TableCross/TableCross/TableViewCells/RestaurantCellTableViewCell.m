@@ -38,6 +38,12 @@
         self.lblDateTime.text = obj.orderDate;
         if([obj.orderDate isEqualToString:@""])
            [self.imgClock setHidden:TRUE];
+        self.lblNumberMeal.text =  obj.numberOrder;
+        
+        
+        self.lblDescription.text = obj.description;
+        self.lblDescription.numberOfLines = 0;
+        [self.lblDescription sizeToFit];
         
     }
 }

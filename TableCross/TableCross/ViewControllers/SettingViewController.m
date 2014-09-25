@@ -133,6 +133,13 @@
     
     [Util showMessage:@"Are you sure ?" withTitle:@"Logout" cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK" delegate:self andTag:1];
 }
+
+- (IBAction)onChangePass:(id)sender {
+    
+    ChangePassViewController  *vc =[[ChangePassViewController alloc] initWithNibName:@"ChangePassViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex ==1)
     {

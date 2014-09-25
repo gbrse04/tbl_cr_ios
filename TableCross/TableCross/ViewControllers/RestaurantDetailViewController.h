@@ -13,6 +13,7 @@
 #import "RestaurantObj.h"
 #import "ConfirmView.h"
 #import "UIPopoverListView.h"
+#import "NSString+TextSize.h"
 
 
 @interface RestaurantDetailViewController : BaseViewController<UIAlertViewDelegate,UIKeyboardViewControllerDelegate,PMCalendarControllerDelegate,IQActionSheetPickerView,ConfirmDelegate,UIPopoverListViewDelegate,UIPopoverListViewDataSource>
@@ -27,8 +28,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgRestaurant;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress;
+@property (weak, nonatomic) IBOutlet UILabel *lblNumberMeal;
+@property (weak, nonatomic) IBOutlet UILabel *lblDescription;
 
-@property (weak, nonatomic) IBOutlet UITextView *lblDescription;
+
 @property (weak, nonatomic) IBOutlet UIView *viewBottom;
 @property (weak, nonatomic) IBOutlet UITextField *txtOne;
 @property (weak, nonatomic) IBOutlet UITextField *txtTwo;

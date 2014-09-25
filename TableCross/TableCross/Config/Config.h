@@ -14,7 +14,7 @@
 
 
 //==================APP ACCOUNT CONFIG======================//
-#define kAppNameManager @"Eat Sushi"
+#define kAppNameManager @"テーブルクロス"
 #define kUrlApp @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=722629966"
 
 #define kUrlAppStore @"https://itunes.apple.com/app/id722629966"

@@ -20,7 +20,7 @@ typedef void(^TTResponseFailure)(AFHTTPRequestOperation *operation, NSError *err
 
 - (void)login:(NSString*)email pass:(NSString*)pass loginType:(NSString*)type areaId:(NSString*)areaId withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 
--(void)registerWithEmail:(NSString*)email pass:(NSString*)pass regionId:(NSString*)regionId refUserId:(NSString*)refId withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
+-(void)registerWithEmail:(NSString*)email pass:(NSString*)pass phone:(NSString*)phone regionId:(NSString*)regionId refUserId:(NSString*)refId withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 
 
 - (void)logout:(NSString*)token succes:(TTResponseSuccess)success failure:(TTResponseFailure)failure;

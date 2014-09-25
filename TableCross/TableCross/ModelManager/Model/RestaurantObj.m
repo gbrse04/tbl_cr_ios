@@ -29,9 +29,9 @@
         self.imageUrl = [Validator getSafeString:[dict objectForKey:@"imageUrl"]];
         self.orderDate = [Validator getSafeString:[dict objectForKey:@"orderDate"]];
         self.shareLink = [Validator getSafeString:[dict objectForKey:@"shareLink"]];
+        self.orderWebUrl = [Validator getSafeString:[dict objectForKey:@"orderWebUrl"]];
+        self.numberOrder = [Validator getSafeString:[dict objectForKey:@"numberOrder"]];
 
-        
-        
     }
     
     return self;

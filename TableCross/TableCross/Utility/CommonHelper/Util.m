@@ -446,27 +446,20 @@
 }
 
 
-+(void)increaseHeight:(CGFloat)offset withView:(UIView*)view{
-    view.frame=CGRectMake(view.frame.origin.x, view.frame.origin.y, view
-                          .frame.size.width, view.frame.size.height+offset);
-    
-}
-+(void)decreaseHeight:(CGFloat)offset withView:(UIView*)view{
-    view.frame=CGRectMake(view.frame.origin.x, view.frame.origin.y, view
-                          .frame.size.width, view.frame.size.height-offset);
-    
-}
-+(void)moveViewUp:(CGFloat)offset withView:(UIView*)view{
-    view.frame=CGRectMake(view.frame.origin.x, view.frame.origin.y-offset, view
-                          .frame.size.width, view.frame.size.height);
-    
-}
-+(void)moveViewDown:(CGFloat)offset withView:(UIView*)view{
-    view.frame=CGRectMake(view.frame.origin.x, view.frame.origin.y+offset, view
-                          .frame.size.width, view.frame.size.height);
-    
-}
 
+#pragma mark  - UIView Moving Utils
++(void)moveUp:(UIView*)view offset:(float)offset{
+    view.frame=CGRectMake(view.frame.origin.x, view.frame.origin.y-offset, view.frame.size.width, view.frame.size.height);
+}
++(void)moveDow:(UIView*)view offset:(float)offset{
+    view.frame=CGRectMake(view.frame.origin.x, view.frame.origin.y+offset, view.frame.size.width, view.frame.size.height);
+}
++(void)moveRight:(UIView*)view offset:(float)offset{
+    view.frame=CGRectMake(view.frame.origin.x+offset, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+}
++(void)moveLeft:(UIView*)view offset:(float)offset{
+    view.frame=CGRectMake(view.frame.origin.x-offset, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+}
 
 
 @end

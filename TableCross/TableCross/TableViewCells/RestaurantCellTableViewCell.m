@@ -37,9 +37,12 @@
         self.lblName.text =obj.name;
         self.lblDateTime.text = obj.orderDate;
         if([obj.orderDate isEqualToString:@""])
-           [self.imgClock setHidden:TRUE];
+        {
+            [self.imgClock setHidden:TRUE];
+            [Util moveUp:self.lblNumberMeal offset:20];
+             [Util moveUp:self.imgNumberMeal offset:20];
+        }
         self.lblNumberMeal.text =  obj.numberOrder;
-        
         
         self.lblDescription.text = obj.description;
         self.lblDescription.numberOfLines = 0;

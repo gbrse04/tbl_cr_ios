@@ -78,12 +78,9 @@
 
 //Slide view animation
 
-//+(void)slideUpView:(UIView*)view offset:(CGFloat)offset;
-//+(void)slideDownView:(UIView*)view offset:(CGFloat)offset;
-//+(void)increaseHeight:(CGFloat)offset withView:(UIView*)view;
-//+(void)decreaseHeight:(CGFloat)offset withView:(UIView*)view;
-//+(void)moveViewUp:(CGFloat)offset withView:(UIView*)view;
-//+(void)moveViewDown:(CGFloat)offset withView:(UIView*)view;
-
++(void)moveUp:(UIView*)view offset:(float)offset;
++(void)moveDow:(UIView*)view offset:(float)offset;
++(void)moveRight:(UIView*)view offset:(float)offset;
++(void)moveLeft:(UIView*)view offset:(float)offset;
 
 @end

@@ -20,6 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblNumberMeal;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgNumberMeal;
 
 
 -(void)fillData:(RestaurantObj*)obj;

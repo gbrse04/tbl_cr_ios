@@ -61,6 +61,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="imgClock" destination="hDa-l3-Khp" id="V2p-0X-HCG"/>
+                <outlet property="imgNumberMeal" destination="Ofm-1b-RW5" id="yB0-Cc-6tg"/>
                 <outlet property="imgRestaurant" destination="GoE-gq-oP4" id="9qH-2y-TQx"/>
                 <outlet property="lblAddress" destination="Hbc-yJ-WOx" id="WxI-uK-ck6"/>
                 <outlet property="lblDateTime" destination="83l-2U-gfD" id="zGn-6x-djN"/>

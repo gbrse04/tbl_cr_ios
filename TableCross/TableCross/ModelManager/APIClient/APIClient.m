@@ -42,14 +42,14 @@ static NSString * const BASE_URL = kBaseUrl ;
 ////    [[TheThao247APIClient sharedClient] getPath:NEWS_CATEGORY parameters:@{@"cat_id": categoryId, @"page": page, @"pagesize": pageSize} success:success failure:failure];
 ////}
 
-- (void)login:(NSString*)email pass:(NSString*)pass loginType:(NSString*)type areaId:(NSString*)areaId withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+- (void)login:(NSString*)email pass:(NSString*)pass loginType:(NSString*)type areaId:(NSString*)areaId  phone:(NSString*)phone withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
     
-    [[APIClient sharedClient] getPath:kUrlLogin parameters:@{@"email": email, @"password": pass, @"loginType": type, @"areaId":areaId} success:success failure:failure];
+    [[APIClient sharedClient] getPath:kUrlLogin parameters:@{@"email": email,@"msisdn": phone, @"password": pass, @"loginType": type, @"areaId":areaId} success:success failure:failure];
 }
 
-- (void)registerWithEmail:(NSString*)email pass:(NSString*)pass phone:(NSString*)phone regionId:(NSString*)regionId refUserId:(NSString*)refId withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+- (void)registerWithEmail:(NSString*)email pass:(NSString*)pass phone:(NSString*)phone birthday:(NSString*)birthday  regionId:(NSString*)regionId refUserId:(NSString*)refId withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
     
-      [[APIClient sharedClient] getPath:kUrlRegister parameters:@{@"email": email, @"password": pass, @"deviceId": refId, @"areaId":regionId} success:success failure:failure];
+      [[APIClient sharedClient] getPath:kUrlRegister parameters:@{@"email": email, @"password": pass, @"deviceId": refId, @"areaId":regionId,@"birthday":birthday,@"msisdn":phone} success:success failure:failure];
 }
 
 

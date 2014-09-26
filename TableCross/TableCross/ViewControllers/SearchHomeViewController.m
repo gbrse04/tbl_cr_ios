@@ -10,6 +10,7 @@
 #import "SearchLocationViewController.h"
 #import "SearchByConditionViewController.h"
 #import "SearchResultViewController.h"
+#import "HomeViewController.h"
 
 
 @interface SearchHomeViewController ()
@@ -31,6 +32,15 @@
 {
     [super viewDidLoad];
     [self setupTitle:@"検索" isShowSetting:YES andBack:FALSE];
+    
+    if(!gIsShowHome)
+    {
+        HomeViewController *vc =[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+        
+        vc.isNeedLoadData = TRUE;
+        gIsShowHome = TRUE;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
 }
 -(void)viewWillAppear:(BOOL)animated

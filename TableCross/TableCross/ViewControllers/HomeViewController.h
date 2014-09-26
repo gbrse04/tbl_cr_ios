@@ -17,6 +17,8 @@
 
 @interface HomeViewController : BaseViewController<UITabBarControllerDelegate>
 
+@property (assign, nonatomic) BOOL isNeedLoadData;
+
 @property (weak, nonatomic) IBOutlet UIImageView *imgRestaurant;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress;
@@ -26,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *number2;
 
 @property (weak, nonatomic) IBOutlet UIButton *number3;
+@property (weak, nonatomic) IBOutlet UILabel *lblNumberMeal;
 
 @property (nonatomic,retain) UITabBarController *tabbarController;
 @property (nonatomic,retain) UINavigationController *notifNavigationViewController;
@@ -38,5 +41,6 @@
 - (IBAction)onTabThree:(id)sender;
 
 - (IBAction)onTabFour:(id)sender;
+- (IBAction)onShowDetail:(id)sender;
 
 @end

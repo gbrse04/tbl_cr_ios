@@ -37,6 +37,10 @@
     self.navigationItem.title = @"ログイン";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutApp) name:NOTIF_LOGOUT object:nil];
+    [self initTabbar];
+    
+    if(gIsLogin)
+       [self  pushToHomeView];
     
 }
 -(void)logoutApp {
@@ -153,7 +157,6 @@
 }
 
 - (IBAction)onLogin:(id)sender {
-   
     
     if([self.txtEmail.text isEqualToString:@""] && [self.txtPassword.text isEqualToString:@""])
         [Util showMessage:@"Please input your email and password" withTitle:@"Error"];
@@ -164,21 +167,23 @@
     {
     START_LOADING;
     
-    [[APIClient sharedClient] login:self.txtEmail.text pass:self.txtPassword.text loginType:@"0" areaId:[Util valueForKey:KEY_AREAID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[APIClient sharedClient] login:self.txtEmail.text pass:self.txtPassword.text loginType:@"0" areaId:[Util valueForKey:KEY_AREAID] phone:@"" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         STOP_LOADING;
         if([[responseObject objectForKey:@"success"] boolValue])
         {
+            gIsLogin = true;
             //Save username and pass
             [Util setValue:self.txtEmail.text  forKey:KEY_EMAIL];
             [Util setValue:self.txtPassword.text  forKey:KEY_PASSWORD];
-            
+            [Util setValue:@"0" forKey:KEY_LOGIN_TYPE];
             [Util setValue:[responseObject objectForKey:@"phone"] forKey:KEY_PHONE];
             [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
             [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
             [Util setValue:[responseObject objectForKey:@"orderCount"] forKey:KEY_TOTAL_MEAL];
             [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
             [Util setValue:[responseObject objectForKey:@"shareLink"] forKey:KEY_SHARELINK];
+            
             
             [self pushToHomeView];
         }
@@ -189,7 +194,8 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         STOP_LOADING;
         SHOW_NETWORK_ERROR;
-    }];
+         
+        }];
     
     }
     
@@ -199,22 +205,22 @@
 -(void)loginFacebook:(NSString*)email {
     START_LOADING;
     
-    [[APIClient sharedClient] login:email pass:@"" loginType:@"1" areaId:[Util valueForKey:KEY_AREAID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[APIClient sharedClient] login:email pass:@"" loginType:@"1" areaId:[Util valueForKey:KEY_AREAID] phone:@"" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         STOP_LOADING;
         gIsLoginFacebook = TRUE;
         if([[responseObject objectForKey:@"success"] boolValue])
         {
+             gIsLogin = true;
             //Save username and pass
-            [Util setValue:self.txtEmail.text  forKey:KEY_EMAIL];
-            [Util setValue:self.txtPassword.text  forKey:KEY_PASSWORD];
-            
+            [Util setValue:email  forKey:KEY_EMAIL];
+            [Util setValue:@""  forKey:KEY_PASSWORD];
+            [Util setValue:@"1" forKey:KEY_LOGIN_TYPE];
             [Util setValue:[responseObject objectForKey:@"phone"] forKey:KEY_PHONE];
             [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
             [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
-            [Util setValue:[responseObject objectForKey:@"orderCount"] forKey:KEY_TOTAL_MEAL];
+            [Util setValue:[Validator getSafeString:[responseObject objectForKey:@"orderCount"]] forKey:KEY_TOTAL_MEAL];
             [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
             [Util setValue:[responseObject objectForKey:@"shareLink"] forKey:KEY_SHARELINK];
-            
             
             [self pushToHomeView];
         }
@@ -343,22 +349,41 @@
 
 -(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
-    NSInteger tabitem = _tabbarController.selectedIndex;
-    [[tabBarController.viewControllers objectAtIndex:tabitem] popToRootViewControllerAnimated:YES];
+    if(gIsLogin)
+    {
+        
+        NSInteger tabitem = _tabbarController.selectedIndex;
+        [[tabBarController.viewControllers objectAtIndex:tabitem] popToRootViewControllerAnimated:YES];
+    }
+    else
+    {
+        if(_tabbarController.selectedIndex !=1)
+            [_tabbarController setSelectedIndex:1];
+        [[tabBarController.viewControllers objectAtIndex:_tabbarController.selectedIndex] popToRootViewControllerAnimated:YES];
+    }
     
 }
 
 -(void) pushToHomeView
 {
-    
+    self.txtEmail.text = @"";
+    self.txtPassword.text = @"";
+    [_tabbarController setSelectedIndex:1];
     gNavigationViewController = self.navigationController;
     
-    HomeViewController *vc = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
-    
-    [self.navigationController pushViewController:vc animated:YES];
-    
-   // [self.navigationController pushViewController:_tabbarController animated:YES];
+//    HomeViewController *vc = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+//    
+//    [self.navigationController pushViewController:vc animated:YES];
+//    
+    [self.navigationController pushViewController:_tabbarController animated:YES];
 }
 
 
+- (IBAction)useWithOutLogin:(id)sender {
+    
+    gIsLogin = FALSE;
+    gNavigationViewController = self.navigationController;
+    [_tabbarController setSelectedIndex:1];
+    [self pushToHomeView];
+}
 @end

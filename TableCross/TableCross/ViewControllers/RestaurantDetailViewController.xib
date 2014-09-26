@@ -7,8 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RestaurantDetailViewController">
             <connections>
+                <outlet property="imgNumberOrder" destination="AoT-gq-yCi" id="jDq-rP-V5S"/>
                 <outlet property="imgRestaurant" destination="sqs-us-xB1" id="e7U-Bl-N52"/>
+                <outlet property="imgTime" destination="9OW-13-Rn5" id="h5d-V2-nUv"/>
                 <outlet property="lblAddress" destination="WBM-mQ-BOp" id="1LC-gX-Ja3"/>
+                <outlet property="lblDateTime" destination="UGe-3v-EMz" id="pnI-Os-VLA"/>
                 <outlet property="lblDescription" destination="jdy-H3-gMW" id="dZt-dr-0AQ"/>
                 <outlet property="lblName" destination="mqI-hc-cls" id="ThK-CK-F1s"/>
                 <outlet property="lblNumberMeal" destination="iLJ-2V-s7B" id="fvx-68-vTo"/>

@@ -11,6 +11,7 @@ NSString *gMemberId=@"";
 UINavigationController  *gNavigationViewController;
 
 BOOL gIsLogin=FALSE;
+BOOL gIsShowHome= FALSE;
 BOOL gIsLoginFacebook;
 BOOL gIsHasNetwork=TRUE;
 NSString *shareAppMessage= @"Dear friend, please try this app";

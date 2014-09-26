@@ -37,10 +37,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setupTitle:@"お知らせ" isShowSetting:TRUE andBack:FALSE];
- 
-    [self getDataWithPage:0];
-//    
-//    [self getNumberNotificationUnPush];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -49,7 +46,8 @@
        [self.arrNotification removeAllObjects];
     currentPage= 0;
     [super viewDidAppear:animated];
-    [self getDataWithPage:currentPage];
+    if(gIsLogin)
+     [self getDataWithPage:currentPage];
 }
 
 -(void)getDataWithPage:(NSInteger)page {

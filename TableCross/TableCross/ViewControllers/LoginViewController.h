@@ -35,5 +35,6 @@
 @property (nonatomic,retain) UINavigationController *searchNavigationViewController;
 @property (nonatomic,retain) UINavigationController *historyNavigationViewController;
 @property (nonatomic,retain) UINavigationController *profileNavigationViewController;
+- (IBAction)useWithOutLogin:(id)sender;
 
 @end

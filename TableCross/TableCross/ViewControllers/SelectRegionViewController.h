@@ -13,4 +13,10 @@
 
 @interface SelectRegionViewController : BaseViewController<ComBoxDelegate>
 @property (nonatomic,retain) NSArray *arrRegion;
+@property (nonatomic,retain) UITabBarController *tabbarController;
+@property (nonatomic,retain) UINavigationController *notifNavigationViewController;
+@property (nonatomic,retain) UINavigationController *searchNavigationViewController;
+@property (nonatomic,retain) UINavigationController *historyNavigationViewController;
+@property (nonatomic,retain) UINavigationController *profileNavigationViewController;
+
 @end

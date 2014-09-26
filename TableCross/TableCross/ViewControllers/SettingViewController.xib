@@ -7,10 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController">
             <connections>
+                <outlet property="scrollMain" destination="65U-rP-hVx" id="8GF-VR-Q2O"/>
                 <outlet property="txtBirthday" destination="1fM-B0-Bqq" id="46L-gR-9V9"/>
                 <outlet property="txtEmail" destination="akU-zq-O6a" id="MII-4h-R3d"/>
                 <outlet property="txtPhone" destination="NR5-OI-JjC" id="C0u-jk-SEQ"/>
-                <outlet property="txtUserId" destination="9sg-Py-bV5" id="EP0-cR-Ffe"/>
+                <outlet property="txtUserId" destination="9sg-Py-bV5" id="kMQ-WQ-x2d"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -35,13 +36,13 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="フォン" minimumFontSize="17" background="bg_text.png" id="NR5-OI-JjC" customClass="CustomizeTextField">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="電話番号" minimumFontSize="17" background="bg_text.png" id="NR5-OI-JjC" customClass="CustomizeTextField">
                             <rect key="frame" x="35" y="96" width="250" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="フォン" minimumFontSize="17" background="bg_text.png" id="1fM-B0-Bqq" customClass="CustomizeTextField">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="生 年 月 日" minimumFontSize="17" background="bg_text.png" id="1fM-B0-Bqq" customClass="CustomizeTextField">
                             <rect key="frame" x="35" y="134" width="251" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>

@@ -37,6 +37,10 @@
     [datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.txtBirthday setInputView:datePicker];
     
+    [self.scrollMain setContentSize:CGSizeMake(self.scrollMain.frame.size.width, 440)];
+    
+
+    
 }
 -(void)updateTextField:(UIDatePicker *)dtPicker{
     NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
@@ -50,14 +54,13 @@
      self.txtPhone.text= [Util valueForKey:KEY_PHONE];
      self.txtBirthday.text = [Util valueForKey:KEY_BIRTHDAY];
      
-     if(gIsLoginFacebook)
-     {
-         
-         self.txtUserId.text =[Util valueForKey:@"facebookID"];
-         self.txtEmail.text =[Util valueForKey:@"FBemail"];
-         self.txtPhone.text= [Util valueForKey:KEY_PHONE];
-         self.txtBirthday.text = [Util valueForKey:@"FBbirthdate"];
-     }
+//     if(gIsLoginFacebook)
+//     {
+//         self.txtUserId.text = [Util valueForKey:@"facebookID"];
+//         self.txtEmail.text = [Util valueForKey:@"FBemail"];
+//         self.txtPhone.text= [Util valueForKey:KEY_PHONE];
+//         self.txtBirthday.text = [Util valueForKey:@"FBbirthdate"];
+//     }
      
      [((UIButton*)[self.view viewWithTag:4]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_1]];
      [((UIButton*)[self.view viewWithTag:5]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_2]];
@@ -149,14 +152,13 @@
                     NSLog(@"Response : %@",responseObject);
             if([[responseObject objectForKey:@"success"] boolValue])
                 {
-            
-            [Util setValue:@"" forKey:KEY_USER_ID];
-            [gNavigationViewController popToViewController:[[gNavigationViewController viewControllers]objectAtIndex:1] animated:YES];
-            
-                        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGOUT object:nil];
+                    [Util setValue:@"" forKey:KEY_USER_ID];
+                    [gNavigationViewController popToViewController:[[gNavigationViewController viewControllers]objectAtIndex:2] animated:YES];
+                    gIsLogin = FALSE;
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGOUT object:nil];
                 }
                 else
-        [Util showError:responseObject];
+                    [Util showError:responseObject];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             STOP_LOADING;

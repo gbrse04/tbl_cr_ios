@@ -18,6 +18,7 @@
     UIKeyboardViewController *keyBoardController;
 }
 
+
 - (IBAction)onSave:(id)sender;
 
 - (IBAction)onSetttingChange:(id)sender;
@@ -25,6 +26,7 @@
 - (IBAction)onChangePass:(id)sender;
 
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollMain;
 @property (weak, nonatomic) IBOutlet CustomizeTextField *txtPhone;
 @property (weak, nonatomic) IBOutlet CustomizeTextField *txtUserId;
 @property (weak, nonatomic) IBOutlet CustomizeTextField *txtEmail;

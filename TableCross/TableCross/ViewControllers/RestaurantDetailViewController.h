@@ -20,8 +20,15 @@
 {
     UIKeyboardViewController *keyBoardController;
 }
+
+@property (weak, nonatomic) IBOutlet UILabel *lblDateTime;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgNumberOrder;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgTime;
 @property (retain, nonatomic) NSString *backTitle;
 @property (retain, nonatomic) RestaurantObj *restaurant;
+@property (retain, nonatomic) NSString *restaurantId;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollViewMain;
 @property (weak, nonatomic) IBOutlet UIView *viewTop;

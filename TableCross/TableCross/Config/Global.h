@@ -26,6 +26,7 @@ typedef  enum {
 extern UINavigationController  *gNavigationViewController;
 extern NSString *gMemberId;
 extern BOOL gIsLogin;
+extern BOOL gIsShowHome;
 extern BOOL gIsLoginFacebook;
 extern BOOL gIsHasNetwork;
 

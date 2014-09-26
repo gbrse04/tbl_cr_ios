@@ -20,5 +20,6 @@
     #import "Util.h"
     #import "APIClient.h"
     #import "NSString+TextSize.h"
+    #import "Validator.h"
 
 #endif

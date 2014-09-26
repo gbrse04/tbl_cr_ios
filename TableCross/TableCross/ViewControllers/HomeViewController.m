@@ -7,8 +7,13 @@
 //
 
 #import "HomeViewController.h"
+#import "RestaurantObj.h"
 
 @interface HomeViewController ()
+{
+    RestaurantObj *homeRestaurant;
+    
+}
 
 @end
 
@@ -18,6 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
         // Custom initialization
     }
     return self;
@@ -30,13 +36,28 @@
     [self.navigationController setNavigationBarHidden:NO];
     
     [self setupTitle:@"ホーム" isShowSetting:NO andBack:NO];
-    [self initTabbar];
+    
+
+//    [self initTabbar];
     self.navigationItem.hidesBackButton = YES;
 //    [self performSelector:@selector(pushToHomeView) withObject:nil afterDelay:2];
 
-   [self getUserInfo];
-    [self getHomeRestaurant];
-
+//    if(gIsLogin)
+//        [self getUserInfo];
+//    
+//    [self getHomeRestaurant];
+    if(!self.isNeedLoadData)
+    {
+        [self initTabbar];
+        [self pushToHomeView];
+    }
+    else
+    {
+        [self getHomeRestaurant];
+        if(gIsLogin)
+        [self getUserInfo];
+    }
+    
 }
 
 -(void)getHomeRestaurant {
@@ -51,6 +72,8 @@
         {
             
             NSDictionary *resDict = [responseObject objectForKey:@"restaurant"];
+            homeRestaurant =[[RestaurantObj alloc] initWithDict:resDict];
+            
             [self.imgRestaurant setImageWithURL:[NSURL URLWithString:[resDict objectForKey:@"imageUrl"]] placeholderImage:[UIImage imageNamed:@"img_restaurant"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 
                 if(image)
@@ -72,6 +95,7 @@
 }
 
 -(void)getUserInfo {
+    
     
     [[APIClient sharedClient] getUserInfoWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -220,7 +244,8 @@
     _tabbarController.customizableViewControllers = controllers;
     _tabbarController.delegate = self;
     //Hide text tabbar item
-    [_tabbarController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(-30,0)];
+    
+    [_tabbarController setSelectedIndex:1];
     
     [_tabbarController.tabBar setBackgroundImage:[UIImage imageNamed:@"bg_tab.png"]];
     
@@ -233,14 +258,23 @@
 
 -(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
-    NSInteger tabitem = _tabbarController.selectedIndex;
-    [[tabBarController.viewControllers objectAtIndex:tabitem] popToRootViewControllerAnimated:YES];
+    if(gIsLogin)
+    {
+    
+        NSInteger tabitem = _tabbarController.selectedIndex;
+        [[tabBarController.viewControllers objectAtIndex:tabitem] popToRootViewControllerAnimated:YES];
+    }
+    else
+    {
+        if(_tabbarController.selectedIndex !=1)
+         [_tabbarController setSelectedIndex:1];
+        [[tabBarController.viewControllers objectAtIndex:_tabbarController.selectedIndex] popToRootViewControllerAnimated:YES];
+    }
     
 }
 
 -(void) pushToHomeView
 {
-    
     [self.navigationController setNavigationBarHidden:YES];
     [self.navigationController pushViewController:_tabbarController animated:YES];
     [self getNumberNotificationUnPush];
@@ -293,6 +327,13 @@
 - (IBAction)onTabFour:(id)sender {
     [_tabbarController setSelectedIndex:3];
     [self pushToHomeView];
+}
+
+- (IBAction)onShowDetail:(id)sender {
+    
+    RestaurantDetailViewController *vc = [[RestaurantDetailViewController alloc] initWithNibName:@"RestaurantDetailViewController" bundle:nil];
+    vc.restaurant = homeRestaurant;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

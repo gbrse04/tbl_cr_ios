@@ -110,10 +110,12 @@
 }
 -(void)gotoSetting {
     
-    SettingViewController *vc= [[SettingViewController alloc] initWithNibName:@"SettingViewController" bundle:nil];
-    
-    [self.navigationController pushViewController:vc animated:YES];
-    
+    if(gIsLogin)
+    {
+        SettingViewController *vc= [[SettingViewController alloc] initWithNibName:@"SettingViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 
 }
 

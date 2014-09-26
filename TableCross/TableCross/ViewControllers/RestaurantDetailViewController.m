@@ -46,15 +46,22 @@
 - (void)bindData {
     if(self.restaurant)
     {
-        if([self.restaurant.imageUrl rangeOfString:@"http:"].location == NSNotFound)
-            self.restaurant.imageUrl = @"http://www.sott.net/image/s5/109922/medium/mcdonalds.jpg";
-        
+       
         [self.imgRestaurant setImageWithURL:[NSURL URLWithString:self.restaurant.imageUrl] placeholderImage:[UIImage imageNamed:@"img_restaurant"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
             
             if(image)
                 [self.imgRestaurant setImage:image];
         }];
         
+        if([self.restaurant.orderDate isEqualToString:@""])
+        {
+            [self.imgTime setHidden:YES];
+            [Util moveUp:self.imgNumberOrder offset:20];
+            [Util moveUp:self.lblNumberMeal offset:20];
+        
+        }
+        
+        self.lblDateTime.text = self.restaurant.orderDate;
         self.lblAddress.text = self.restaurant.name;
         self.lblName.text =self.restaurant.address;
         self.lblNumberMeal.text =self.restaurant.numberOrder;
@@ -75,7 +82,6 @@
         [self.scrollViewMain setContentSize:CGSizeMake(self.scrollViewMain.frame.size.width, self.viewTop.frame.size.height + self.viewBottom.frame.size.height + 25)];
         
     }
-    
 }
 
 -(void)addShareButton

@@ -40,6 +40,13 @@
     self.navigationItem.hidesBackButton = NO;
     
     [self initTabbar];
+    
+    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+    [datePicker setDate:[NSDate date]];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    [datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
+//    [self.txt setInputView:datePicker];
+
 }
 
 
@@ -66,18 +73,16 @@
     [self.navigationController setNavigationBarHidden:YES];
 }
 
-
 - (IBAction)onLogin:(id)sender {
-    
     
     if(![Util isValidEmail:self.txtEmail.text])
     {
         [Util showMessage:@"Invalid email address" withTitle:kAppNameManager];
         return;
     }
-    if([self.txtEmail.text isEqualToString:@""] || [self.txtPassword.text isEqualToString:@""])
+    if([self.txtEmail.text isEqualToString:@""] || [self.txtPassword.text isEqualToString:@""] || [self.txtPhone.text isEqualToString:@""])
     {
-        [Util showMessage:@"Please input your email and password to continue" withTitle:kAppNameManager];
+        [Util showMessage:@"Please input your email,phone and password to continue" withTitle:kAppNameManager];
         return;
     }
      if(![self.txtPassword.text isEqualToString:self.txtPasswordConfirm.text])
@@ -92,7 +97,7 @@
         {
             START_LOADING ;
             
-            [[APIClient sharedClient] registerWithEmail:self.txtEmail.text pass:self.txtPassword.text phone:@"2412412" regionId:[Util valueForKey:KEY_AREAID] refUserId:[Util getUDID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [[APIClient sharedClient] registerWithEmail:self.txtEmail.text pass:self.txtPassword.text phone:self.txtPhone.text birthday:@"" regionId:[Util valueForKey:KEY_AREAID] refUserId:[Util getUDID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                 STOP_LOADING;
                 if([[responseObject objectForKey:@"success"] boolValue])
                 {
@@ -118,15 +123,16 @@
     
     START_LOADING;
     
-    [[APIClient sharedClient] login:email pass:pass loginType:@"0" areaId:[Util valueForKey:KEY_AREAID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[APIClient sharedClient] login:email pass:pass loginType:@"0" areaId:[Util valueForKey:KEY_AREAID] phone:@"" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         STOP_LOADING;
         if([[responseObject objectForKey:@"success"] boolValue])
         {
+             gIsLogin = true;
             //Save username and pass
             [Util setValue:self.txtEmail.text  forKey:KEY_EMAIL];
             [Util setValue:self.txtPassword.text  forKey:KEY_PASSWORD];
-            
+            [Util setValue:@"0" forKey:KEY_LOGIN_TYPE];
             [Util setValue:[responseObject objectForKey:@"phone"] forKey:KEY_PHONE];
             [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
             [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];

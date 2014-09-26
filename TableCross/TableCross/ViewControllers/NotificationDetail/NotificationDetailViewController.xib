@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotificationDetailViewController">
             <connections>
-                <outlet property="lblContent" destination="SR3-hw-OwB" id="ze4-H5-kOg"/>
                 <outlet property="lblDateTime" destination="84Y-vT-xhq" id="eOo-Re-Ps6"/>
                 <outlet property="lblFullContent" destination="VRO-Rp-ncL" id="nTi-lU-iHA"/>
                 <outlet property="lblTitle" destination="SOz-CI-QXX" id="tW6-1y-DOA"/>
@@ -32,21 +31,15 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店舗詳細はこちら" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SR3-hw-OwB">
-                    <rect key="frame" x="9" y="59" width="303" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <color key="textColor" red="0.19807099450000001" green="0.47432931309999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_clock.png" id="cN4-wL-Qfl">
                     <rect key="frame" x="12" y="14" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="イタリアン田中を4名で予約されています " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VRO-Rp-ncL">
-                    <rect key="frame" x="8" y="88" width="303" height="21"/>
+                    <rect key="frame" x="8" y="64" width="303" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.19807099450000001" green="0.47432931309999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>

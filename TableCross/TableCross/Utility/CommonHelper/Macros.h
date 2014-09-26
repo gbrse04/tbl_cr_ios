@@ -11,7 +11,7 @@
 #ifndef SOS APP_Macros_h
 #define SOS APP_Macros_h
 
-#define kMsgNetworkError @"Network connection error"
+#define kMsgNetworkError @"Connect to server error"
 
 #define SetupLanguage(TITLE) AMLocalizedString(TITLE,nil)
 

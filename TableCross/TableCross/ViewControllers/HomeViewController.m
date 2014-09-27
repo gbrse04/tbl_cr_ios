@@ -57,7 +57,7 @@
         if(gIsLogin)
         [self getUserInfo];
     }
-    
+   [self addBackLocationButton];
 }
 
 -(void)getHomeRestaurant {
@@ -105,6 +105,7 @@
             [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
             [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
             [Util setValue:[responseObject objectForKey:@"orderCount"] forKey:KEY_TOTAL_MEAL];
+            [Util setValue:[responseObject objectForKey:@"totalOrder"] forKey:KEY_TOTAL_MEAL_VIAAPP];
             [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
             
             NSString *numberPoint = [NSString stringWithFormat:@"%@",[Util objectForKey:KEY_TOTAL_MEAL]];

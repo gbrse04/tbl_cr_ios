@@ -181,6 +181,7 @@
             [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
             [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
             [Util setValue:[responseObject objectForKey:@"orderCount"] forKey:KEY_TOTAL_MEAL];
+            
             [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
             [Util setValue:[responseObject objectForKey:@"shareLink"] forKey:KEY_SHARELINK];
             

@@ -15,6 +15,8 @@
 - (void) setupTitle:(NSString*)title isShowSetting:(BOOL)showSetting andBack:(BOOL)isShowBack;
 - (void) setupTitle:(NSString*)title isShowSetting:(BOOL)showSetting andBack:(BOOL)isShowBack andBackTitle:(NSString*)title;
 
+- (void)addBackLocationButton;
+
 - (void)openMailWithBody:(NSString*)body andSubject:(NSString*)subject;
 
 - (void)openSMSWithContent:(NSString*)body;

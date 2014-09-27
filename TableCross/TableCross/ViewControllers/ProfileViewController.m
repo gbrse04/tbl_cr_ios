@@ -30,6 +30,7 @@
     [self setupTitle:@"マイページ" isShowSetting:YES andBack:FALSE];
     
     [self setupData];
+    [self addBackLocationButton];
 }
 
 -(void)setupData{
@@ -53,6 +54,30 @@
         
         
     }
+
+    
+    NSString *totalOrder = [NSString stringWithFormat:@"%@",[Util objectForKey:KEY_TOTAL_MEAL_VIAAPP]];
+    
+    if([totalOrder length]==1)
+    {
+        [self.number6 setTitle:totalOrder forState:UIControlStateNormal];
+    }
+    else if([totalOrder length]==2)
+    {
+        [self.number5 setTitle: [NSString stringWithFormat:@"%C",[totalOrder characterAtIndex:0]] forState:UIControlStateNormal];
+        [self.number6 setTitle:[NSString stringWithFormat:@"%C",[totalOrder characterAtIndex:1]] forState:UIControlStateNormal];
+    }
+    else if([totalOrder length] > 2)
+    {
+        [self.number4 setTitle: [NSString stringWithFormat:@"%C",[totalOrder characterAtIndex:0]] forState:UIControlStateNormal];
+        [self.number5 setTitle: [NSString stringWithFormat:@"%C",[totalOrder characterAtIndex:1]] forState:UIControlStateNormal];
+        [self.number6 setTitle:[NSString stringWithFormat:@"%C",[totalOrder characterAtIndex:2]] forState:UIControlStateNormal];
+        
+        
+    }
+    
+    self.lblInfo.text = [NSString stringWithFormat:@"あなた紹介したユーザーは%@人です ",[Util valueForKey:KEY_TOTAL_MEAL_VIAAPP]];
+    
 
     
 }

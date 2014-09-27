@@ -42,6 +42,8 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     
+    [self addBackLocationButton];
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {

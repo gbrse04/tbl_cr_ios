@@ -37,6 +37,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setupTitle:@"お知らせ" isShowSetting:TRUE andBack:FALSE];
+    [self addBackLocationButton];
 
 }
 

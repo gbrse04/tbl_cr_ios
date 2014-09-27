@@ -104,14 +104,35 @@
 
 }
 
+- (void)addBackLocationButton {
+    
+    UIButton *settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [settingBtn setTitle:[Util valueForKey:KEY_AREA_NAME] forState:UIControlStateNormal];
+    [settingBtn addTarget:self action:@selector(gotoSelectRegion) forControlEvents:UIControlEventTouchUpInside];
+    CGSize expectedLabelSize = [[Util valueForKey:KEY_AREA_NAME] sizeWithFont:[UIFont systemFontOfSize:16.0]];
+    settingBtn.frame =CGRectMake(0, 0, expectedLabelSize.width+10, expectedLabelSize.height);
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:settingBtn] ;
+    self.navigationItem.leftBarButtonItem = backButton;
+    
+}
+
 -(void)back {
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)gotoSelectRegion
+{
+    
+    gIsLogin = FALSE;
+    [Util setValue:@"" forKey:KEY_USER_ID];
+    [gNavigationViewController popToViewController:[gNavigationViewController.viewControllers objectAtIndex:1] animated:YES];
 }
 -(void)gotoSetting {
     
     if(gIsLogin)
     {
+        
         SettingViewController *vc= [[SettingViewController alloc] initWithNibName:@"SettingViewController" bundle:nil];
         
         [self.navigationController pushViewController:vc animated:YES];

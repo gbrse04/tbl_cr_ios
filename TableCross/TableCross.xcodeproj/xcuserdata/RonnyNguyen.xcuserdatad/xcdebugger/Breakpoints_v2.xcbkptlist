@@ -184,11 +184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableCross/ViewControllers/LoginViewController.m"
-            timestampString = "433448110.862521"
+            timestampString = "433475631.281677"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "-onLogin:"
             landmarkType = "5">
          </BreakpointContent>

@@ -30,6 +30,8 @@
     [self setupTitle:@"シェア" isShowSetting:TRUE andBack:FALSE];
     
     shareAppUrl  = [Util valueForKey:KEY_SHARELINK];
+
+    [self addBackLocationButton];
 }
 
 - (void)didReceiveMemoryWarning

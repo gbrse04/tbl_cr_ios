@@ -302,6 +302,11 @@
 -(NSString*)getShareLinkRestaurant:(RestaurantObj*)res {
     return [NSString stringWithFormat:@"店舗名\n%@\n電話番号\n%@\n住所\n%@\nURL\n%@(現在はお店のホームページURLです。\nそのうちWEB版のテーブルクロスのURLのお店詳細を載せる)\n予約するだけで途上国の給食支援が出来る無料チャリティアプリ テーブルクロス\nはこちらからダウンロード\n%@\n(ユーザー紐付け入りのダウンロードURL)",res.name,res.phone,res.address,res.orderWebUrl,[Util objectForKey:KEY_SHARELINK]];
 }
+
+-(NSString*)getShareLinkRestaurantForLine:(RestaurantObj*)res {
+     return [NSString stringWithFormat:@"店舗名%@ 電話番号%@住所\n%@\nURL\n%@(現在はお店のホームページURLです。そのうちWEB版のテーブルクロスのURLのお店詳細を載せる) 予約するだけで途上国の給食支援が出来る無料チャリティアプリ テーブルクロス\nはこちらからダウンロード%@(ユーザー紐付け入りのダウンロードURL)",res.name,res.phone,res.address,res.orderWebUrl,[Util objectForKey:KEY_SHARELINK]];
+}
+
 -(NSString*)getShareLinkApp {
     return [NSString stringWithFormat:@"日本中の飲食店が世界の飢餓を救う予約アプリ登場！\n予約するだけで途上国の給食支援が出来る無料チャリティアプリ テーブルクロス\n はこちらからダウンロード\n%@\n(ユーザー紐付け入りのダウンロードURL)",[Util objectForKey:KEY_SHARELINK]];
 }

@@ -39,7 +39,12 @@
 
 - (IBAction)onCall:(id)sender {
     if(self.confirmDelegate)
+    {
+        
        [self.confirmDelegate onCall:currentValue];
+       
+        [self removeFromSuperview];
+    }
     
 }
 
@@ -58,6 +63,7 @@
     
     [self addSubview:self.picker];
     [self.picker reloadAllComponents];
+    currentValue = 1 ;
     
 }
 
@@ -83,7 +89,7 @@
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-    currentValue = component;
+    currentValue = row + 1;
     
 }
 

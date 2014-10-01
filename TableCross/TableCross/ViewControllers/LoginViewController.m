@@ -44,8 +44,9 @@
     [self initTabbar];
     
     if(gIsLogin)
-       [self  pushToHomeView];
-    
+    {
+        [self performSelector:@selector(pushToHomeView) withObject:nil afterDelay:0.2];
+    }
 }
 
 
@@ -367,6 +368,8 @@
 
 - (IBAction)useWithOutLogin:(id)sender {
     
+    [Util setValue:@"0" forKey:KEY_TOTAL_MEAL];
+    [Util setValue:@"0" forKey:KEY_TOTAL_MEAL_VIAAPP];
     gIsLogin = FALSE;
     [self getShareLinkApp];
     gNavigationViewController = self.navigationController;

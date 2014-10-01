@@ -29,10 +29,15 @@
     // Do any additional setup after loading the view from its nib.
     [self setupTitle:@"マイページ" isShowSetting:YES andBack:FALSE];
     
-    [self setupData];
     [self addBackLocationButton];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupData) name:NOTIF_LOGOUT object:nil];
 }
-
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    [self setupData];
+}
 -(void)setupData{
     
     NSString *numberPoint = [NSString stringWithFormat:@"%@",[Util objectForKey:KEY_POINT]];
@@ -40,9 +45,12 @@
     if([numberPoint length]==1)
     {
         [self.number3 setTitle:numberPoint forState:UIControlStateNormal];
+        [self.number1 setTitle:@"0" forState:UIControlStateNormal];
+        [self.number2 setTitle:@"0" forState:UIControlStateNormal];
     }
     else if([numberPoint length]==2)
     {
+        [self.number1 setTitle:@"0" forState:UIControlStateNormal];
         [self.number2 setTitle: [NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:0]] forState:UIControlStateNormal];
         [self.number3 setTitle:[NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:1]] forState:UIControlStateNormal];
     }
@@ -61,9 +69,13 @@
     if([totalOrder length]==1)
     {
         [self.number6 setTitle:totalOrder forState:UIControlStateNormal];
+        [self.number4 setTitle:@"0" forState:UIControlStateNormal];
+        [self.number5 setTitle:@"0" forState:UIControlStateNormal];
     }
     else if([totalOrder length]==2)
     {
+        [self.number4 setTitle:@"0" forState:UIControlStateNormal];
+
         [self.number5 setTitle: [NSString stringWithFormat:@"%C",[totalOrder characterAtIndex:0]] forState:UIControlStateNormal];
         [self.number6 setTitle:[NSString stringWithFormat:@"%C",[totalOrder characterAtIndex:1]] forState:UIControlStateNormal];
     }

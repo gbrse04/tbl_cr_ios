@@ -152,14 +152,23 @@
                     NSLog(@"Response : %@",responseObject);
             if([[responseObject objectForKey:@"success"] boolValue])
                 {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGOUT object:nil];
+
+                    
+                    [Util setValue:@"0" forKey:KEY_POINT];
+                    [Util setValue:@"0" forKey:KEY_TOTAL_MEAL_VIAAPP];
                     [Util setValue:@"" forKey:KEY_USER_ID];
                     [Util setValue:@"" forKey:KEY_AREA_NAME];
                     [Util setValue:@"" forKey:KEY_AREAID];
                     [Util setValue:@"" forKey:KEY_SHARELINK];
-                    [gNavigationViewController popToViewController:[[gNavigationViewController viewControllers]objectAtIndex:2] animated:YES];
+                    for (UINavigationController  *vc in [self.tabBarController viewControllers]) {
+                        
+                        [vc popToRootViewControllerAnimated:NO];
+                    }
+                   
+                    [gNavigationViewController popToViewController:[[gNavigationViewController viewControllers]objectAtIndex:2] animated:NO];
                     gIsLogin = FALSE;
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGOUT object:nil];
-                }
+                                    }
                 else
                     [Util showError:responseObject];
             

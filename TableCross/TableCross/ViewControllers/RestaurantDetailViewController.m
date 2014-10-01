@@ -213,8 +213,8 @@
 
 
 - (void)onCall:(NSInteger)value {
-    if(IS_IPHONE) {
-        
+  if(IS_IPHONE) {
+    
         START_LOADING;
         [[APIClient sharedClient] sendOrder:self.restaurant.restaurantId andNumber:[NSString stringWithFormat:@"%ld",(long)value]  withsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
             STOP_LOADING;
@@ -314,7 +314,7 @@
             [self postToTwitterWithText:msg andImage:nil andURL:url];
             break;
         case 2:
-            [self postToLineWithText:msg];
+            [self postToLineWithText:[self getShareLinkRestaurantForLine:self.restaurant]];
             break;
         case 3:
             [self openSMS:msg];
@@ -344,7 +344,7 @@
     NSArray *recipients = [NSArray arrayWithObjects: nil];
     
     //set message text
-    NSString * message = [NSString stringWithFormat: @"%@ : %@",shareAppMessage,shareAppUrl];
+    NSString * message = content;
     
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
     messageController.messageComposeDelegate = self;

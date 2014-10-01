@@ -99,7 +99,7 @@
     
     START_LOADING;
     [[APIClient sharedClient] getUserInfoWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        STOP_LOADING;
+      
         if([[responseObject objectForKey:@"success"] boolValue])
         {
             [Util setValue:[responseObject objectForKey:@"mobile"] forKey:KEY_PHONE];
@@ -132,6 +132,7 @@
             
             
         }
+          STOP_LOADING;
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         STOP_LOADING;

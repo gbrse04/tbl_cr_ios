@@ -143,7 +143,7 @@ int numberResult;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat  heightDescription = [((RestaurantObj*)[self.arrData objectAtIndex:indexPath.row]).description heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:16.0] andWidth:300];
+    CGFloat  heightDescription = [((RestaurantObj*)[self.arrData objectAtIndex:indexPath.row]).shortDescription heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:16.0] andWidth:300];
     return heightDescription + 124;
 
 }

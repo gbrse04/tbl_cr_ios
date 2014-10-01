@@ -35,6 +35,10 @@
 #define kUrlGetListNotification @"getNotifyList"
 #define kUrlGetUnpushNotification @"getNotifyUnPushList"
 #define kUrlGetRestaurantDetail @"getRestaurantInfo"
+#define kUrlGetShareLink @"getShareLinkApp"
+
+
+#define kMessageLoginRequired @"You need login to use this feature.Do you want to login now ?"
 
 
 //Refresh GridView
@@ -93,6 +97,7 @@
 #define  NOTIFY_TYPE_ORDER_SUCCESS @"NOTIFY_TYPE_ORDER_SUCCESS"
 
 #define  NOTIFY_TYPE_REGISTER @"NOTIFY_TYPE_REGISTER"
+#define  NOTIFY_RELOAD_NOTIFICATION @"NOTIFY_RELOAD_NOTIFICATION"
 
 
 

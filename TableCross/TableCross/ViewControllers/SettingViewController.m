@@ -153,6 +153,9 @@
             if([[responseObject objectForKey:@"success"] boolValue])
                 {
                     [Util setValue:@"" forKey:KEY_USER_ID];
+                     [Util setValue:@"" forKey:KEY_AREA_NAME];
+                     [Util setValue:@"" forKey:KEY_AREAID];
+                    [Util setValue:@"" forKey:KEY_SHARELINK];
                     [gNavigationViewController popToViewController:[[gNavigationViewController viewControllers]objectAtIndex:2] animated:YES];
                     gIsLogin = FALSE;
                     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGOUT object:nil];

@@ -19,7 +19,7 @@
 #import "RegisterViewController.h"
 
 
-@interface LoginViewController : BaseViewController<UITabBarControllerDelegate,UITextFieldDelegate,UIKeyboardViewControllerDelegate>
+@interface LoginViewController : BaseViewController<UITabBarControllerDelegate,UITextFieldDelegate,UIKeyboardViewControllerDelegate,UIAlertViewDelegate>
 {
     UIKeyboardViewController *keyBoardController;
 }

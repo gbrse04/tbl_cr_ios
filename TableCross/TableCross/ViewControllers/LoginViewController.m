@@ -9,11 +9,16 @@
 #import "LoginViewController.h"
 
 @interface LoginViewController ()
+{
+   
+}
 
 @end
 
 
 @implementation LoginViewController
+
+ NSInteger currentTabLogin = 1;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -348,22 +353,6 @@
     
 }
 
--(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
-{
-    if(gIsLogin)
-    {
-        
-        NSInteger tabitem = _tabbarController.selectedIndex;
-        [[tabBarController.viewControllers objectAtIndex:tabitem] popToRootViewControllerAnimated:YES];
-    }
-    else
-    {
-        if(_tabbarController.selectedIndex !=1)
-            [_tabbarController setSelectedIndex:1];
-        [[tabBarController.viewControllers objectAtIndex:_tabbarController.selectedIndex] popToRootViewControllerAnimated:YES];
-    }
-    
-}
 
 -(void) pushToHomeView
 {
@@ -383,8 +372,67 @@
 - (IBAction)useWithOutLogin:(id)sender {
     
     gIsLogin = FALSE;
+    [self getShareLinkApp];
     gNavigationViewController = self.navigationController;
     [_tabbarController setSelectedIndex:1];
     [self pushToHomeView];
+}
+
+-(void)getShareLinkApp
+{
+    [[APIClient sharedClient]  getShareLinkWithsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if([[responseObject objectForKey:@"success"] boolValue])
+        {
+            [Util setValue:[responseObject objectForKey:@"shareLink"] forKey:KEY_SHARELINK];
+        }
+            
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+}
+
+#pragma mark - Tabbar Delegate
+
+-(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    
+    if(gIsLogin)
+    {
+        
+        NSInteger tabitem = _tabbarController.selectedIndex;
+        [[tabBarController.viewControllers objectAtIndex:tabitem] popToRootViewControllerAnimated:YES];
+        if(tabitem == 0)
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_RELOAD_NOTIFICATION object:nil];
+
+    }
+    else
+    {
+        if((_tabbarController.selectedIndex == 1) || (_tabbarController.selectedIndex == 2 ))
+        {
+            currentTabLogin = _tabbarController.selectedIndex;
+            [_tabbarController setSelectedIndex: _tabbarController.selectedIndex];
+            [[tabBarController.viewControllers objectAtIndex:_tabbarController.selectedIndex] popToRootViewControllerAnimated:YES];
+        }
+        else
+        {
+            
+            [Util showMessage:kMessageLoginRequired withTitle:kAppNameManager cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK" delegate:self andTag:1];
+            
+        }
+    }
+}
+
+#pragma mark - UIAlertView delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if(buttonIndex==1)
+    {
+        [self backToLogin];
+    }
+    else
+        
+        [_tabbarController setSelectedIndex:currentTabLogin];
+    
 }
 @end

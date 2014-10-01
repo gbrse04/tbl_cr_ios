@@ -101,7 +101,6 @@
          forState:UIControlStateNormal];
         [[self.navigationController.navigationBar.subviews lastObject] setTintColor:[UIColor whiteColor]];
     }
-
 }
 
 - (void)addBackLocationButton {
@@ -113,7 +112,11 @@
     settingBtn.frame =CGRectMake(0, 0, expectedLabelSize.width+10, expectedLabelSize.height);
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:settingBtn] ;
     self.navigationItem.leftBarButtonItem = backButton;
+}
+
+- (void)backToLogin {
     
+     [gNavigationViewController popToViewController:[gNavigationViewController.viewControllers objectAtIndex:2] animated:YES];
 }
 
 -(void)back {
@@ -123,9 +126,6 @@
 
 -(void)gotoSelectRegion
 {
-    
-    gIsLogin = FALSE;
-    [Util setValue:@"" forKey:KEY_USER_ID];
     [gNavigationViewController popToViewController:[gNavigationViewController.viewControllers objectAtIndex:1] animated:YES];
 }
 -(void)gotoSetting {
@@ -137,7 +137,9 @@
         
         [self.navigationController pushViewController:vc animated:YES];
     }
-
+    else
+        
+        [Util showMessage:kMessageLoginRequired withTitle:kAppNameManager cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK" delegate:self andTag:1];
 }
 
 #pragma mark - Share functions
@@ -283,7 +285,16 @@
     NSString* url = [NSString stringWithFormat: @"http://line.me/R/msg/text/?%@", text];
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+}
 
+
+#pragma mark - UIAlertView delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if(buttonIndex==1)
+    {
+        [self backToLogin];
+    }
 }
 
 @end

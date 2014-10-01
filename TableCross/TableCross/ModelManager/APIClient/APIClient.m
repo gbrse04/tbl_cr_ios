@@ -87,6 +87,11 @@ static NSString * const BASE_URL = kBaseUrl ;
     [[APIClient sharedClient] getPath:kUrlGetRestaurantDetail parameters:@{@"restaurantId":resId} success:success failure:failure];
 }
 
+- (void)getShareLinkWithsucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure{
+    
+    [[APIClient sharedClient] getPath:kUrlGetShareLink parameters:nil success:success failure:failure];
+}
+
 
 #pragma mark - Parser Functions
 

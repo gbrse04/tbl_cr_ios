@@ -10,12 +10,13 @@
 #import <Social/Social.h>
 #import <MessageUI/MessageUI.h>
 
-@interface BaseViewController : UIViewController<MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate>
+@interface BaseViewController : UIViewController<MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate,UIAlertViewDelegate>
 
 - (void) setupTitle:(NSString*)title isShowSetting:(BOOL)showSetting andBack:(BOOL)isShowBack;
 - (void) setupTitle:(NSString*)title isShowSetting:(BOOL)showSetting andBack:(BOOL)isShowBack andBackTitle:(NSString*)title;
 
 - (void)addBackLocationButton;
+- (void)backToLogin;
 
 - (void)openMailWithBody:(NSString*)body andSubject:(NSString*)subject;
 

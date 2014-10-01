@@ -37,11 +37,15 @@
     {
         self.lblTitle.text = [self.dictDetail objectForKey:@"notifyShort"];
         self.lblDateTime.text = [self.dictDetail objectForKey:@"notifyDate"];
-        self.lblContent.text= [self.dictDetail objectForKey:@"notifyLong"];
-        self.lblFullContent.text = [self.dictDetail objectForKey:@"notifyLong"];
+         self.lblFullContent.text = [self.dictDetail objectForKey:@"notifyLong"];
         
+        self.lblTitle.numberOfLines= 0;
+        [self.lblTitle sizeToFit];
+        
+        [self.lblFullContent setFrame:CGRectMake(self.lblFullContent.frame.origin.x, self.lblTitle.frame.origin.y + self.lblTitle.frame.size.height + 5, self.lblFullContent.frame.size.width, self.lblFullContent.frame.size.height)];
         self.lblFullContent.numberOfLines = 0;
         [self.lblFullContent sizeToFit];
+      
     }
 }
 

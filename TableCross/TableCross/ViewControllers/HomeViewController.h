@@ -15,7 +15,7 @@
 #import "ShareViewController.h"
 #import "UIKeyboardViewController.h"
 
-@interface HomeViewController : BaseViewController<UITabBarControllerDelegate>
+@interface HomeViewController : BaseViewController<UITabBarControllerDelegate,UIAlertViewDelegate>
 
 @property (assign, nonatomic) BOOL isNeedLoadData;
 

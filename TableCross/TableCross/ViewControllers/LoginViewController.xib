@@ -73,7 +73,7 @@
                     <rect key="frame" x="20" y="481" width="280" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="サインアップ" backgroundImage="btn_orange.png">
+                    <state key="normal" title="会員登録" backgroundImage="btn_orange.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -104,7 +104,7 @@
                     <rect key="frame" x="63" y="533" width="194" height="30"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="ログインせずに便利">
+                    <state key="normal" title="ログインせずに利用">
                         <color key="titleColor" red="0.19807099450000001" green="0.47432931309999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>

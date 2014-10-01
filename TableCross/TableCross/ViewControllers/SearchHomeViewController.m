@@ -33,7 +33,7 @@
     [super viewDidLoad];
     [self setupTitle:@"検索" isShowSetting:YES andBack:FALSE];
     
-    if(!gIsShowHome)
+    if(!gIsShowHome && gIsLogin)
     {
         HomeViewController *vc =[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
         
@@ -69,7 +69,7 @@
 }
 
 - (IBAction)onSearch3Click:(id)sender {
-    SearchLocationViewController *vc= [[SearchLocationViewController alloc] initWithNibName:@"SearchLocationViewController" bundle:nil];
+    SearchHistoryViewController *vc= [[SearchHistoryViewController alloc] initWithNibName:@"SearchHistoryViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

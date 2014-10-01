@@ -38,19 +38,27 @@
     // Do any additional setup after loading the view from its nib.
     [self setupTitle:@"お知らせ" isShowSetting:TRUE andBack:FALSE];
     [self addBackLocationButton];
+    [self reloadData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:NOTIFY_RELOAD_NOTIFICATION object:nil];
 
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    if(self.arrNotification)
-       [self.arrNotification removeAllObjects];
-    currentPage= 0;
+  
     [super viewDidAppear:animated];
+   }
+- (void)reloadData {
+    
+    if(self.arrNotification)
+        [self.arrNotification removeAllObjects];
+    currentPage= 0;
     if(gIsLogin)
-     [self getDataWithPage:currentPage];
-}
+        [self getDataWithPage:currentPage];
 
+    
+}
 -(void)getDataWithPage:(NSInteger)page {
     
     START_LOADING;

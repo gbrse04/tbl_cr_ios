@@ -110,7 +110,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7uy-xn-lIO">
-                            <rect key="frame" x="166" y="368" width="120" height="40"/>
+                            <rect key="frame" x="184" y="368" width="102" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                             <state key="normal" title="ログアウト" backgroundImage="btn_orange.png">
@@ -121,10 +121,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EbJ-uF-Fy0">
-                            <rect key="frame" x="35" y="368" width="120" height="40"/>
+                            <rect key="frame" x="35" y="368" width="141" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                            <state key="normal" title="チェンジパス" backgroundImage="btn_orange.png">
+                            <state key="normal" title="パスワード変更" backgroundImage="btn_orange.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>

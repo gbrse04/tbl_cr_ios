@@ -35,7 +35,7 @@
 
 -(void)setupData{
     
-    NSString *numberPoint = [NSString stringWithFormat:@"%@",[Util objectForKey:KEY_TOTAL_MEAL]];
+    NSString *numberPoint = [NSString stringWithFormat:@"%@",[Util objectForKey:KEY_POINT]];
     
     if([numberPoint length]==1)
     {

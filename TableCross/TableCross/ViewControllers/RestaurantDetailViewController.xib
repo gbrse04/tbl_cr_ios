@@ -15,6 +15,7 @@
                 <outlet property="lblDescription" destination="jdy-H3-gMW" id="dZt-dr-0AQ"/>
                 <outlet property="lblName" destination="mqI-hc-cls" id="ThK-CK-F1s"/>
                 <outlet property="lblNumberMeal" destination="iLJ-2V-s7B" id="fvx-68-vTo"/>
+                <outlet property="lblShortDescription" destination="vlu-vk-ja1" id="o95-qf-Ecg"/>
                 <outlet property="scrollViewMain" destination="Zho-3Y-fyb" id="Nvs-J1-wZ3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewBottom" destination="gtb-v9-evM" id="MOI-9h-3Ir"/>
@@ -74,6 +75,12 @@
                                     <rect key="frame" x="8" y="116" width="300" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vlu-vk-ja1">
+                                    <rect key="frame" x="8" y="116" width="300" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>

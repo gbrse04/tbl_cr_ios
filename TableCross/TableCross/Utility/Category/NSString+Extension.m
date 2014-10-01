@@ -19,6 +19,14 @@
 #pragma mark -
 #pragma mark url encode/decode functions
 
+-(NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding {
+	return (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                               (CFStringRef)self,
+                                                               NULL,
+                                                               (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
+                                                               CFStringConvertNSStringEncodingToEncoding(encoding));
+}
+
 - (NSString*)urlencodedValue
 {
 	NSString* urlencodedString = (NSString*)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)self, NULL, CFSTR(":/?#[]@!$&'()*+,;="), kCFStringEncodingUTF8);

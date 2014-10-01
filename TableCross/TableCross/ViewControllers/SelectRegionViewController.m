@@ -13,6 +13,7 @@
 {
     
     NSMutableArray *arrTitle;
+    ComboBox *comboBox;
 }
 
 
@@ -57,7 +58,10 @@
 {
      if([Util valueForKey:KEY_USER_ID] && ![[NSString stringWithFormat:@"%@",[Util valueForKey:KEY_USER_ID]] isEqualToString:@""])
         {
-        
+       
+            
+            [comboBox setComboBoxTitle:[Util valueForKey:KEY_AREA_NAME]];
+            
         START_LOADING;
             [[APIClient sharedClient] login:[Util valueForKey:KEY_EMAIL] pass:[Util valueForKey:KEY_PASSWORD] loginType:[Util valueForKey:KEY_LOGIN_TYPE] areaId:[Util valueForKey:KEY_AREAID] phone:@"" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             STOP_LOADING;
@@ -89,7 +93,7 @@
 
 - (void)bindDataCombobox {
     
-    ComboBox *comboBox = [[ComboBox alloc]initWithFrame:CGRectMake(50, 235, 220, 36)];
+     comboBox = [[ComboBox alloc]initWithFrame:CGRectMake(50, 235, 220, 36)];
     comboBox.delegate = self;
     [comboBox setComboBoxSize:CGSizeMake(220, 44*3)];
     [self.view addSubview:comboBox];
@@ -107,7 +111,7 @@
     if(gIsLogin)
         [self checkLogin];
     else
-      [self goNext];
+       [self goNext];
 }
 -(void)goNext {
     

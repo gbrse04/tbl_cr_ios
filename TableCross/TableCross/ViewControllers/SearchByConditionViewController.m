@@ -48,6 +48,7 @@
     arrRecent = [Util getRecentSearch];
     arrDisplay = [[arrRecent reverseObjectEnumerator] allObjects];
     [self.tblRecentSearch reloadData];
+//    self.txtSearch.text = @"店";
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -120,6 +121,9 @@
     [self makeSearch:[arrDisplay objectAtIndex:indexPath.row]];
 //     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
+
+#pragma mark - SEARCH FUNCTIONS
+
 
 -(void)makeSearch:(NSString*)keyword {
 

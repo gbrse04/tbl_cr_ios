@@ -29,6 +29,7 @@
 @property (retain, nonatomic) NSString *backTitle;
 @property (retain, nonatomic) RestaurantObj *restaurant;
 @property (retain, nonatomic) NSString *restaurantId;
+@property (weak, nonatomic) IBOutlet UILabel *lblShortDescription;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollViewMain;
 @property (weak, nonatomic) IBOutlet UIView *viewTop;

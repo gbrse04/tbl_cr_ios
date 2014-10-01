@@ -74,7 +74,7 @@
 }
 
 - (IBAction)onSearch4Click:(id)sender {
-    SearchHistoryViewController *vc= [[SearchHistoryViewController alloc] initWithNibName:@"SearchHistoryViewController" bundle:nil];
+    SearchBySpecifyViewController *vc= [[SearchBySpecifyViewController alloc] initWithNibName:@"SearchBySpecifyViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
 @end

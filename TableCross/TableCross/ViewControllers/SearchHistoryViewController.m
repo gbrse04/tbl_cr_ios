@@ -35,7 +35,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    self.navigationItem.title = @"履歴";
+    self.navigationItem.title = @"履歴から探す";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

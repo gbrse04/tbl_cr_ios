@@ -15,6 +15,8 @@
 
 @interface NSString (NSStringExtension)
 
+-(NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding;
+
 /**
  * returns urlencoded value of this string
  */

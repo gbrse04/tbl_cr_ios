@@ -10,4 +10,7 @@
 
 @interface SearchBySpecifyViewController : BaseViewController
 
+@property (retain,nonatomic) NSMutableArray *arrData;
+@property (weak, nonatomic) IBOutlet UITextField *txtSearch;
+
 @end

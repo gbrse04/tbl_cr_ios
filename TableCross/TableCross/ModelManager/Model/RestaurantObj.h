@@ -16,6 +16,7 @@
 @property (nonatomic,retain) NSString *openHour;
 
 @property (nonatomic,retain) NSString *description;
+@property (nonatomic,retain) NSString *shortDescription;
 @property (nonatomic,retain) NSString  *latitude;
 @property (nonatomic,retain) NSString *longitude;
 @property (nonatomic,retain) NSString *imageUrl;

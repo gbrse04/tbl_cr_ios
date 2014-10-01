@@ -32,8 +32,9 @@ static NSString * const BASE_URL = kBaseUrl ;
     }
     
     [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
-    [self setDefaultHeader:@"Accept" value:@"application/json,charset=utf-8"];
-    [self setDefaultHeader:@"Content-Type" value:@"application/json,charset=utf-8"];
+    [self setDefaultHeader:@"Accept" value:@"application/json;version=1.0;charset=UTF-8"];
+    //[self setDefaultHeader:@"Accept-Charset" value:@"utf-8"];
+    //[self setDefaultHeader:@"Content-Type" value:@"application/json,charset=utf-8"];
     
     return self;
 }
@@ -68,10 +69,22 @@ static NSString * const BASE_URL = kBaseUrl ;
     [[APIClient sharedClient] getPath:kUrlGetUserInfo parameters:nil success:success failure:failure];
     
 }
+
+
+//keyword = [keyword stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+//
+//NSString *searchUrl = [NSString stringWithFormat:@"%@&searchType=%@&searchKey=%@&longitude=%@&latitude=%@&distance=%@&total=-1",kUrlSearchRestaurant ,searchType,keyword,longitude,lat,radius];
+
 - (void)searchByKeyWord:(NSString*)keyword type:(NSString*)searchType latitude:(NSString*)lat longitude:(NSString*)longitude distance:(NSString*)radius total:(NSString*)total withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
-      [[APIClient sharedClient] getPath:kUrlSearchRestaurant parameters:@{@"searchType": searchType, @"searchKey": keyword, @"longitude":longitude, @"latitude":lat,@"distance":radius,@"total":@"-1"} success:success failure:failure];
     
+//    NSString *searchUrl = [NSString stringWithFormat:@"%@?searchType=%@&searchKey=%@&longitude=%@&latitude=%@&distance=%@&total=-1",kUrlSearchRestaurant ,searchType,keyword,longitude,lat,radius];
+//    
+//    searchUrl = [searchUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+       [[APIClient sharedClient] getPath:kUrlSearchRestaurant parameters:@{@"searchType": searchType, @"searchKey": keyword, @"longitude":longitude, @"latitude":lat,@"distance":radius,@"total":@"-1"} success:success failure:failure];
+//      [[APIClient sharedClient] getPath:searchUrl parameters:nil success:success failure:failure];
 }
+
 - (void)updateUserEmail:(NSString*)email phone:(NSString*)phone birthday:(NSString*)birthday sucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
       [[APIClient sharedClient] getPath:kUrlUpdateProfile parameters:@{@"email": email, @"mobile": phone, @"birthday": birthday} success:success failure:failure];
 }

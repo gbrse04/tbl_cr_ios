@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFHTTPClient.h"
 #import "RestaurantObj.h"
+#import  "NSString+Extension.h"
 
 
 typedef void(^TTResponseSuccess)(AFHTTPRequestOperation *operation, id responseObject);

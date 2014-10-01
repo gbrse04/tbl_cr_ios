@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "SearchHistoryViewController.h"
+#import "SearchBySpecifyViewController.h"
 
 @interface SearchHomeViewController : BaseViewController
 - (IBAction)onSearch1Click:(id)sender;

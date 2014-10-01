@@ -46,7 +46,7 @@
 - (void)bindData {
     if(self.restaurant)
     {
-       
+     
         [self.imgRestaurant setImageWithURL:[NSURL URLWithString:self.restaurant.imageUrl] placeholderImage:[UIImage imageNamed:@"img_restaurant"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
             
             if(image)
@@ -66,12 +66,21 @@
         self.lblName.text =self.restaurant.address;
         self.lblNumberMeal.text =self.restaurant.numberOrder;
         
+        
+        self.lblShortDescription.text = self.restaurant.shortDescription;
+        self.lblShortDescription.numberOfLines = 0 ;
+        [self.lblShortDescription sizeToFit];
+        
         self.lblDescription.text = self.restaurant.description;
         self.lblDescription.numberOfLines = 0 ;
         [self.lblDescription sizeToFit];
+        CGFloat shortDescriptionHeight = [self.restaurant.shortDescription heightOfTextViewToFitWithFont:[UIFont boldSystemFontOfSize:16.0] andWidth:300];
         CGFloat descriptionHeight = [self.restaurant.description heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:16.0] andWidth:300];
         
-        self.viewTop.frame = CGRectMake(self.viewTop.frame.origin.x, self.viewTop.frame.origin.y, self.viewTop.frame.size.width, descriptionHeight + 120);
+        
+        [Util moveDow:self.lblDescription offset:shortDescriptionHeight+10];
+        
+        self.viewTop.frame = CGRectMake(self.viewTop.frame.origin.x, self.viewTop.frame.origin.y, self.viewTop.frame.size.width, descriptionHeight + shortDescriptionHeight + 120);
         
         CGRect currenFrame = self.viewBottom.frame;
         

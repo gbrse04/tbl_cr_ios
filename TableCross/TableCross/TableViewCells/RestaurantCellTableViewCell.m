@@ -44,7 +44,7 @@
         }
         self.lblNumberMeal.text =  obj.numberOrder;
         
-        self.lblDescription.text = obj.description;
+        self.lblDescription.text = obj.shortDescription;
         self.lblDescription.numberOfLines = 0;
         [self.lblDescription sizeToFit];
         

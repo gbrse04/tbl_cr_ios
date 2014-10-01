@@ -36,6 +36,7 @@
 #define kUrlGetUnpushNotification @"getNotifyUnPushList"
 #define kUrlGetRestaurantDetail @"getRestaurantInfo"
 #define kUrlGetShareLink @"getShareLinkApp"
+#define kUrlSendOrder @"order"
 
 
 #define kMessageLoginRequired @"You need login to use this feature.Do you want to login now ?"

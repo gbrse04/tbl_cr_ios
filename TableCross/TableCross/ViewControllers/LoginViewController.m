@@ -385,9 +385,7 @@
         {
             [Util setValue:[responseObject objectForKey:@"shareLink"] forKey:KEY_SHARELINK];
         }
-            
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
 }

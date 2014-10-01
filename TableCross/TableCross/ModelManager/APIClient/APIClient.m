@@ -32,7 +32,8 @@ static NSString * const BASE_URL = kBaseUrl ;
     }
     
     [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
-    [self setDefaultHeader:@"Accept" value:@"application/json"];
+    [self setDefaultHeader:@"Accept" value:@"application/json,charset=utf-8"];
+    [self setDefaultHeader:@"Content-Type" value:@"application/json,charset=utf-8"];
     
     return self;
 }
@@ -91,6 +92,11 @@ static NSString * const BASE_URL = kBaseUrl ;
     
     [[APIClient sharedClient] getPath:kUrlGetShareLink parameters:nil success:success failure:failure];
 }
+
+- (void)sendOrder:(NSString*)restauntId andNumber:(NSString*)numberMeal withsucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+     [[APIClient sharedClient] getPath:kUrlSendOrder parameters:@{@"restaurantId":restauntId,@"quantity":numberMeal} success:success failure:failure];
+}
+
 
 
 #pragma mark - Parser Functions

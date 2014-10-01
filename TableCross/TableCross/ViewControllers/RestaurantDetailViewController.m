@@ -193,6 +193,8 @@
     
     if(buttonIndex ==1)
     {
+        
+        
         NSURL *phoneNumber = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"tel:%@",self.restaurant.phone]];
         [[UIApplication sharedApplication] openURL: phoneNumber];
     }
@@ -202,12 +204,24 @@
 
 
 - (void)onCall:(NSInteger)value {
-   if(IS_IPHONE) {
-       NSURL *phoneNumber = [[NSURL alloc] initWithString: [NSString stringWithFormat:@"tel:%@",self.restaurant.phone]];
-       [[UIApplication sharedApplication] openURL: phoneNumber];
-  } else {
-     [Util showMessage:@"Your device not support this feature" withTitle:@"Error"];
-  }
+    if(IS_IPHONE) {
+        
+        START_LOADING;
+        [[APIClient sharedClient] sendOrder:self.restaurant.restaurantId andNumber:[NSString stringWithFormat:@"%ld",(long)value]  withsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            STOP_LOADING;
+            
+            NSURL *phoneNumber = [[NSURL alloc] initWithString: [NSString stringWithFormat:@"tel:%@",self.restaurant.phone]];
+            [[UIApplication sharedApplication] openURL: phoneNumber];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            STOP_LOADING;
+            SHOW_NETWORK_ERROR;
+        }];
+        
+    } else {
+        
+        [Util showMessage:@"Your device not support this feature" withTitle:@"Error"];
+    }
 }
 
 -(void)showPointOnMap:(RestaurantObj*)resObj
@@ -281,7 +295,7 @@
 - (void)popoverListView:(UIPopoverListView *)popoverListView
      didSelectIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *msg = @"Please go and enjoy ";
+    NSString *msg = [self getShareLinkRestaurant:self.restaurant];
         NSString *url = self.restaurant.shareLink;
     switch (indexPath.row) {
         case 0:
@@ -291,13 +305,13 @@
             [self postToTwitterWithText:msg andImage:nil andURL:url];
             break;
         case 2:
-            [self postToLineWithText:shareAppUrl];
+            [self postToLineWithText:msg];
             break;
         case 3:
-            [self openSMS:[NSString stringWithFormat:@"%@ :%@",msg,url]];
+            [self openSMS:msg];
             break;
         case 4:
-           [self openMailWithBody:[NSString stringWithFormat:@"%@ :%@",msg,url] andSubject:@"Share Restaurant"];
+           [self openMailWithBody:msg andSubject:kAppNameManager];
             break;
         default:
             break;

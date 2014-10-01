@@ -33,6 +33,7 @@ typedef void(^TTResponseFailure)(AFHTTPRequestOperation *operation, NSError *err
 - (void)getListUnpushNotifiycationWithsucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 - (void)getRestaurantInfo:(NSString*)resId withsucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 - (void)getShareLinkWithsucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
+- (void)sendOrder:(NSString*)userId andNumber:(NSString*)numberMeal withsucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 
 //+(NSMutableArray)parserListAres:(id)dict;
 +(NSMutableArray*)parserListRestaunt:(id)dict;

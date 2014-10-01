@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setupTitle:@"チェンジパス" isShowSetting:NO andBack:YES];
+    [self setupTitle:@"パスワード変更" isShowSetting:NO andBack:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated {

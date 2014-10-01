@@ -42,17 +42,20 @@
 
 - (IBAction)onShareFacebook:(id)sender {
     
-    [self postToFacebookWithText:shareAppMessage andImage:nil andURL:shareAppUrl];
+    //[self postToFacebookWithText:shareAppMessage andImage:nil andURL:shareAppUrl];
+    [self postToFacebookWithText:[self getShareLinkApp] andImage:nil andURL:nil];
 }
 
 - (IBAction)onShareTwitter:(id)sender {
-    [self postToTwitterWithText:shareAppMessage andImage:nil andURL:shareAppUrl];
+    //[self postToTwitterWithText:shareAppMessage andImage:nil andURL:shareAppUrl];
+    [self postToFacebookWithText:[self getShareLinkApp] andImage:nil andURL:nil];
 }
 
 - (IBAction)onShareGooglePlus:(id)sender {
     
 //    [Util showMessage:@"Coming soon" withTitle:@"Notice"];
-    [self postToLineWithText:shareAppUrl];
+    //[self postToLineWithText:shareAppUrl];
+    [self postToLineWithText:[self getShareLinkApp]];
 }
 
 - (IBAction)onShareSMS:(id)sender {
@@ -67,8 +70,8 @@
     NSArray *recipients = [NSArray arrayWithObjects: nil];
     
     //set message text
-    NSString * message = [NSString stringWithFormat: @"%@ : %@",shareAppMessage,shareAppUrl];
-    
+    //NSString * message = [NSString stringWithFormat: @"%@ : %@",shareAppMessage,shareAppUrl];
+    NSString * message = [self getShareLinkApp];
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
     messageController.messageComposeDelegate = self;
     [messageController setRecipients:recipients];
@@ -100,7 +103,7 @@
 
 - (IBAction)onShareEmail:(id)sender {
     
-    [self openMailWithBody:[NSString stringWithFormat:@"%@ : %@",shareAppMessage,shareAppUrl] andSubject:@"TableCross app"];
+    [self openMailWithBody:[self getShareLinkApp] andSubject:kAppNameManager];
     
 }
 @end

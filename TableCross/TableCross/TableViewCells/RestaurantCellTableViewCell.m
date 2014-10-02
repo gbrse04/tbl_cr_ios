@@ -35,12 +35,14 @@
         
         self.lblAddress.text = obj.address;
         self.lblName.text =obj.name;
+        self.lblAddress.numberOfLines= 0;
+        [self.lblAddress sizeToFit];
         self.lblDateTime.text = obj.orderDate;
         if([obj.orderDate isEqualToString:@""])
         {
             [self.imgClock setHidden:TRUE];
-            [Util moveUp:self.lblNumberMeal offset:20];
-             [Util moveUp:self.imgNumberMeal offset:20];
+            [Util moveUp:self.lblNumberMeal offset:15];
+             [Util moveUp:self.imgNumberMeal offset:15];
         }
         self.lblNumberMeal.text =  obj.numberOrder;
         

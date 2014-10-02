@@ -43,6 +43,40 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if(self.isShowRightButton)
+    {
+        
+        if(gIsLogin)
+        {
+            
+            UIButton *settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            UIImage *settingImage = [UIImage imageNamed:@"btn_setting.png"]  ;
+            
+            [settingBtn setBackgroundImage:settingImage forState:UIControlStateNormal];
+            [settingBtn addTarget:self action:@selector(gotoSetting) forControlEvents:UIControlEventTouchUpInside];
+            settingBtn.frame = CGRectMake(0, 0, 20, 20);
+            UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:settingBtn] ;
+            self.navigationItem.rightBarButtonItem = backButton;
+            
+        } else {
+            
+            UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            [loginBtn setTitle:@"ログイン" forState:UIControlStateNormal];
+            [loginBtn.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
+            [loginBtn addTarget:self action:@selector(backToLogin) forControlEvents:UIControlEventTouchUpInside];
+            CGSize expectedLabelSize = [@"ログイン" sizeWithFont:[UIFont systemFontOfSize:14.0]];
+            loginBtn.frame =CGRectMake(0, 0, expectedLabelSize.width+5, expectedLabelSize.height);
+            UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:loginBtn] ;
+            self.navigationItem.rightBarButtonItem = backButton;
+            
+        }
+        
+    }
+}
 -(void)viewDidAppear:(BOOL)animated {
     
     
@@ -59,9 +93,14 @@
     if(backTitle)
     [self.navigationController.navigationBar.backItem setTitle:backTitle];
 
+    
+   
+    
 }
 
 - (void) setupTitle:(NSString*)title isShowSetting:(BOOL)isShowSetting andBack:(BOOL)isShowBack {
+    
+    self.isShowRightButton = isShowSetting;
     
     self.navigationItem.title = title;
    self.navigationItem.hidesBackButton = NO;
@@ -74,17 +113,7 @@
         [[self.navigationController.navigationBar.subviews lastObject] setTintColor:[UIColor whiteColor]];
    }
     
-  if(isShowSetting)
-    {
-        UIButton *settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        UIImage *settingImage = [UIImage imageNamed:@"btn_setting.png"]  ;
-        
-        [settingBtn setBackgroundImage:settingImage forState:UIControlStateNormal];
-        [settingBtn addTarget:self action:@selector(gotoSetting) forControlEvents:UIControlEventTouchUpInside];
-        settingBtn.frame = CGRectMake(0, 0, 20, 20);
-        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:settingBtn] ;
-        self.navigationItem.rightBarButtonItem = backButton;
-    }
+ 
 }
 
 - (void) setupTitle:(NSString*)title isShowSetting:(BOOL)showSetting andBack:(BOOL)isShowBack andBackTitle:(NSString*)backStr{
@@ -108,8 +137,9 @@
     UIButton *settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [settingBtn setTitle:[Util valueForKey:KEY_AREA_NAME] forState:UIControlStateNormal];
     [settingBtn addTarget:self action:@selector(gotoSelectRegion) forControlEvents:UIControlEventTouchUpInside];
-    CGSize expectedLabelSize = [[Util valueForKey:KEY_AREA_NAME] sizeWithFont:[UIFont systemFontOfSize:16.0]];
-    settingBtn.frame =CGRectMake(0, 0, expectedLabelSize.width+10, expectedLabelSize.height);
+    [settingBtn.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
+    CGSize expectedLabelSize = [[Util valueForKey:KEY_AREA_NAME] sizeWithFont:[UIFont systemFontOfSize:14.0]];
+    settingBtn.frame =CGRectMake(0, 0, expectedLabelSize.width+5, expectedLabelSize.height);
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:settingBtn] ;
     self.navigationItem.leftBarButtonItem = backButton;
 }
@@ -141,6 +171,11 @@
         
         [Util showMessage:kMessageLoginRequired withTitle:kAppNameManager cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK" delegate:self andTag:1];
 }
+-(void)gotoLogin {
+   
+    [self backToLogin];
+    
+   }
 
 #pragma mark - Share functions
 #pragma mark - Share SMS

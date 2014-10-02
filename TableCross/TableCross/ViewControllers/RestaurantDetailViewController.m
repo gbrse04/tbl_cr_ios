@@ -38,7 +38,7 @@
     [self.scrollViewMain setContentSize:CGSizeMake(320, 460)];
     
     [self setupTitle:@"お店の情報" isShowSetting:YES andBack:YES];
-    [self addShareButton];
+    
     shareAppUrl = [Util valueForKey:KEY_SHARELINK];
     [self bindData];
     
@@ -116,6 +116,8 @@
 	[super viewWillAppear:animated];
 	keyBoardController=[[UIKeyboardViewController alloc] initWithControllerDelegate:self];
 	[keyBoardController addToolbarToKeyboard];
+    
+    [self addShareButton];
 }
 
 - (void)didReceiveMemoryWarning

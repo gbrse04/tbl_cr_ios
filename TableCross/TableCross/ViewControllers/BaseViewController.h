@@ -13,6 +13,9 @@
 
 @interface BaseViewController : UIViewController<MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate,UIAlertViewDelegate>
 
+@property (assign,nonatomic) BOOL isShowRightButton;
+
+
 - (void) setupTitle:(NSString*)title isShowSetting:(BOOL)showSetting andBack:(BOOL)isShowBack;
 - (void) setupTitle:(NSString*)title isShowSetting:(BOOL)showSetting andBack:(BOOL)isShowBack andBackTitle:(NSString*)title;
 
@@ -29,5 +32,6 @@
 -(NSString*)getShareLinkRestaurant:(RestaurantObj*)res;
 -(NSString*)getShareLinkRestaurantForLine:(RestaurantObj*)res;
 -(NSString*)getShareLinkApp;
+
 
 @end

@@ -40,6 +40,13 @@
 }
 -(void)setupData{
     
+    if(!gIsLogin)
+    {
+        
+        [Util setValue:@"0" forKey:KEY_POINT];
+        [Util setValue:@"0" forKey:KEY_TOTAL_MEAL_VIAAPP];
+    }
+    
     NSString *numberPoint = [NSString stringWithFormat:@"%@",[Util objectForKey:KEY_POINT]];
     
     if([numberPoint length]==1)

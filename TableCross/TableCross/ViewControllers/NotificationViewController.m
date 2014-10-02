@@ -117,7 +117,7 @@
     
     cell.lblTitle.text = [dict objectForKey:@"notifyShort"];
     cell.lblTime.text = [dict objectForKey:@"notifyDate"];
-    cell.lblContent.text= [dict objectForKey:@"notifyLong"];
+//    cell.lblContent.text= [dict objectForKey:@"notifyLong"];
     
     [cell.contentView setBackgroundColor:[UIColor clearColor]];
     return cell;

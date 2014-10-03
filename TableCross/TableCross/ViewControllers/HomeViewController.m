@@ -262,34 +262,8 @@
 {
     [self.navigationController setNavigationBarHidden:YES];
     [self.navigationController pushViewController:_tabbarController animated:YES];
-    [self getNumberNotificationUnPush];
+//    [self getNumberNotificationUnPush];
 
-}
-
-
-//Refresh Number Unpush each REFRESH_TIME
-
--(void)startTrackingNumberUnpush{
-    
-    [NSTimer scheduledTimerWithTimeInterval:TIME_REFRESH target:self selector:@selector(getNumberNotificationUnPush) userInfo:nil repeats:YES];
-
-}
-
--(void)getNumberNotificationUnPush{
-    
-    [[APIClient sharedClient] getListUnpushNotifiycationWithsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        if([[responseObject objectForKey:@"success"] boolValue])
-        {
-            NSInteger numberBadge = [[responseObject objectForKey:@"items"] count];
-            // Set Badge number
-            if(numberBadge>0)
-                [[super.tabBarController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = [NSString stringWithFormat:@"%d",numberBadge];
-        }
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-    }];
 }
 
 

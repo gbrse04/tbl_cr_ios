@@ -44,7 +44,44 @@
     
     [self addBackLocationButton];
     
+    [self startTrackingNumberUnpush];
+    
 }
+
+//Refresh Number Unpush each REFRESH_TIME
+
+-(void)startTrackingNumberUnpush{
+    
+    [self getNumberNotificationUnPush];
+    [NSTimer scheduledTimerWithTimeInterval:TIME_REFRESH target:self selector:@selector(getNumberNotificationUnPush) userInfo:nil repeats:YES];
+    
+}
+
+-(void)getNumberNotificationUnPush{
+    
+    if(gIsLogin)
+        
+    {
+    
+    [[APIClient sharedClient] getListUnpushNotifiycationWithsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"Response get unpush : %@",responseObject);
+        if([[responseObject objectForKey:@"success"] boolValue])
+        {
+            NSInteger numberBadge = [[responseObject objectForKey:@"items"] count];
+            // Set Badge number
+            if(numberBadge>0)
+                [[super.tabBarController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = [NSString stringWithFormat:@"%d",numberBadge];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    }
+}
+
+
+
 -(void)viewWillAppear:(BOOL)animated
 {
     self.navigationItem.title = @"検索";

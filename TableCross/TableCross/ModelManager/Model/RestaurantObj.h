@@ -15,7 +15,7 @@
 @property (nonatomic,retain) NSString *address;
 @property (nonatomic,retain) NSString *openHour;
 
-@property (nonatomic,retain) NSString *description;
+@property (nonatomic,retain) NSString *descriptionRestaurant;
 @property (nonatomic,retain) NSString *shortDescription;
 @property (nonatomic,retain) NSString  *latitude;
 @property (nonatomic,retain) NSString *longitude;

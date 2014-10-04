@@ -10,29 +10,29 @@
 	<string>TableCross</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E20B966A-7C11-4508-B1FA-3957FF40D20D</key>
+		<key>5D04B990AE065EED56E555410A4F7048378C9AFB</key>
 		<string>https://github.com/gbrse04/tbl_cr_ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>TableCross/TableCross.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>E20B966A-7C11-4508-B1FA-3957FF40D20D</key>
+		<key>5D04B990AE065EED56E555410A4F7048378C9AFB</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/gbrse04/tbl_cr_ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E20B966A-7C11-4508-B1FA-3957FF40D20D</string>
+	<string>5D04B990AE065EED56E555410A4F7048378C9AFB</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E20B966A-7C11-4508-B1FA-3957FF40D20D</string>
+			<string>5D04B990AE065EED56E555410A4F7048378C9AFB</string>
 			<key>IDESourceControlWCCName</key>
 			<string>TableCrossApp</string>
 		</dict>

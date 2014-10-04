@@ -50,24 +50,6 @@
 }
 
 
--(void)createFakeData {
-    gArrRestaurant = [[NSMutableArray alloc] init];
-    
-    RestaurantObj *obj = [[RestaurantObj alloc] init];
-    
-    obj.name = @"McDonald's Kagurazaka ";
-    obj.address = @"124-6 Yaraicho Shinjuku, Tokyo 162-0805";
-    obj.imageUrl = @"http://www.sott.net/image/s5/109922/medium/mcdonalds.jpg";
-    obj.description = @"Classic, long-running fast-food chain known for its burgers, fries & shakes";
-    obj.phone = @"+81 3-5206-1836";
-    obj.website = @"http://www.mcdonalds.co.jp/";
-    obj.orderDate = @"2014/09/23";
-    obj.latitude = @"35.7037931";
-    obj.longitude = @"139.7402782";
-    
-    [gArrRestaurant addObject:obj];
-}
-
 
 
 

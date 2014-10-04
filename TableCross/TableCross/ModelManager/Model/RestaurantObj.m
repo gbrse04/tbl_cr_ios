@@ -25,7 +25,7 @@
         self.phone = [Validator getSafeString:[dict objectForKey:@"phone"]];
         self.latitude = [Validator getSafeString:[dict objectForKey:@"latitude"]];
         self.longitude = [Validator getSafeString:[dict objectForKey:@"longitude"]];
-        self.description = [Validator getSafeString:[dict objectForKey:@"description"]];
+        self.descriptionRestaurant = [Validator getSafeString:[dict objectForKey:@"description"]];
         self.shortDescription = [Validator getSafeString:[dict objectForKey:@"shortDescription"]];
         self.imageUrl = [Validator getSafeString:[dict objectForKey:@"imageUrl"]];
         self.orderDate = [Validator getSafeString:[dict objectForKey:@"orderDate"]];

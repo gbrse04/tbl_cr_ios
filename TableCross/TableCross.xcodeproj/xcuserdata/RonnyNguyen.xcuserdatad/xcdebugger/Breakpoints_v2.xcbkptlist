@@ -57,12 +57,12 @@
                   symbolName = "-[SearchLocationViewController makeSearch:distance:]"
                   moduleName = "TableCross"
                   urlString = "file:///Volumes/DATA/NextopDropbox/Dropbox/Free/HienPT/TableCrossApp/TableCross/TableCross/ViewControllers/SearchLocationViewController.m"
-                  timestampString = "433959605.918902"
+                  timestampString = "434049097.142671"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "177"
                   endingLineNumber = "177"
-                  offsetFromSymbolStart = "164">
+                  offsetFromSymbolStart = "144">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -71,12 +71,12 @@
                   symbolName = "__52-[SearchLocationViewController makeSearch:distance:]_block_invoke"
                   moduleName = "TableCross"
                   urlString = "file:///Volumes/DATA/NextopDropbox/Dropbox/Free/HienPT/TableCrossApp/TableCross/TableCross/ViewControllers/SearchLocationViewController.m"
-                  timestampString = "433959605.919098"
+                  timestampString = "434049097.142851"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "177"
                   endingLineNumber = "177"
-                  offsetFromSymbolStart = "92">
+                  offsetFromSymbolStart = "71">
                </Location>
             </Locations>
          </BreakpointContent>

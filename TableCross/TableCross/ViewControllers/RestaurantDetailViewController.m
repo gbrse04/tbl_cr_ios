@@ -71,11 +71,11 @@
         self.lblShortDescription.numberOfLines = 0 ;
         [self.lblShortDescription sizeToFit];
         
-        self.lblDescription.text = self.restaurant.description;
+        self.lblDescription.text = self.restaurant.descriptionRestaurant;
         self.lblDescription.numberOfLines = 0 ;
         [self.lblDescription sizeToFit];
         CGFloat shortDescriptionHeight = [self.restaurant.shortDescription heightOfTextViewToFitWithFont:[UIFont boldSystemFontOfSize:16.0] andWidth:300];
-        CGFloat descriptionHeight = [self.restaurant.description heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:16.0] andWidth:300];
+        CGFloat descriptionHeight = [self.restaurant.descriptionRestaurant heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:16.0] andWidth:300];
         
         
         [Util moveDow:self.lblDescription offset:shortDescriptionHeight+10];

@@ -14,6 +14,7 @@
 #import "ConfirmView.h"
 #import "UIPopoverListView.h"
 #import "NSString+TextSize.h"
+#import "MapViewController.h"
 
 
 @interface RestaurantDetailViewController : BaseViewController<UIAlertViewDelegate,UIKeyboardViewControllerDelegate,PMCalendarControllerDelegate,IQActionSheetPickerView,ConfirmDelegate,UIPopoverListViewDelegate,UIPopoverListViewDataSource>

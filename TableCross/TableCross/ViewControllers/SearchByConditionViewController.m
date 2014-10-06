@@ -62,7 +62,7 @@
     
     [super viewWillAppear:animated];
     
-    self.navigationItem.title = @"履歴検索";
+//    self.navigationItem.title = @"履歴検索";
 }
 
 - (void)didReceiveMemoryWarning

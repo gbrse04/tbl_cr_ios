@@ -382,7 +382,11 @@
         NSInteger tabitem = _tabbarController.selectedIndex;
         [[tabBarController.viewControllers objectAtIndex:tabitem] popToRootViewControllerAnimated:YES];
         if(tabitem == 0)
+        {
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_RELOAD_NOTIFICATION object:nil];
+            
+            
+        }
 
     }
     else

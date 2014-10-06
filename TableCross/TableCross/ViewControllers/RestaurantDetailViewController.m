@@ -135,7 +135,13 @@
 - (IBAction)onShowLocation:(id)sender {
     
     //[Util showMessage:@"Coming soon" withTitle:@"Notice"];
-    [self showPointOnMap:self.restaurant];
+//    [self showPointOnMap:self.restaurant];
+    
+    MapViewController *vc= [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+    vc.restaurant= self.restaurant;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 - (IBAction)onShowCalendar:(id)sender {

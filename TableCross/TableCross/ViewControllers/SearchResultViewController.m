@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setupTitle:@"履歴" isShowSetting:YES andBack:YES andBackTitle:self.backTitle];
+    [self setupTitle:@"履歴結果" isShowSetting:YES andBack:YES andBackTitle:self.backTitle];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {

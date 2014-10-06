@@ -36,7 +36,7 @@ int numberResult;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setupTitle:@"履現在地から探す歴" isShowSetting:YES andBack:YES];
+    [self setupTitle:@"現在地から探す" isShowSetting:YES andBack:YES];
     [self.txtSearch setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     numberResult = 0;
     currentDistance = @"1.5";
@@ -53,7 +53,7 @@ int numberResult;
     
     [super  viewWillAppear:animated];
     // Set title
-    self.navigationItem.title=@"履現在地から探す歴";
+    self.navigationItem.title=@"現在地から探す";
 }
 
 -(void)viewWillDisappear:(BOOL)animated {

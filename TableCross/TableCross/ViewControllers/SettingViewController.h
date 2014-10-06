@@ -25,6 +25,7 @@
 - (IBAction)onSaveBottom:(id)sender;
 - (IBAction)onChangePass:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnChangePass;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollMain;
 @property (weak, nonatomic) IBOutlet CustomizeTextField *txtPhone;

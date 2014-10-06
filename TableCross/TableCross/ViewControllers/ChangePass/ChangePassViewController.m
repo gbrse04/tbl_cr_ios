@@ -66,6 +66,8 @@
         
         if([[responseObject objectForKey:@"success"] boolValue])
         {
+            [Util setValue:self.txtNewPass.text forKey:KEY_PASSWORD];
+            
             [Util showMessage:@"Your password was changed successfully" withTitle:kAppNameManager];
             [self.navigationController popViewControllerAnimated:YES];
         }

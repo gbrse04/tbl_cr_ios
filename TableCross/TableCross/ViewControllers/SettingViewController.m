@@ -77,7 +77,12 @@
 	[super viewWillAppear:animated];
     keyBoardController=[[UIKeyboardViewController alloc] initWithControllerDelegate:self];
 	[keyBoardController addToolbarToKeyboard];
-}
+    
+    if([[Util valueForKey:KEY_LOGIN_TYPE] isEqualToString:@"1"])
+        [self.btnChangePass setEnabled:FALSE];
+    else
+        [self.btnChangePass setEnabled:TRUE];
+ }
 
 
 #pragma mark - IBOutlet Actions

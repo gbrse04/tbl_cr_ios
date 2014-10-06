@@ -41,6 +41,7 @@
     [self reloadData];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:NOTIFY_RELOAD_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:NOTIF_LOGOUT object:nil];
 
 }
 
@@ -48,17 +49,50 @@
 {
   
     [super viewDidAppear:animated];
-   }
+}
+- (void)logout {
+    if(self.arrNotification)
+        [self.arrNotification removeAllObjects];
+    [self.tblNotification reloadData];
+}
 - (void)reloadData {
     
     if(self.arrNotification)
         [self.arrNotification removeAllObjects];
+    [self.tblNotification reloadData];
     currentPage= 0;
     if(gIsLogin)
+    {
         [self getDataWithPage:currentPage];
-
+        
+        [self getUserInfo];
+   }
     
 }
+
+
+-(void)getUserInfo {
+    
+    START_LOADING;
+    [[APIClient sharedClient] getUserInfoWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if([[responseObject objectForKey:@"success"] boolValue])
+        {
+            [Util setValue:[responseObject objectForKey:@"mobile"] forKey:KEY_PHONE];
+            [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
+            [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
+            [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_TOTAL_MEAL];
+            [Util setValue:[responseObject objectForKey:@"totalPoint"] forKey:KEY_TOTAL_MEAL_VIAAPP];
+            [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
+            
+        }
+        STOP_LOADING;
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        STOP_LOADING;
+    }];
+}
+
 -(void)getDataWithPage:(NSInteger)page {
     
     START_LOADING;

@@ -55,8 +55,7 @@
     else
     {
         [self getHomeRestaurant];
-        if(gIsLogin)
-        [self getUserInfo];
+       
     }
    [self addBackLocationButton];
 }
@@ -68,6 +67,9 @@
     [[APIClient sharedClient] getRestaurantInfo:@"-1" withsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         STOP_LOADING;
+        
+        if(gIsLogin)
+            [self getUserInfo];
         
         if([[responseObject objectForKey:@"success"] boolValue])
         {

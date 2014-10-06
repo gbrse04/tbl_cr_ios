@@ -81,6 +81,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     RestaurantDetailViewController *detail=[[RestaurantDetailViewController alloc] initWithNibName:@"RestaurantDetailViewController" bundle:nil];
+    detail.restaurant=  [self.arrData objectAtIndex:indexPath.row];
     detail.backTitle = @"特集結果";
     [self.navigationController pushViewController:detail animated:YES];
 }

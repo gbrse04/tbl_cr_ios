@@ -26,9 +26,8 @@
     
     if(obj)
     {
-                
+        
         [self.imgRestaurant setImageWithURL:[NSURL URLWithString:obj.imageUrl] placeholderImage:[UIImage imageNamed:@"img_restaurant"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-           
             if(image)
                [self.imgRestaurant setImage:image];
         }];
@@ -41,8 +40,8 @@
         if([obj.orderDate isEqualToString:@""])
         {
             [self.imgClock setHidden:TRUE];
-            [Util moveUp:self.lblNumberMeal offset:15];
-             [Util moveUp:self.imgNumberMeal offset:15];
+//            [Util moveUp:self.lblNumberMeal offset:15];
+//            [Util moveUp:self.imgNumberMeal offset:15];
         }
         self.lblNumberMeal.text =  obj.numberOrder;
         

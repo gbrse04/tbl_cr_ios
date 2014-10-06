@@ -172,9 +172,8 @@ int numberResult;
 
 -(void)makeSearch:(NSString*)keyword distance:(NSString*)distance{
     
-    
     START_LOADING;
-    [[APIClient sharedClient] searchByKeyWord:keyword type:@"1" latitude:[NSString stringWithFormat:@"%f",gCurrentLatitude] longitude:[NSString stringWithFormat:@"%f",gCurrentLongitude] distance:distance total:@"-1" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[APIClient sharedClient] searchByKeyWord:keyword type:@"1" latitude:[NSString stringWithFormat:@"%f",gCurrentLatitude] longitude:[NSString stringWithFormat:@"%f",gCurrentLongitude] distance:distance total:@"-1"  category:@""  withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSLog(@"Response : %@",responseObject);
         STOP_LOADING;
         if([[responseObject objectForKey:@"success"] boolValue])

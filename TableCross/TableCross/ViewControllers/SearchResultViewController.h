@@ -18,5 +18,4 @@
 @property (assign,nonatomic) SearchType searchType;
 
 
-
 @end

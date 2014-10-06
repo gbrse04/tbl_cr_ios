@@ -27,12 +27,18 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setupTitle:@"履歴結果" isShowSetting:YES andBack:YES andBackTitle:self.backTitle];
+    NSString *title = (self.searchType == SearchByCC)?@"特集から探す":@"履歴結果";
+    
+    [self setupTitle:title isShowSetting:YES andBack:YES andBackTitle:self.backTitle];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationItem.title = @"履歴結果" ;
+    if(self.searchType == SearchByCC)
+        self.navigationItem.title = @"特集結果" ;
+    else
+        
+        self.navigationItem.title = @"履歴結果" ;
 }
 
 - (void)didReceiveMemoryWarning

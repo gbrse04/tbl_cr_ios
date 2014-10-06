@@ -28,6 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setupTitle:@"特集から探す" isShowSetting:YES andBack:YES];
+     [self makeSearch];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,48 +42,145 @@
     
     [super  viewWillAppear:animated];
     // Set title
+    if(!self.currentDict)
+        self.navigationItem.title=@"特集から探す";
+    else
+    {
+        self.navigationItem.title = [self.currentDict objectForKey:@"name"];
+        [self addSearchAllInParentCategory];
+        self.navigationItem.backBarButtonItem.title = @"戻る";
+    }
     
-    self.navigationItem.title=@"特集から探す";
+    
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.navigationItem.title=@"現在地結果";
+    if(self.currentDict)
+        [self.navigationController.navigationBar.backItem setTitle:@"戻る"];
 }
 
-#pragma mark  - UITextField Delegate
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    if(![self.txtSearch.text isEqualToString:@""])
-    {
-        
-        [self makeSearch:self.txtSearch.text distance:@"1"];
-      
-    }
-    return  YES;
+-(void)makeSearch{
     
-}
-
--(void)makeSearch:(NSString*)keyword distance:(NSString*)distance{
-    
+    if(!self.categoryId)
+        self.categoryId= @"";
     
     START_LOADING;
-    [[APIClient sharedClient] searchByKeyWord:keyword type:@"1" latitude:[NSString stringWithFormat:@"%f",gCurrentLatitude] longitude:[NSString stringWithFormat:@"%f",gCurrentLongitude] distance:distance total:@"-1" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Response : %@",responseObject);
+    [[APIClient sharedClient] getRestaurantByCategory:self.categoryId withsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
         STOP_LOADING;
         if([[responseObject objectForKey:@"success"] boolValue])
             
         {
-            self.arrData = [APIClient parserListRestaunt:responseObject];
-//            if([self.arrData count]== 0)
-//            {
-                [Util showMessage:@"No result found" withTitle:@"Result"];
-                return ;
-//            }
-                   }
+            self.arrData = [responseObject objectForKey:@"items"];
+            [self.tblData reloadData];
+        }
         else
             [Util showError:responseObject];
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        STOP_LOADING;
+        SHOW_NETWORK_ERROR;
+        
+    }];
+    
+    
+ }
+
+
+#pragma mark - Tableview Delegate and DataSources
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.arrData count];
+    //    return 10;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *simpleTableIdentifier = @"SimpleTableItem";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+    
+    [cell.contentView setBackgroundColor:[UIColor clearColor]];
+    NSDictionary *dict =(NSDictionary*)[self.arrData objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text =[dict valueForKey:@"name"];
+    if(![[dict objectForKey:@"isChild"] boolValue])
+   
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    else
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSDictionary *dict =(NSDictionary*)[self.arrData objectAtIndex:indexPath.row];
+    // Has child
+    if(![[dict objectForKey:@"isChild"] boolValue])
+    {
+        SearchBySpecifyViewController *vc =[[SearchBySpecifyViewController alloc] initWithNibName:@"SearchBySpecifyViewController" bundle:nil];
+        vc.categoryId = [[dict objectForKey:@"id"] stringValue];
+        vc.currentDict = dict;
+        if(self.currentDict)
+        self.navigationItem.title =[self.currentDict objectForKey:@"name"];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+    // No child
+    else
+    {
+        [self makeSearch:[dict valueForKey:@"id"]];
+    }
+}
+
+- (void)addSearchAllInParentCategory {
+    
+    UIButton *settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [settingBtn setTitle:[Util valueForKey:KEY_AREA_NAME] forState:UIControlStateNormal];
+    [settingBtn addTarget:self action:@selector(searchParent) forControlEvents:UIControlEventTouchUpInside];
+    [settingBtn.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
+    CGSize expectedLabelSize = [[Util valueForKey:KEY_AREA_NAME] sizeWithFont:[UIFont systemFontOfSize:14.0]];
+    settingBtn.frame =CGRectMake(0, 0, expectedLabelSize.width+5, expectedLabelSize.height);
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:settingBtn] ;
+    self.navigationItem.rightBarButtonItem= backButton;
+}
+
+- (void)searchParent {
+    
+    [self makeSearch:[self.currentDict objectForKey:@"id"]];
+}
+
+
+
+-(void)makeSearch:(NSString*)categoryId {
+    
+    START_LOADING;
+    [[APIClient sharedClient] searchByKeyWord:@"" type:@"3" latitude:@"" longitude:@"" distance:@"" total:@"-1" category:categoryId withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        STOP_LOADING;
+        
+        NSLog(@"Response :%@ ",responseObject);
+        SearchResultViewController *vc =[[SearchResultViewController alloc] initWithNibName:@"SearchResultViewController" bundle:nil];
+        vc.searchType = SearchByCC ;
+        
+        
+        vc.arrData = [APIClient parserListRestaunt:responseObject];
+        // vc.arrData = gArrRestaurant;
+        if([vc.arrData count]==0)
+            [Util showMessage:@"No result found" withTitle:@"Notice"];
+        else
+        {
+            [self.navigationController pushViewController:vc animated:YES];
+        }
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -91,6 +189,5 @@
     }];
     
 }
-
 
 @end

@@ -51,4 +51,13 @@
         
     }
 }
+-(void)fillData:(RestaurantObj*)obj isShowContent:(BOOL)showContent {
+    [self fillData:obj];
+    if(!showContent)
+    {
+        self.lblDescription.text = @"";
+        [self.lblDescription setHidden:YES];
+    }
+    
+}
 @end

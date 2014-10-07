@@ -67,7 +67,7 @@
         cell = [nib objectAtIndex:0];
     }
     
-    [cell fillData:[self.arrData  objectAtIndex:indexPath.row]];
+    [cell fillData:[self.arrData  objectAtIndex:indexPath.row] isShowContent:FALSE];
     
     [cell.contentView setBackgroundColor:[UIColor clearColor]];
     return cell;
@@ -75,12 +75,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat  heightDescription = [((RestaurantObj*)[self.arrData objectAtIndex:indexPath.row]).shortDescription heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:16.0] andWidth:300];
-    return heightDescription + 124;
+//    CGFloat  heightDescription = [((RestaurantObj*)[self.arrData objectAtIndex:indexPath.row]).shortDescription heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:16.0] andWidth:300];
+    return 130;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     RestaurantDetailViewController *detail=[[RestaurantDetailViewController alloc] initWithNibName:@"RestaurantDetailViewController" bundle:nil];
+    
+    
     detail.restaurant=  [self.arrData objectAtIndex:indexPath.row];
     detail.backTitle = @"特集結果";
     [self.navigationController pushViewController:detail animated:YES];

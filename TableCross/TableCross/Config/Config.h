@@ -81,6 +81,7 @@
 #define  KEY_POINT @"KEY_POINT"
 #define  KEY_TOTAL_MEAL @"orderCount"
 #define  KEY_TOTAL_MEAL_VIAAPP @"totalOrder"
+#define  KEY_TOTAL_SHARE @"totalUserShare"
 #define  KEY_USER_ID @"KEY_USER_ID"
 #define  KEY_LOGIN_TYPE @"LOGIN_TYPE"
 #define  KEY_SESSION_ID @"KEY_SESSION_ID"

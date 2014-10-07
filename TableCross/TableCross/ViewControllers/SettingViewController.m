@@ -163,8 +163,8 @@
                     [Util setValue:@"0" forKey:KEY_POINT];
                     [Util setValue:@"0" forKey:KEY_TOTAL_MEAL_VIAAPP];
                     [Util setValue:@"" forKey:KEY_USER_ID];
-                    [Util setValue:@"" forKey:KEY_AREA_NAME];
-                    [Util setValue:@"" forKey:KEY_AREAID];
+//                    [Util setValue:@"" forKey:KEY_AREA_NAME];
+//                    [Util setValue:@"" forKey:KEY_AREAID];
                     [Util setValue:@"" forKey:KEY_SHARELINK];
                     for (UINavigationController  *vc in [self.tabBarController viewControllers]) {
                         

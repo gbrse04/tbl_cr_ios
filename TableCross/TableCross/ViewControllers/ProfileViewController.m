@@ -45,6 +45,8 @@
         
         [Util setValue:@"0" forKey:KEY_POINT];
         [Util setValue:@"0" forKey:KEY_TOTAL_MEAL_VIAAPP];
+        [Util setValue:@"0" forKey:KEY_TOTAL_SHARE];
+        
     }
     
     NSString *numberPoint = [NSString stringWithFormat:@"%@",[Util objectForKey:KEY_POINT]];
@@ -95,7 +97,7 @@
         
     }
     
-    self.lblInfo.text = [NSString stringWithFormat:@"あなた紹介したユーザーは%@人です ",[Util valueForKey:KEY_TOTAL_MEAL_VIAAPP]];
+    self.lblInfo.text = [NSString stringWithFormat:@"あなた紹介したユーザーは%@人です ",[Util valueForKey:KEY_TOTAL_SHARE]];
     
 
     

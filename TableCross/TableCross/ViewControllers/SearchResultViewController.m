@@ -36,9 +36,10 @@
     [super viewWillAppear:animated];
     if(self.searchType == SearchByCC)
         self.navigationItem.title = @"特集結果" ;
+//    else if(self.searchType == SearchHistory)
+//        self.navigationItem.title = @"特集結果" ;
     else
-        
-        self.navigationItem.title = @"履歴結果" ;
+        self.navigationItem.title = @"条件結果" ;
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,6 +77,7 @@
     
     CGFloat  heightDescription = [((RestaurantObj*)[self.arrData objectAtIndex:indexPath.row]).shortDescription heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:16.0] andWidth:300];
     return heightDescription + 124;
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -24,4 +24,5 @@
 
 
 -(void)fillData:(RestaurantObj*)obj;
+-(void)fillData:(RestaurantObj*)obj isShowContent:(BOOL)showContent;
 @end

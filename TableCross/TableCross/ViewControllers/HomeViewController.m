@@ -109,6 +109,7 @@
             [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
             [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_TOTAL_MEAL];
             [Util setValue:[responseObject objectForKey:@"totalPoint"] forKey:KEY_TOTAL_MEAL_VIAAPP];
+            [Util setValue:[responseObject objectForKey:@"totalUserShare"] forKey:KEY_TOTAL_SHARE];
             [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
             
             NSString *numberPoint = [NSString stringWithFormat:@"%@",[Util objectForKey:KEY_TOTAL_MEAL]];

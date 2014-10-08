@@ -141,7 +141,7 @@
         vc.arrData = [APIClient parserListRestaunt:responseObject];
        // vc.arrData = gArrRestaurant;
         if([vc.arrData count]==0)
-               [Util showMessage:@"No result found" withTitle:@"Notice"];
+               [Util showMessage:msg_no_result withTitle:kAppNameManager];
          else
          {
              if(![arrRecent containsObject:self.txtSearch.text])

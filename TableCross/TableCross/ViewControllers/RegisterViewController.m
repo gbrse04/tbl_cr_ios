@@ -81,17 +81,17 @@ NSInteger currentTabLogin;
     
     if(![Util isValidEmail:self.txtEmail.text])
     {
-        [Util showMessage:@"Invalid email address" withTitle:kAppNameManager];
+        [Util showMessage:msg_invalid_email withTitle:kAppNameManager];
         return;
     }
     if([self.txtEmail.text isEqualToString:@""] || [self.txtPassword.text isEqualToString:@""] || [self.txtPhone.text isEqualToString:@""])
     {
-        [Util showMessage:@"Please input your email,phone and password to continue" withTitle:kAppNameManager];
+        [Util showMessage:msg_input_required_field withTitle:kAppNameManager];
         return;
     }
      if(![self.txtPassword.text isEqualToString:self.txtPasswordConfirm.text])
      {
-         [Util showMessage:@"Password and confirm password not the same" withTitle:kAppNameManager];
+         [Util showMessage:msg_password_notmatch withTitle:kAppNameManager];
          return;
      }
 
@@ -121,7 +121,7 @@ NSInteger currentTabLogin;
         }
         else {
             
-            [Util showMessage:@"Please input email and password to continue" withTitle:@"Notice"];
+            [Util showMessage:msg_input_required_field withTitle:kAppNameManager];
         }
 }
 -(void)login :(NSString*)email andPass:(NSString*)pass {
@@ -312,7 +312,7 @@ NSInteger currentTabLogin;
         else
         {
             
-            [Util showMessage:kMessageLoginRequired withTitle:kAppNameManager cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK" delegate:self andTag:1];
+            [Util showMessage:kMessageLoginRequired withTitle:kAppNameManager cancelButtonTitle:btn_cancel otherButtonTitles:@"OK" delegate:self andTag:1];
             
         }
     }

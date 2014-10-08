@@ -102,7 +102,7 @@
                                           STOP_LOADING;
                                           [FBSession.activeSession closeAndClearTokenInformation];
                                           NSLog(@"error:%@",error);
-                                          [Util showMessage:@"Login error" withTitle:@"Error"];
+                                          [Util showMessage:msg_login_facebook_error withTitle:title_error];
                                       } else if (session.isOpen) {
                                           [[FBRequest requestForMe] startWithCompletionHandler:^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *user, NSError *error) {
                                               if (!error)
@@ -143,10 +143,10 @@
 - (IBAction)onLogin:(id)sender {
     
     if([self.txtEmail.text isEqualToString:@""] && [self.txtPassword.text isEqualToString:@""])
-        [Util showMessage:@"Please input your email and password" withTitle:@"Error"];
+        [Util showMessage:msg_input_required_field withTitle:kAppNameManager];
     
     else if(![Util isValidEmail:self.txtEmail.text])
-       [Util showMessage:@"Invalid email address" withTitle:@"Error"];
+       [Util showMessage:msg_invalid_email withTitle:kAppNameManager];
     else
     {
     START_LOADING;

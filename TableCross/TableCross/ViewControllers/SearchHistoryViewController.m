@@ -114,7 +114,7 @@
             self.arrData = [APIClient parserListRestaunt:responseObject];
             if([self.arrData count]== 0)
             {
-                [Util showMessage:@"No result found" withTitle:@"Result"];
+                            [Util showMessage:msg_no_result withTitle:kAppNameManager];
                 return ;
             }
             

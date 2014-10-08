@@ -10,6 +10,9 @@
 
 @interface SettingViewController ()
 
+{
+    NSDate *currentBirthdayDate;
+}
 @end
 
 @implementation SettingViewController
@@ -28,7 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setupTitle:@"設定" isShowSetting:NO andBack:YES];
-    [self initDefaulSetting];
+   
     
     
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
@@ -43,24 +46,21 @@
     
 }
 -(void)updateTextField:(UIDatePicker *)dtPicker{
-    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
-    [timeFormatter setDateFormat:@"dd/MM/yyyy"];
-    self.txtBirthday.text = [timeFormatter stringFromDate:dtPicker.date];
+
+    currentBirthdayDate = dtPicker.date;
+
+    self.txtBirthday.text = [Util stringFromDate:currentBirthdayDate withFormat:@"yyyy年MM月dd日"];
 }
  -(void)initDefaulSetting {
      
      self.txtUserId.text = [NSString stringWithFormat:@"%@",[Util valueForKey:KEY_USER_ID]];
      self.txtEmail.text = [Util valueForKey:KEY_EMAIL];
      self.txtPhone.text= [Util valueForKey:KEY_PHONE];
-     self.txtBirthday.text = [Util valueForKey:KEY_BIRTHDAY];
-     
-//     if(gIsLoginFacebook)
-//     {
-//         self.txtUserId.text = [Util valueForKey:@"facebookID"];
-//         self.txtEmail.text = [Util valueForKey:@"FBemail"];
-//         self.txtPhone.text= [Util valueForKey:KEY_PHONE];
-//         self.txtBirthday.text = [Util valueForKey:@"FBbirthdate"];
-//     }
+     if(![[Util valueForKey:KEY_BIRTHDAY] isEqualToString:@""])
+     {
+         currentBirthdayDate = [Util dateFromString:[Util valueForKey:KEY_BIRTHDAY] withFormat:@"yyyy/MM/dd"];
+         self.txtBirthday.text = [Util stringFromDate:currentBirthdayDate withFormat:@"yyyy年MM月dd日"];
+     }
      
      [((UIButton*)[self.view viewWithTag:4]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_1]];
      [((UIButton*)[self.view viewWithTag:5]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_2]];
@@ -78,6 +78,8 @@
     keyBoardController=[[UIKeyboardViewController alloc] initWithControllerDelegate:self];
 	[keyBoardController addToolbarToKeyboard];
     
+    [self initDefaulSetting];
+    
     if([[Util valueForKey:KEY_LOGIN_TYPE] isEqualToString:@"1"])
         [self.btnChangePass setEnabled:FALSE];
     else
@@ -92,14 +94,16 @@
     [Util setValue:self.txtUserId.text forKey:KEY_USER_ID];
     [Util setValue:self.txtEmail.text forKey:KEY_EMAIL];
     [Util setValue:self.txtPhone.text forKey:KEY_PHONE];
-    [Util setValue:self.txtBirthday.text forKey:KEY_BIRTHDAY];
+    [Util setValue:[Util stringFromDate:currentBirthdayDate withFormat:@"yyyy/MM/dd"] forKey:KEY_BIRTHDAY];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)onSave:(id)sender {
+    
+    NSString *birthday =  [Util stringFromDate:currentBirthdayDate withFormat:@"yyyy/MM/dd"];
     START_LOADING;
-    [[APIClient sharedClient] updateUserEmail:self.txtEmail.text phone:self.txtPhone.text birthday:self.txtBirthday.text sucess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[APIClient sharedClient] updateUserEmail:self.txtEmail.text phone:self.txtPhone.text birthday:birthday sucess:^(AFHTTPRequestOperation *operation, id responseObject) {
         STOP_LOADING;
         if([[responseObject objectForKey:@"success"] boolValue])
         {
@@ -139,7 +143,7 @@
 
 - (IBAction)onSaveBottom:(id)sender {
     
-    [Util showMessage:@"Are you sure ?" withTitle:@"Logout" cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK" delegate:self andTag:1];
+    [Util showMessage:msg_confirm_logout withTitle:title_logout cancelButtonTitle:btn_cancel otherButtonTitles:@"OK" delegate:self andTag:1];
 }
 
 - (IBAction)onChangePass:(id)sender {

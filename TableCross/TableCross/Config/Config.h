@@ -40,7 +40,7 @@
 #define kUrlGetRestaurantByCategoryId @"getCategoryList"
 
 
-#define kMessageLoginRequired @"You need login to use this feature.Do you want to login now ?"
+#define kMessageLoginRequired @"この機能を利用するため、ログインが必要です。ログインしますか。"
 
 
 //Refresh GridView
@@ -102,6 +102,22 @@
 #define  NOTIFY_TYPE_REGISTER @"NOTIFY_TYPE_REGISTER"
 #define  NOTIFY_RELOAD_NOTIFICATION @"NOTIFY_RELOAD_NOTIFICATION"
 
+
+#pragma mark - Languagee
+
+#define msg_confirm_logout          @"Are you sure ?"
+#define msg_invalid_email           @"Invalid email address"
+#define msg_input_required_field    @"Please input all required fields"
+#define msg_change_pass_sucess      @"Your password was changed successfully"
+#define msg_password_notmatch       @"Password and confirm password not the same"
+#define msg_not_support_call        @"Your device not support this feature"
+#define msg_no_result               @"No result found."
+#define  title_error                @"Error"
+#define title_logout                @"Logout"
+#define title_logout                @"Logout"
+#define btn_cancel                  @"Cancel"
+
+#define msg_login_facebook_error    @"Login  facebook error"
 
 
 @end

@@ -237,7 +237,7 @@
         
     } else {
         
-        [Util showMessage:@"Your device not support this feature" withTitle:@"Error"];
+        [Util showMessage:msg_not_support_call withTitle:title_error];
     }
 }
 

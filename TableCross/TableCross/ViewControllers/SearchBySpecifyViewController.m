@@ -145,7 +145,7 @@
 - (void)addSearchAllInParentCategory {
     
     UIButton *settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [settingBtn setTitle:[Util valueForKey:KEY_AREA_NAME] forState:UIControlStateNormal];
+    [settingBtn setTitle:@"閉じる" forState:UIControlStateNormal];
     [settingBtn addTarget:self action:@selector(searchParent) forControlEvents:UIControlEventTouchUpInside];
     [settingBtn.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
     CGSize expectedLabelSize = [[Util valueForKey:KEY_AREA_NAME] sizeWithFont:[UIFont systemFontOfSize:14.0]];
@@ -176,7 +176,7 @@
         vc.arrData = [APIClient parserListRestaunt:responseObject];
         // vc.arrData = gArrRestaurant;
         if([vc.arrData count]==0)
-            [Util showMessage:@"No result found" withTitle:@"Notice"];
+                        [Util showMessage:msg_no_result withTitle:kAppNameManager];
         else
         {
             [self.navigationController pushViewController:vc animated:YES];

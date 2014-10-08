@@ -50,12 +50,12 @@
     
     if([self.txtNewPass.text isEqualToString:@""] || [self.txtOldPass.text isEqualToString:@""] ||[self.txxNewPassConfirm.text isEqualToString:@""])
     {
-        [Util showMessage:@"Please input all fields to continue" withTitle:@"Error"];
+        [Util showMessage:msg_input_required_field withTitle:@"Error"];
         return ;
     }
     if(![self.txtNewPass.text isEqualToString:self.txxNewPassConfirm.text ])
     {
-        [Util showMessage:@"New password and confirm password not the same" withTitle:@"Error"];
+        [Util showMessage:msg_password_notmatch withTitle:@"Error"];
         return ;
         
     }
@@ -68,7 +68,7 @@
         {
             [Util setValue:self.txtNewPass.text forKey:KEY_PASSWORD];
             
-            [Util showMessage:@"Your password was changed successfully" withTitle:kAppNameManager];
+            [Util showMessage:msg_change_pass_sucess withTitle:kAppNameManager];
             [self.navigationController popViewControllerAnimated:YES];
         }
         else

@@ -343,7 +343,7 @@
 -(void)openSMS:(NSString*)content {
     
     if(![MFMessageComposeViewController canSendText]) {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device cannot send text messages" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:title_error message:msg_not_support_call delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         return;
     }

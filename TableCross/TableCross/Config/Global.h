@@ -20,7 +20,7 @@ typedef  enum {
 #define COLOR_ACTIVE [UIColor whiteColor]
 #define COLOR_INACTIVE [UIColor whiteColor]
 
-#define SHOW_POUP_NETWORK  [Util showMessage:@"Coundn't connect to server.Please enable network and try again !" withTitle:title_error];
+#define SHOW_POUP_NETWORK  [Util showMessage:@"サーバーへ接続できません。ネットワークを有効化して、もう一度やり直してください！" withTitle:title_error];
 
 //=========================GLOBAL VALUE=========================//
 extern UINavigationController  *gNavigationViewController;

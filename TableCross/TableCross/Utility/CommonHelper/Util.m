@@ -103,36 +103,36 @@
     
 //    switch (errorCode) {
 //        case 0:
-//            [self showMessage:@"Email not exist" withTitle:@"Error"];
+//            [self showMessage:@"Email not exist" withTitle:title_error];
 //            break;
 //        case 2:
-//            [self showMessage:@"User not login" withTitle:@"Error"];
+//            [self showMessage:@"User not login" withTitle:title_error];
 //            break;
 //
 //        case 3:
-//            [self showMessage:@"Old password invalid" withTitle:@"Error"];
+//            [self showMessage:@"Old password invalid" withTitle:title_error];
 //            break;
 //
 //        case 4:
-//            [self showMessage:@"New password invalid" withTitle:@"Error"];
+//            [self showMessage:@"New password invalid" withTitle:title_error];
 //            break;
 //
 //        case 5:
-//            [self showMessage:@"UserId not exist" withTitle:@"Error"];
+//            [self showMessage:@"UserId not exist" withTitle:title_error];
 //            break;
 //        case 6:
-//            [self showMessage:@"Invalid params" withTitle:@"Error"];
+//            [self showMessage:@"Invalid params" withTitle:title_error];
 //            break;
 //
 //        case 7:
-//            [self showMessage:@"Email already exist" withTitle:@"Error"];
+//            [self showMessage:@"Email already exist" withTitle:title_error];
 //            break;
 //
 //        case 8:
-//            [self showMessage:@"Wrong password" withTitle:@"Error"];
+//            [self showMessage:@"Wrong password" withTitle:title_error];
 //            break;
 //        case 99:
-//            [self showMessage:@"System error" withTitle:@"Error"];
+//            [self showMessage:@"System error" withTitle:title_error];
 //            break;
 //
 //        default:
@@ -140,7 +140,7 @@
 //    }
     
     
-    [self showMessage:[dict objectForKey:@"errorMess"] withTitle:@"Error"];
+    [self showMessage:[dict objectForKey:@"errorMess"] withTitle:title_error];
 }
 #pragma mark Auto Dismiss alert
 +(void)showAutoDismissAlert:(NSString*)message title:(NSString*)string time:(NSInteger)timeToDismiss{

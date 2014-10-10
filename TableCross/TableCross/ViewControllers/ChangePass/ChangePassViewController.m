@@ -50,12 +50,12 @@
     
     if([self.txtNewPass.text isEqualToString:@""] || [self.txtOldPass.text isEqualToString:@""] ||[self.txxNewPassConfirm.text isEqualToString:@""])
     {
-        [Util showMessage:msg_input_required_field withTitle:@"Error"];
+        [Util showMessage:msg_input_required_field withTitle:title_error];
         return ;
     }
     if(![self.txtNewPass.text isEqualToString:self.txxNewPassConfirm.text ])
     {
-        [Util showMessage:msg_password_notmatch withTitle:@"Error"];
+        [Util showMessage:msg_password_notmatch withTitle:title_error];
         return ;
         
     }

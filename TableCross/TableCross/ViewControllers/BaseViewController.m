@@ -183,7 +183,7 @@
 - (void)openSMSWithContent:(NSString*)body {
     //check if the device can send text messages
     if(![MFMessageComposeViewController canSendText]) {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:msg_not_support_call delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:title_error message:msg_not_support_call delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         return;
     }
@@ -196,8 +196,8 @@
     
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
     messageController.messageComposeDelegate = self;
-    [messageController setRecipients:message];
-    [messageController setBody:message];
+    [messageController setRecipients:recipients];
+    [messageController setBody:body];
     
     // Present message view controller on screen
     [self presentViewController:messageController animated:YES completion:nil];

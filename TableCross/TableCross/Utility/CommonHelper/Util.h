@@ -17,6 +17,9 @@
 
 +(CGFloat)getHeightForText:(NSString*)dict andHeight:(CGFloat)height andFont:(UIFont*)font;
 
++(void)SetTitleForArrayButton:(NSString*)textValue andArray:(NSMutableArray*)arrButton;
+
+
 + (Util *)sharedUtil;
 //+ (AppDelegate *)appDelegate;
 +(BOOL)isConnectNetwork;

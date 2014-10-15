@@ -77,7 +77,11 @@ static NSString * const BASE_URL = kBaseUrl ;
 
 - (void)searchByKeyWord:(NSString*)keyword type:(NSString*)searchType latitude:(NSString*)lat longitude:(NSString*)longitude distance:(NSString*)radius total:(NSString*)total category:(NSString*)category withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
     
-       [[APIClient sharedClient] getPath:kUrlSearchRestaurant parameters:@{@"searchType": searchType, @"searchKey": keyword, @"longitude":longitude, @"latitude":lat,@"distance":radius,@"total":@"-1",@"category":category} success:success failure:failure];
+    if([category isEqualToString:@""])
+       [[APIClient sharedClient] getPath:kUrlSearchRestaurant parameters:@{@"searchType": searchType, @"searchKey": keyword, @"longitude":longitude, @"latitude":lat,@"distance":radius,@"total":@"-1"} success:success failure:failure];
+    else
+        [[APIClient sharedClient] getPath:kUrlSearchRestaurant parameters:@{@"searchType": searchType, @"searchKey": keyword, @"longitude":longitude, @"latitude":lat,@"distance":radius,@"total":@"-1",@"category":category} success:success failure:failure];
+    
     
 }
 
@@ -107,7 +111,8 @@ static NSString * const BASE_URL = kBaseUrl ;
 }
 
 - (void)getRestaurantByCategory:(NSString*)catId withsucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
-    if([catId isEqualToString:@""])
+    
+    if(!catId || [catId isEqualToString:@""])
      [[APIClient sharedClient] getPath:kUrlGetRestaurantByCategoryId parameters:nil success:success failure:failure];
     else
      [[APIClient sharedClient] getPath:kUrlGetRestaurantByCategoryId parameters:@{@"categoryId":catId} success:success failure:failure];

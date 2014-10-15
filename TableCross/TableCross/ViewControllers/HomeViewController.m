@@ -114,24 +114,26 @@
             
             NSString *numberPoint = [NSString stringWithFormat:@"%@",[Util objectForKey:KEY_TOTAL_MEAL]];
 
-            if([numberPoint length]==1)
-            {
-                [self.number3 setTitle:numberPoint forState:UIControlStateNormal];
-            }
-            else if([numberPoint length]==2)
-            {
-                 [self.number2 setTitle: [NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:0]] forState:UIControlStateNormal];
-                 [self.number3 setTitle:[NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:1]] forState:UIControlStateNormal];
-            }
-            else if([numberPoint length] > 2)
-            {
-                [self.number1 setTitle: [NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:0]] forState:UIControlStateNormal];
-                [self.number2 setTitle: [NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:1]] forState:UIControlStateNormal];
-                [self.number3 setTitle:[NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:2]] forState:UIControlStateNormal];
-
-                
-            }
+            [Util SetTitleForArrayButton:numberPoint andArray:[NSMutableArray arrayWithObjects:self.number1,self.number2,self.number3, nil]];
             
+//            if([numberPoint length]==1)
+//            {
+//                [self.number3 setTitle:numberPoint forState:UIControlStateNormal];
+//            }
+//            else if([numberPoint length]==2)
+//            {
+//                 [self.number2 setTitle: [NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:0]] forState:UIControlStateNormal];
+//                 [self.number3 setTitle:[NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:1]] forState:UIControlStateNormal];
+//            }
+//            else if([numberPoint length] > 2)
+//            {
+//                [self.number1 setTitle: [NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:0]] forState:UIControlStateNormal];
+//                [self.number2 setTitle: [NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:1]] forState:UIControlStateNormal];
+//                [self.number3 setTitle:[NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:2]] forState:UIControlStateNormal];
+//
+//                
+//            }
+//            
             
             
         }

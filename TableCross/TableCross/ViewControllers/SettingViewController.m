@@ -10,8 +10,13 @@
 
 @interface SettingViewController ()
 
+
 {
     NSDate *currentBirthdayDate;
+
+    NSDateFormatter *timeFormatter;
+    NSString *dateStr;
+
 }
 @end
 
@@ -23,6 +28,7 @@
     if (self) {
         // Custom initialization
     }
+    
     return self;
 }
 
@@ -31,9 +37,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setupTitle:@"設定" isShowSetting:NO andBack:YES];
-   
+
+    [self initDefaulSetting];
+     timeFormatter = [[NSDateFormatter alloc] init];
+
     
-    
+     [timeFormatter setDateFormat:@"yyyy/MM/dd"];
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
     [datePicker setDate:[NSDate date]];
     datePicker.datePickerMode = UIDatePickerModeDate;
@@ -42,26 +51,25 @@
     
     [self.scrollMain setContentSize:CGSizeMake(self.scrollMain.frame.size.width, 440)];
     
-
-    
 }
 -(void)updateTextField:(UIDatePicker *)dtPicker{
 
     currentBirthdayDate = dtPicker.date;
-
     self.txtBirthday.text = [Util stringFromDate:currentBirthdayDate withFormat:@"yyyy年MM月dd日"];
+    
 }
  -(void)initDefaulSetting {
      
      self.txtUserId.text = [NSString stringWithFormat:@"%@",[Util valueForKey:KEY_USER_ID]];
      self.txtEmail.text = [Util valueForKey:KEY_EMAIL];
      self.txtPhone.text= [Util valueForKey:KEY_PHONE];
+
      if(![[Util valueForKey:KEY_BIRTHDAY] isEqualToString:@""])
      {
          currentBirthdayDate = [Util dateFromString:[Util valueForKey:KEY_BIRTHDAY] withFormat:@"yyyy/MM/dd"];
          self.txtBirthday.text = [Util stringFromDate:currentBirthdayDate withFormat:@"yyyy年MM月dd日"];
      }
-     
+   
      [((UIButton*)[self.view viewWithTag:4]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_1]];
      [((UIButton*)[self.view viewWithTag:5]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_2]];
      [((UIButton*)[self.view viewWithTag:6]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_3]];
@@ -102,6 +110,8 @@
 - (IBAction)onSave:(id)sender {
     
     NSString *birthday =  [Util stringFromDate:currentBirthdayDate withFormat:@"yyyy/MM/dd"];
+    if(![self.txtBirthday.text isEqualToString:@""])
+        
     START_LOADING;
     [[APIClient sharedClient] updateUserEmail:self.txtEmail.text phone:self.txtPhone.text birthday:birthday sucess:^(AFHTTPRequestOperation *operation, id responseObject) {
         STOP_LOADING;
@@ -162,7 +172,6 @@
             if([[responseObject objectForKey:@"success"] boolValue])
                 {
                     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGOUT object:nil];
-
                     
                     [Util setValue:@"0" forKey:KEY_POINT];
                     [Util setValue:@"0" forKey:KEY_TOTAL_MEAL_VIAAPP];

@@ -156,7 +156,7 @@
 
 - (void)searchParent {
     
-    [self makeSearch:[self.currentDict objectForKey:@"id"]];
+    [self makeSearch:[[self.currentDict objectForKey:@"id"] stringValue]];
 }
 
 

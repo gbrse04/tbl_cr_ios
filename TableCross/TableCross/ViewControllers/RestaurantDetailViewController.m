@@ -56,9 +56,6 @@
         if([self.restaurant.orderDate isEqualToString:@""])
         {
             [self.imgTime setHidden:YES];
-            [Util moveUp:self.imgNumberOrder offset:20];
-            [Util moveUp:self.lblNumberMeal offset:20];
-        
         }
         
         self.lblDateTime.text = self.restaurant.orderDate;
@@ -201,7 +198,7 @@
 {
     
     NSDate* date = tpickerView.date;
-    [self.txtTwo setText:[Util stringFromDate:date withFormat:@"yyyy/MM/dd"]];
+   // [self.txtTwo setText:[Util stringFromDate:date withFormat:@"yyyy/MM/dd"]];
     
 }
 #pragma mark - AlertView Delegate

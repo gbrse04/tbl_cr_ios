@@ -36,6 +36,22 @@
     
 }
 
++(void)SetTitleForArrayButton:(NSString*)textValue andArray:(NSMutableArray*)arrButton {
+  
+    
+    for (UIButton *btn in arrButton) {
+        [btn setTitle:@"0" forState:UIControlStateNormal];
+    }
+
+    NSInteger  offsetIndex = [arrButton count] -[textValue length];
+    for (NSInteger i=([textValue length]-1); i>=0; i--) {
+        if(i<[arrButton count])
+        {
+            [((UIButton*)[arrButton objectAtIndex:i+offsetIndex]) setTitle:[NSString stringWithFormat:@"%C",[textValue characterAtIndex:i]] forState:UIControlStateNormal];
+        }
+    }
+}
+
 + (Util *)sharedUtil {
     DEFINE_SHARED_INSTANCE_USING_BLOCK(^{
         return [[self alloc] init];
@@ -288,7 +304,9 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 + (BOOL)getBoolValueForKey:(NSString *)key {
+    
    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
+    
 }
 
 + (void)setValue:(id)value forKeyPath:(NSString *)keyPath

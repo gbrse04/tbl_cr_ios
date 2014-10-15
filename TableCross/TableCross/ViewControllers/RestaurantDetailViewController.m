@@ -77,15 +77,17 @@
         
         [Util moveDow:self.lblDescription offset:shortDescriptionHeight+10];
         
-        self.viewTop.frame = CGRectMake(self.viewTop.frame.origin.x, self.viewTop.frame.origin.y, self.viewTop.frame.size.width, descriptionHeight + shortDescriptionHeight + 120);
         
+     
         CGRect currenFrame = self.viewBottom.frame;
         
-        currenFrame.origin.y  = self.viewTop.frame.size.height;
+        
+        
+        currenFrame.size.height  = shortDescriptionHeight + descriptionHeight + 190;
         
         [self.viewBottom setFrame:currenFrame];
         
-        [self.scrollViewMain setContentSize:CGSizeMake(self.scrollViewMain.frame.size.width, self.viewTop.frame.size.height + self.viewBottom.frame.size.height + 25)];
+        [self.scrollViewMain setContentSize:CGSizeMake(self.scrollViewMain.frame.size.width, 190 + self.viewBottom.frame.size.height)];
         
     }
 }
@@ -319,7 +321,7 @@
             [self postToTwitterWithText:msg andImage:nil andURL:url];
             break;
         case 2:
-            [self postToLineWithText:[self getShareLinkRestaurantForLine:self.restaurant]];
+            [self postToLineWithText:msg];
             break;
         case 3:
             [self openSMS:msg];

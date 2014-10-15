@@ -15,6 +15,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *number4;
 @property (weak, nonatomic) IBOutlet UIButton *number5;
 @property (weak, nonatomic) IBOutlet UIButton *number6;
+@property (weak, nonatomic) IBOutlet UIButton *number7;
+@property (weak, nonatomic) IBOutlet UIButton *number8;
+@property (weak, nonatomic) IBOutlet UIButton *number9;
+@property (weak, nonatomic) IBOutlet UIButton *number10;
+
+
+
 - (IBAction)onButtonClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *lblInfo;
 

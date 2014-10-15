@@ -114,7 +114,7 @@
             
             NSString *numberPoint = [NSString stringWithFormat:@"%@",[Util objectForKey:KEY_TOTAL_MEAL]];
 
-            [Util SetTitleForArrayButton:numberPoint andArray:[NSMutableArray arrayWithObjects:self.number1,self.number2,self.number3, nil]];
+            [Util SetTitleForArrayButton:numberPoint andArray:[NSMutableArray arrayWithObjects:self.number1,self.number2,self.number3,self.number4,self.number5, nil]];
             
 //            if([numberPoint length]==1)
 //            {

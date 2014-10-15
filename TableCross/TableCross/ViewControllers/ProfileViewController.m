@@ -51,55 +51,11 @@
     
     NSString *numberPoint = [NSString stringWithFormat:@"%@",[Util objectForKey:KEY_POINT]];
     
-    [Util SetTitleForArrayButton:numberPoint andArray:[NSMutableArray arrayWithObjects:self.number1,self.number2,self.number3, nil]];
-    
-//    if([numberPoint length]==1)
-//    {
-//        [self.number3 setTitle:numberPoint forState:UIControlStateNormal];
-//        [self.number1 setTitle:@"0" forState:UIControlStateNormal];
-//        [self.number2 setTitle:@"0" forState:UIControlStateNormal];
-//    }
-//    else if([numberPoint length]==2)
-//    {
-//        [self.number1 setTitle:@"0" forState:UIControlStateNormal];
-//        [self.number2 setTitle: [NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:0]] forState:UIControlStateNormal];
-//        [self.number3 setTitle:[NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:1]] forState:UIControlStateNormal];
-//    }
-//    else if([numberPoint length] > 2)
-//    {
-//        [self.number1 setTitle: [NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:0]] forState:UIControlStateNormal];
-//        [self.number2 setTitle: [NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:1]] forState:UIControlStateNormal];
-//        [self.number3 setTitle:[NSString stringWithFormat:@"%C",[numberPoint characterAtIndex:2]] forState:UIControlStateNormal];
-//        
-//        
-//    }
-
+    [Util SetTitleForArrayButton:numberPoint andArray:[NSMutableArray arrayWithObjects:self.number1,self.number2,self.number3,self.number4,self.number5, nil]];
     
     NSString *totalOrder = [NSString stringWithFormat:@"%@",[Util objectForKey:KEY_TOTAL_MEAL_VIAAPP]];
 
-    [Util SetTitleForArrayButton:totalOrder andArray:[NSMutableArray arrayWithObjects:self.number4,self.number5,self.number6, nil]];
-    
-//    if([totalOrder length]==1)
-//    {
-//        [self.number6 setTitle:totalOrder forState:UIControlStateNormal];
-//        [self.number4 setTitle:@"0" forState:UIControlStateNormal];
-//        [self.number5 setTitle:@"0" forState:UIControlStateNormal];
-//    }
-//    else if([totalOrder length]==2)
-//    {
-//        [self.number4 setTitle:@"0" forState:UIControlStateNormal];
-//
-//        [self.number5 setTitle: [NSString stringWithFormat:@"%C",[totalOrder characterAtIndex:0]] forState:UIControlStateNormal];
-//        [self.number6 setTitle:[NSString stringWithFormat:@"%C",[totalOrder characterAtIndex:1]] forState:UIControlStateNormal];
-//    }
-//    else if([totalOrder length] > 2)
-//    {
-//        [self.number4 setTitle: [NSString stringWithFormat:@"%C",[totalOrder characterAtIndex:0]] forState:UIControlStateNormal];
-//        [self.number5 setTitle: [NSString stringWithFormat:@"%C",[totalOrder characterAtIndex:1]] forState:UIControlStateNormal];
-//        [self.number6 setTitle:[NSString stringWithFormat:@"%C",[totalOrder characterAtIndex:2]] forState:UIControlStateNormal];
-//        
-//        
-//    }
+    [Util SetTitleForArrayButton:totalOrder andArray:[NSMutableArray arrayWithObjects:self.number6,self.number7,self.number8,self.number9,self.number10, nil]];
     
     self.lblInfo.text = [NSString stringWithFormat:@"あなた紹介したユーザーは%@人です ",[Util valueForKey:KEY_TOTAL_SHARE]];
     

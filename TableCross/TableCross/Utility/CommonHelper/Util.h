@@ -59,6 +59,7 @@
 + (void)setValue:(id)value forKey:(NSString *)key;
 + (void)setBoolValue:(BOOL)value forKey:(NSString *)key;
 + (BOOL)getBoolValueForKey:(NSString *)key;
++ (BOOL)getBoolValueForKey:(NSString *)key defaultValue:(BOOL)defaultValue;
 + (void)setValue:(id)value forKeyPath:(NSString *)keyPath;
 + (void)setObject:(id)obj forKey:(NSString *)key;
 + (id)valueForKey:(NSString *)key;

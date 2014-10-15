@@ -69,10 +69,15 @@
          currentBirthdayDate = [Util dateFromString:[Util valueForKey:KEY_BIRTHDAY] withFormat:@"yyyy/MM/dd"];
          self.txtBirthday.text = [Util stringFromDate:currentBirthdayDate withFormat:@"yyyy年MM月dd日"];
      }
-   
-     [((UIButton*)[self.view viewWithTag:4]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_1]];
-     [((UIButton*)[self.view viewWithTag:5]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_2]];
-     [((UIButton*)[self.view viewWithTag:6]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_3]];
+
+     [((UIButton*)[self.view viewWithTag:4]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_1 defaultValue:TRUE]];
+     [((UIButton*)[self.view viewWithTag:5]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_2 defaultValue:TRUE]];
+     [((UIButton*)[self.view viewWithTag:6]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_3 defaultValue:TRUE]];
+     
+     if(gIsLoginFacebook)
+         self.txtUserId.text = [NSString stringWithFormat:@"%@ %@",[Util valueForKey:@"FBfirst_name"] ,[Util valueForKey:@"FBlast_name"]];
+     
+     
 }
 - (void)didReceiveMemoryWarning
 {

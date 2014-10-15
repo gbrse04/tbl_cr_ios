@@ -317,11 +317,26 @@
 - (void)postToLineWithText:(NSString*)text {
     
     
-    NSString* url = [NSString stringWithFormat: @"http://line.me/R/msg/text/?%@", text];
+//    NSString* url = [NSString stringWithFormat: @"http://line.me/R/msg/text/?%@", text];
+//    
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    if(![self checkIfLineInstalled])
+            [Line openLineInAppStore];
+    else
+        [Line shareText:text];
 }
 
+
+- (BOOL)checkIfLineInstalled {
+    BOOL isInstalled = [Line isLineInstalled];
+    
+    if (!isInstalled) {
+        [[[UIAlertView alloc] initWithTitle:@"Line is not installed." message:@"Please download Line from App Store, and try again later." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    }
+    
+    return isInstalled;
+}
 
 #pragma mark - UIAlertView delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

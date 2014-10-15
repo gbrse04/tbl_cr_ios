@@ -10,6 +10,9 @@
 #import <Social/Social.h>
 #import <MessageUI/MessageUI.h>
 #import "RestaurantObj.h"
+#import "Line.h"
+#import "LKLineActivity.h"
+
 
 @interface BaseViewController : UIViewController<MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate,UIAlertViewDelegate>
 

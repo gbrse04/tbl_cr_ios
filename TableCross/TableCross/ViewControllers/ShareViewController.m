@@ -105,5 +105,21 @@
     
     [self openMailWithBody:[self getShareLinkApp] andSubject:kAppNameManager];
     
+//    
+//    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:[self getShareLinkApp] applicationActivities:nil];
+//    
+//    NSArray *excludeActivities = @[UIActivityTypeAirDrop,
+//                                   UIActivityTypePrint,
+//                                   UIActivityTypeAssignToContact,
+//                                   UIActivityTypeSaveToCameraRoll,
+//                                   UIActivityType
+//                                   UIActivityTypeAddToReadingList,
+//                                   UIActivityTypePostToFlickr,
+//                                   UIActivityTypePostToVimeo];
+//    
+//    activityVC.excludedActivityTypes = excludeActivities;
+    
+//    [self presentViewController:activityVC animated:YES completion:nil];
+    
 }
 @end

@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController">
             <connections>
                 <outlet property="lblInfo" destination="yJU-Jw-sZ1" id="asQ-x5-sFl"/>
-                <outlet property="number1" destination="AiG-Zq-GbW" id="03x-UE-gKE"/>
-                <outlet property="number2" destination="iGw-jn-Ah8" id="sZb-RH-c9W"/>
-                <outlet property="number3" destination="e8w-Ur-Bw7" id="3W5-HG-tcx"/>
-                <outlet property="number4" destination="zzk-Un-zXK" id="ts0-b6-XVL"/>
-                <outlet property="number5" destination="8A5-Fc-2UB" id="uTn-CO-0gT"/>
-                <outlet property="number6" destination="ePm-YB-tIf" id="aSa-FO-Elz"/>
+                <outlet property="number1" destination="qUj-E8-iyI" id="blz-uf-Pm8"/>
+                <outlet property="number10" destination="rfW-El-yJL" id="bLV-tG-EDS"/>
+                <outlet property="number2" destination="aPX-7y-GoG" id="HWR-qD-Ss1"/>
+                <outlet property="number3" destination="BKv-gU-2qY" id="Rea-dB-Q2Z"/>
+                <outlet property="number4" destination="Jxh-04-E5Y" id="Ev1-cg-XoO"/>
+                <outlet property="number5" destination="X8r-j6-y1v" id="BYQ-x6-gda"/>
+                <outlet property="number6" destination="WAs-jj-4q1" id="YeL-wr-gtT"/>
+                <outlet property="number7" destination="ysu-UW-bTz" id="8L5-AP-JF0"/>
+                <outlet property="number8" destination="iqL-z4-x6d" id="8rY-Tk-n6K"/>
+                <outlet property="number9" destination="Y2Y-IV-Ytz" id="XfE-6G-EZP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -37,7 +40,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あなた紹介したユーザーは0人です " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yJU-Jw-sZ1">
-                    <rect key="frame" x="20" y="188" width="260" height="35"/>
+                    <rect key="frame" x="20" y="192" width="260" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -53,8 +56,8 @@
                         <action selector="onButtonClick:" destination="-1" eventType="touchUpInside" id="2Iq-Ct-72R"/>
                     </connections>
                 </button>
-                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AiG-Zq-GbW">
-                    <rect key="frame" x="56" y="54" width="55" height="50"/>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qUj-E8-iyI">
+                    <rect key="frame" x="15" y="60" width="45" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <state key="normal" title="0" backgroundImage="bg_number.png">
@@ -62,8 +65,8 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iGw-jn-Ah8">
-                    <rect key="frame" x="133" y="54" width="55" height="50"/>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aPX-7y-GoG">
+                    <rect key="frame" x="76" y="60" width="45" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <state key="normal" title="0" backgroundImage="bg_number.png">
@@ -71,8 +74,8 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="e8w-Ur-Bw7">
-                    <rect key="frame" x="203" y="54" width="55" height="50"/>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BKv-gU-2qY">
+                    <rect key="frame" x="138" y="60" width="45" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <state key="normal" title="0" backgroundImage="bg_number.png">
@@ -80,8 +83,8 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zzk-Un-zXK">
-                    <rect key="frame" x="56" y="135" width="55" height="50"/>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Jxh-04-E5Y">
+                    <rect key="frame" x="199" y="60" width="45" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <state key="normal" title="0" backgroundImage="bg_number.png">
@@ -89,8 +92,8 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8A5-Fc-2UB">
-                    <rect key="frame" x="133" y="135" width="55" height="50"/>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="X8r-j6-y1v">
+                    <rect key="frame" x="260" y="60" width="45" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <state key="normal" title="0" backgroundImage="bg_number.png">
@@ -98,8 +101,44 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ePm-YB-tIf">
-                    <rect key="frame" x="203" y="135" width="55" height="50"/>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WAs-jj-4q1">
+                    <rect key="frame" x="15" y="146" width="45" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <state key="normal" title="0" backgroundImage="bg_number.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ysu-UW-bTz">
+                    <rect key="frame" x="76" y="146" width="45" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <state key="normal" title="0" backgroundImage="bg_number.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iqL-z4-x6d">
+                    <rect key="frame" x="138" y="146" width="45" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <state key="normal" title="0" backgroundImage="bg_number.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Y2Y-IV-Ytz">
+                    <rect key="frame" x="199" y="146" width="45" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <state key="normal" title="0" backgroundImage="bg_number.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rfW-El-yJL">
+                    <rect key="frame" x="260" y="146" width="45" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <state key="normal" title="0" backgroundImage="bg_number.png">
@@ -109,12 +148,16 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="244" y="344"/>
         </view>
     </objects>
     <resources>
         <image name="bg_number.png" width="61" height="61"/>
         <image name="btn_share.png" width="248" height="40"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

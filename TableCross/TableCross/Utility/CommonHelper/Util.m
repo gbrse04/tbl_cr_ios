@@ -309,6 +309,14 @@
     
 }
 
++ (BOOL)getBoolValueForKey:(NSString *)key defaultValue:(BOOL)defaultValue {
+    
+    if([[NSUserDefaults standardUserDefaults] objectForKey:key]!=nil)
+        return [self getBoolValueForKey:key];
+    else
+        return defaultValue;
+}
+
 + (void)setValue:(id)value forKeyPath:(NSString *)keyPath
 {
     [[NSUserDefaults standardUserDefaults] setValue:value forKeyPath:keyPath];

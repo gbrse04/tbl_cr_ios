@@ -37,6 +37,8 @@
     
     [super viewDidAppear:animated];
     [self performSelector:@selector(loadListRegion) withObject:nil afterDelay:2];
+    
+    self.viewOverlay.layer.cornerRadius = 8.0;
 
 }
 - (void)loadListRegion{

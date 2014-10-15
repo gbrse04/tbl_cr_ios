@@ -33,17 +33,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblShortDescription;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollViewMain;
-@property (weak, nonatomic) IBOutlet UIView *viewTop;
+
 @property (weak, nonatomic) IBOutlet UIImageView *imgRestaurant;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress;
 @property (weak, nonatomic) IBOutlet UILabel *lblNumberMeal;
 @property (weak, nonatomic) IBOutlet UILabel *lblDescription;
-
-
 @property (weak, nonatomic) IBOutlet UIView *viewBottom;
-@property (weak, nonatomic) IBOutlet UITextField *txtOne;
-@property (weak, nonatomic) IBOutlet UITextField *txtTwo;
+
+@property (weak, nonatomic) IBOutlet UIView *viewButton;
+@property (weak, nonatomic) IBOutlet UIView *viewTop;
+@property (weak, nonatomic) IBOutlet UIView *viewDateTime;
+
+
 - (IBAction)onOpenWeb:(id)sender;
 - (IBAction)onShowLocation:(id)sender;
 - (IBAction)onShowCalendar:(id)sender;

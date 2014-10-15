@@ -10,5 +10,6 @@
 #import "SelectRegionViewController.h"
 
 @interface SplashViewController : BaseViewController
+@property (weak, nonatomic) IBOutlet UIView *viewOverlay;
 
 @end

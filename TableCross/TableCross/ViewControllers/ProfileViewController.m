@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setupTitle:@"マイページ" isShowSetting:YES andBack:FALSE];
+    [self setupTitle:@"チャリティカウンター" isShowSetting:YES andBack:FALSE];
     
     [self addBackLocationButton];
     

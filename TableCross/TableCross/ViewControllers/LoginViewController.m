@@ -254,7 +254,7 @@
     
     //category tab view controller
     SearchHomeViewController *searchHomeViewController = [[SearchHomeViewController alloc] initWithNibName:@"SearchHomeViewController" bundle:nil];
-    searchHomeViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"店舗検査" image:[UIImage imageNamed:@"ic_tab_search"] tag:0];
+    searchHomeViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"店舗検索" image:[UIImage imageNamed:@"ic_tab_search"] tag:0];
     [searchHomeViewController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"ic_tab_search"] withFinishedUnselectedImage:[UIImage imageNamed:@"ic_tab_search"]];
     
     [searchHomeViewController.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -298,7 +298,7 @@
     
     
     ProfileViewController  *settingViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
-    settingViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"マイページ" image:[UIImage imageNamed:@"ic_tab_user"] tag:0];
+    settingViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"カウンター" image:[UIImage imageNamed:@"ic_tab_user"] tag:0];
     [settingViewController.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"ic_tab_user"] withFinishedUnselectedImage:[UIImage imageNamed:@"ic_tab_user"]];
     
     [settingViewController.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:

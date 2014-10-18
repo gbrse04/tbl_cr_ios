@@ -47,8 +47,8 @@
 }
 
 - (IBAction)onShareTwitter:(id)sender {
-    //[self postToTwitterWithText:shareAppMessage andImage:nil andURL:shareAppUrl];
-    [self postToFacebookWithText:[self getShareLinkApp] andImage:nil andURL:nil];
+    [self postToTwitterWithText:[self getShareLinkApp] andImage:nil andURL:nil];
+    //[self postToFacebookWithText:[self getShareLinkApp] andImage:nil andURL:nil];
 }
 
 - (IBAction)onShareGooglePlus:(id)sender {

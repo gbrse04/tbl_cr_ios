@@ -77,6 +77,10 @@ static NSString * const BASE_URL = kBaseUrl ;
 
 - (void)searchByKeyWord:(NSString*)keyword type:(NSString*)searchType latitude:(NSString*)lat longitude:(NSString*)longitude distance:(NSString*)radius total:(NSString*)total category:(NSString*)category withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
     
+    if(![[category class] isSubclassOfClass:[NSString class]])
+        
+        category  = [NSString stringWithFormat:@"%@",category];
+        
     if([category isEqualToString:@""])
        [[APIClient sharedClient] getPath:kUrlSearchRestaurant parameters:@{@"searchType": searchType, @"searchKey": keyword, @"longitude":longitude, @"latitude":lat,@"distance":radius,@"total":@"-1"} success:success failure:failure];
     else

@@ -56,14 +56,14 @@
 
 -(void)setup{
     
-    self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(20, 97, 280, 162)];
+    self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(20, 120, 280, 162)];
     self.picker.backgroundColor = [UIColor whiteColor];
     self.picker.delegate = self;
     self.picker.dataSource = self;
     
     [self addSubview:self.picker];
     [self.picker reloadAllComponents];
-    currentValue = 1 ;
+    currentValue = 0 ;
     
 }
 
@@ -85,11 +85,14 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
-    return [NSString stringWithFormat:@"%d",row+1];
+    if(row == 0 )
+        return @"";
+    else
+     return [NSString stringWithFormat:@"%d",row];
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-    currentValue = row + 1;
+    currentValue = row ;
     
 }
 

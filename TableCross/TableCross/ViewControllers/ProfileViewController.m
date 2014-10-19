@@ -32,6 +32,8 @@
     [self addBackLocationButton];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupData) name:NOTIF_LOGOUT object:nil];
+    
+    [self.scrollViewMain setContentSize:CGSizeMake(320, 480)];
 }
 -(void)viewWillAppear:(BOOL)animated {
     
@@ -67,6 +69,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)onMoreInfoClick:(id)sender {
+    
+     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://info.tablecross.com/counter"]];
+}
+
 
 - (IBAction)onButtonClick:(id)sender {
     

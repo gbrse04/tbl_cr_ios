@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchLocationViewController">
             <connections>
                 <outlet property="lblGuide" destination="ChS-md-3ZU" id="Zt9-UI-wNf"/>
+                <outlet property="segment" destination="RmG-UV-VA2" id="bUl-6I-wHM"/>
                 <outlet property="tblResult" destination="RT1-q1-DYQ" id="gi5-21-g8n"/>
                 <outlet property="txtSearch" destination="88M-jb-gu2" id="Jak-4k-wXK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -33,7 +35,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXkｍ 以内のお店から検索できます " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ChS-md-3ZU">
-                    <rect key="frame" x="11" y="45" width="320" height="31"/>
+                    <rect key="frame" x="9" y="45" width="320" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
@@ -58,6 +60,19 @@
                         <outlet property="delegate" destination="-1" id="7ea-Oo-3hk"/>
                     </connections>
                 </tableView>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" id="RmG-UV-VA2">
+                    <rect key="frame" x="20" y="53" width="280" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="1.5km"/>
+                        <segment title="3km"/>
+                        <segment title="10km"/>
+                    </segments>
+                    <color key="tintColor" red="0.94901967050000002" green="0.57254904510000004" blue="0.18823531269999999" alpha="1" colorSpace="deviceRGB"/>
+                    <connections>
+                        <action selector="segmentChange:" destination="-1" eventType="valueChanged" id="C7U-Z7-y7q"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>
@@ -66,9 +81,4 @@
         <image name="bg_search.png" width="148" height="16"/>
         <image name="ic_search.png" width="33" height="32"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

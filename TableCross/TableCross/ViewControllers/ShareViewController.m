@@ -27,11 +27,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setupTitle:@"シェア" isShowSetting:TRUE andBack:FALSE];
+    [self setupTitle:@"友達に紹介" isShowSetting:TRUE andBack:FALSE];
     
     shareAppUrl  = [Util valueForKey:KEY_SHARELINK];
 
     [self addBackLocationButton];
+    
+    [self.scrollViewMain setContentSize:CGSizeMake(320, 420)];
 }
 
 - (void)didReceiveMemoryWarning

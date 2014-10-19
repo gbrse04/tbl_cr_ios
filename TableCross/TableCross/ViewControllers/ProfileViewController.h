@@ -20,9 +20,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *number9;
 @property (weak, nonatomic) IBOutlet UIButton *number10;
 
+- (IBAction)onMoreInfoClick:(id)sender;
 
 
 - (IBAction)onButtonClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *lblInfo;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewMain;
 
 @end

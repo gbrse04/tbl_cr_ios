@@ -133,7 +133,7 @@
     <resources>
         <image name="bg_number.png" width="61" height="61"/>
         <image name="btn_number.png" width="41" height="40"/>
-        <image name="img_restaurant.png" width="248" height="40"/>
+        <image name="img_restaurant.png" width="22" height="22"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

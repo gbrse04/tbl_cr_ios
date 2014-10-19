@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    NSString *title = (self.searchType == SearchByCC)?@"特集から探す":@"履歴結果";
+    NSString *title = (self.searchType == SearchByCC)?@"カテゴリー結果":@"条件結果";
     
     [self setupTitle:title isShowSetting:YES andBack:YES andBackTitle:self.backTitle];
 }
@@ -36,8 +36,6 @@
     [super viewWillAppear:animated];
     if(self.searchType == SearchByCC)
         self.navigationItem.title = @"特集結果" ;
-//    else if(self.searchType == SearchHistory)
-//        self.navigationItem.title = @"特集結果" ;
     else
         self.navigationItem.title = @"条件結果" ;
 }
@@ -82,7 +80,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     RestaurantDetailViewController *detail=[[RestaurantDetailViewController alloc] initWithNibName:@"RestaurantDetailViewController" bundle:nil];
-    detail.backTitle = @"履歴結果";
+    detail.backTitle = (self.searchType == SearchByCC)?@"カテゴリー結果":@"履歴結果";
+    if(self.searchType == SearchByCC)
+        self.navigationItem.title = @"カテゴリー結果";
     detail.restaurant = [self.arrData objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:detail animated:YES];
 }

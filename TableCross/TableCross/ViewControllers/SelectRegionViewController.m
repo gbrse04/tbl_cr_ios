@@ -39,11 +39,13 @@
     [self.navigationController setNavigationBarHidden:YES];
     
     if(self.arrRegion)
+    {
         arrTitle =[[NSMutableArray alloc] init];
     for (NSDictionary *dict in self.arrRegion) {
         [arrTitle addObject:[dict objectForKey:@"areaName"]];
     }
     [self bindDataCombobox];
+    }
     [self checkLogin];
 
 }
@@ -60,7 +62,7 @@
         {
        
             
-            [comboBox setComboBoxTitle:[Util valueForKey:KEY_AREA_NAME]];
+    [comboBox setComboBoxTitle:[Util valueForKey:KEY_AREA_NAME]];
             
         START_LOADING;
             [[APIClient sharedClient] login:[Util valueForKey:KEY_EMAIL] pass:[Util valueForKey:KEY_PASSWORD] loginType:[Util valueForKey:KEY_LOGIN_TYPE] areaId:[Util valueForKey:KEY_AREAID] phone:@"" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -69,8 +71,7 @@
             {
                 gIsLogin = TRUE;
                 gNavigationViewController  = self.navigationController;
-               
-                double delayInSeconds = 0.4;
+                double delayInSeconds = 0.5;
                 dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
                 dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                     gNavigationViewController = self.navigationController;

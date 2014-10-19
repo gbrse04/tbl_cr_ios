@@ -221,13 +221,21 @@
 
 - (void)onCall:(NSInteger)value {
   if(IS_IPHONE) {
-    
+      
         START_LOADING;
-        [[APIClient sharedClient] sendOrder:self.restaurant.restaurantId andNumber:[NSString stringWithFormat:@"%ld",(long)value]  withsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[APIClient sharedClient] sendOrder:self.restaurant.restaurantId andNumber:[NSString stringWithFormat:@"%d",value]  withsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
             STOP_LOADING;
-            
+
+            if([[responseObject objectForKey:@"success"] boolValue])
+            {
+             
             NSURL *phoneNumber = [[NSURL alloc] initWithString: [NSString stringWithFormat:@"tel:%@",self.restaurant.phone]];
             [[UIApplication sharedApplication] openURL: phoneNumber];
+            }
+            else
+            {
+                [Util showMessage:[responseObject objectForKey:@"errorMess"] withTitle:title_error];
+            }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             STOP_LOADING;

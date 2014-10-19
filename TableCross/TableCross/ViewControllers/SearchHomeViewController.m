@@ -42,10 +42,8 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     
-    [self addBackLocationButton];
-    
     [self startTrackingNumberUnpush];
-    
+    [self addBackLocationButton];
 }
 
 
@@ -73,6 +71,8 @@
             // Set Badge number
             if(numberBadge>0)
                 [[super.tabBarController.viewControllers objectAtIndex:0] tabBarItem].badgeValue = [NSString stringWithFormat:@"%d",numberBadge];
+            else
+                [[[super.tabBarController.viewControllers objectAtIndex:0] tabBarItem] setBadgeValue:nil];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

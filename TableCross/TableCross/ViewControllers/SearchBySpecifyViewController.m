@@ -27,7 +27,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setupTitle:@"特集から探す" isShowSetting:YES andBack:YES];
+    if(self.currentDict)
+        [self setupTitle:@"カテゴリー検索" isShowSetting:YES andBack:YES andBackTitle:@"戻る"];
+    else
+        [self setupTitle:@"カテゴリー検索" isShowSetting:YES andBack:YES];
      [self makeSearch];
 }
 
@@ -43,21 +46,38 @@
     [super  viewWillAppear:animated];
     // Set title
     if(!self.currentDict)
-        self.navigationItem.title=@"特集から探す";
+        self.navigationItem.title=@"カテゴリー検索";
     else
     {
         self.navigationItem.title = [self.currentDict objectForKey:@"name"];
+        [self.navigationController.navigationBar.backItem setTitle:@"戻る"];
+        
         [self addSearchAllInParentCategory];
-        self.navigationItem.backBarButtonItem.title = @"戻る";
     }
-    
-    
 
-}
-
+  }
+//
+//-(void)viewDidAppear:(BOOL)animated {
+//    
+//    [super viewDidAppear:animated];
+//    
+//    if(!self.currentDict)
+//    {
+//        self.navigationItem.title=@"カテゴリー検索";
+////        [self.navigationController.navigationBar.backItem setTitle:@"戻る"];
+//    }
+//    else
+//    {
+//        self.navigationItem.title = [self.currentDict objectForKey:@"name"];
+//        [self.navigationController.navigationBar.backItem setTitle:@"戻る"];
+//        
+//        [self addSearchAllInParentCategory];
+//    }
+//}
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if(self.currentDict)
+//    if(self.currentDict)
+        self.navigationItem.title = @"戻る";
         [self.navigationController.navigationBar.backItem setTitle:@"戻る"];
 }
 
@@ -131,7 +151,7 @@
         vc.categoryId = [[dict objectForKey:@"id"] stringValue];
         vc.currentDict = dict;
         if(self.currentDict)
-        self.navigationItem.title =[self.currentDict objectForKey:@"name"];
+          self.navigationItem.title =[self.currentDict objectForKey:@"name"];
         [self.navigationController pushViewController:vc animated:YES];
         
     }

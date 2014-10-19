@@ -90,8 +90,8 @@
          forState:UIControlStateNormal];
         [[self.navigationController.navigationBar.subviews lastObject] setTintColor:[UIColor whiteColor]];
     }
-    if(backTitle)
-       [self.navigationController.navigationBar.backItem setTitle:backTitle];
+//    if(backTitle)
+//       [self.navigationController.navigationBar.backItem setTitle:backTitle];
 
     
    
@@ -136,17 +136,29 @@
     
     UIButton *settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [settingBtn setTitle:[Util valueForKey:KEY_AREA_NAME] forState:UIControlStateNormal];
+    
     [settingBtn addTarget:self action:@selector(gotoSelectRegion) forControlEvents:UIControlEventTouchUpInside];
     [settingBtn.titleLabel setFont:[UIFont systemFontOfSize:14.0]];
     CGSize expectedLabelSize = [[Util valueForKey:KEY_AREA_NAME] sizeWithFont:[UIFont systemFontOfSize:14.0]];
     settingBtn.frame =CGRectMake(0, 0, expectedLabelSize.width+5, expectedLabelSize.height);
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:settingBtn] ;
+    
+      self.navigationItem.leftBarButtonItem = backButton;
+
+    
+    
     self.navigationItem.leftBarButtonItem = backButton;
 }
 
 - (void)backToLogin {
     
-     [gNavigationViewController popToViewController:[gNavigationViewController.viewControllers objectAtIndex:2] animated:YES];
+    double delayInSeconds = 0.1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [gNavigationViewController popToViewController:[gNavigationViewController.viewControllers objectAtIndex:2] animated:YES];
+    });
+    
+    
 }
 
 -(void)back {
@@ -156,7 +168,12 @@
 
 -(void)gotoSelectRegion
 {
-    [gNavigationViewController popToViewController:[gNavigationViewController.viewControllers objectAtIndex:1] animated:YES];
+    double delayInSeconds = 0.1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    [gNavigationViewController popToViewController:[gNavigationViewController.viewControllers objectAtIndex:1] animated:TRUE];
+    });
+
 }
 -(void)gotoSetting {
     

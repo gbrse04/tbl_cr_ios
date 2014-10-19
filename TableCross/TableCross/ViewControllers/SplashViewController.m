@@ -67,8 +67,13 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-
         SHOW_POUP_NETWORK;
+        
+        // For test
+        
+        SelectRegionViewController *vc=[[SelectRegionViewController alloc] initWithNibName:@"SelectRegionViewController" bundle:nil];
+//        vc.arrRegion = @{{@"areaId":@"Hanoi",@"areaName":@"HCM"};
+        [self.navigationController pushViewController:vc animated:YES];
         
     }];
     }

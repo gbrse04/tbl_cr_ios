@@ -14,5 +14,6 @@
 - (IBAction)onShareGooglePlus:(id)sender;
 - (IBAction)onShareSMS:(id)sender;
 - (IBAction)onShareEmail:(id)sender;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewMain;
 
 @end

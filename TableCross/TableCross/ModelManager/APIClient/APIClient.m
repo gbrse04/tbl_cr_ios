@@ -111,6 +111,7 @@ static NSString * const BASE_URL = kBaseUrl ;
 }
 
 - (void)sendOrder:(NSString*)restauntId andNumber:(NSString*)numberMeal withsucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+  
      [[APIClient sharedClient] getPath:kUrlSendOrder parameters:@{@"restaurantId":restauntId,@"quantity":numberMeal} success:success failure:failure];
 }
 

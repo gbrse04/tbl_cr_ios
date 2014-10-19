@@ -61,6 +61,7 @@
         [self.arrNotification removeAllObjects];
     [self.tblNotification reloadData];
     currentPage= 0;
+   [[[super.tabBarController.viewControllers objectAtIndex:0] tabBarItem] setBadgeValue:nil];
     if(gIsLogin)
     {
         [self getDataWithPage:currentPage];

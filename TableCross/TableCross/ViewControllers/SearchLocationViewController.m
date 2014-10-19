@@ -19,7 +19,7 @@
 
 @implementation SearchLocationViewController
 
-@synthesize segmented,tblResult,txtSearch,lblGuide;
+@synthesize tblResult,txtSearch,lblGuide;
 
 int numberResult;
 
@@ -40,7 +40,9 @@ int numberResult;
     [self.txtSearch setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     numberResult = 0;
     currentDistance = @"1.5";
+    [self.segment setHidden:TRUE];
     [tblResult reloadData];
+    [self.segment setSelectedSegmentIndex:0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,53 +66,54 @@ int numberResult;
 #pragma mark - Internal Functions
 
 -(void)setupView {
+    [self.segment setHidden:FALSE];
     
-    
-    
-    NSArray *arrTab = @[@{@"text":@"1.5km", @"icon":[UIImage imageNamed:@"square"]},@{@"text":@"3km", @"icon":[UIImage imageNamed:@"square"]},@{@"text":@"10km", @"icon":[UIImage imageNamed:@"square"]}];
-    
-    if(!segmented)
-    {
-        
-    segmented = [[PPiFlatSegmentedControl alloc] initWithFrame:CGRectMake(20, 50, 280, 30)
-                                                         items:arrTab
-                                                  iconPosition:IconPositionLeft
-                                             andSelectionBlock:^(NSUInteger segmentIndex) {
-                                                 
-                                                 if(segmentIndex==0)
-                                                     currentDistance = @"1.5";
-                                                 else if(segmentIndex==1)
-                                                     currentDistance = @"3";
-                                                 else if(segmentIndex==2)
-                                                     currentDistance = @"10";
-                                                 
-                                                 [self makeSearch:self.txtSearch.text   distance:currentDistance];
-                                                 
-                                                 
-                                                 
-                                                 
-                                             }
-                                                iconSeparation:0];
-    
-    
-    
-    segmented.color = [UIColor whiteColor];
-    segmented.borderWidth = 1.0;
-    segmented.borderColor = kColorOrange;
-    segmented.selectedColor = kColorOrange;
-    segmented.textAttributes=@{NSFontAttributeName:[UIFont systemFontOfSize:13],
-                               NSForegroundColorAttributeName:[UIColor colorWithRed:70.0/255.0 green:70.0f/255.0 blue:70.0f/255.0 alpha:1]};
-    segmented.selectedTextAttributes=@{NSFontAttributeName:[UIFont systemFontOfSize:13],
-                                       NSForegroundColorAttributeName:[UIColor whiteColor]};
-    
-    if([self.view viewWithTag:111])
-        [((UIView*)[self.view viewWithTag:111]) removeFromSuperview];
-    
-    [segmented setTag:111];
-    
-    [self.view addSubview:segmented];
-    [segmented setEnabled:YES forSegmentAtIndex:0];
-    }
+//    
+//    
+//    NSArray *arrTab = @[@{@"text":@"1.5km", @"icon":[UIImage imageNamed:@"square"]},@{@"text":@"3km", @"icon":[UIImage imageNamed:@"square"]},@{@"text":@"10km", @"icon":[UIImage imageNamed:@"square"]}];
+//    
+//    if(!segmented)
+//    {
+//        
+//    segmented = [[PPiFlatSegmentedControl alloc] initWithFrame:CGRectMake(20, 50, 280, 30)
+//                                                         items:arrTab
+//                                                  iconPosition:IconPositionLeft
+//                                             andSelectionBlock:^(NSUInteger segmentIndex) {
+//                                                 
+//                                                 if(segmentIndex==0)
+//                                                     currentDistance = @"1.5";
+//                                                 else if(segmentIndex==1)
+//                                                     currentDistance = @"3";
+//                                                 else if(segmentIndex==2)
+//                                                     currentDistance = @"10";
+//                                                 
+//                                                 [self makeSearch:self.txtSearch.text   distance:currentDistance];
+//                                                 
+//                                                 
+//                                                 
+//                                                 
+//                                             }
+//                                                iconSeparation:0];
+//    
+//    
+//    
+//    segmented.color = [UIColor whiteColor];
+//    segmented.borderWidth = 1.0;
+//    segmented.borderColor = kColorOrange;
+//    segmented.selectedColor = kColorOrange;
+//    segmented.textAttributes=@{NSFontAttributeName:[UIFont systemFontOfSize:13],
+//                               NSForegroundColorAttributeName:[UIColor colorWithRed:70.0/255.0 green:70.0f/255.0 blue:70.0f/255.0 alpha:1]};
+//    segmented.selectedTextAttributes=@{NSFontAttributeName:[UIFont systemFontOfSize:13],
+//                                       NSForegroundColorAttributeName:[UIColor whiteColor]};
+//    
+//    if([self.view viewWithTag:111])
+//        [((UIView*)[self.view viewWithTag:111]) removeFromSuperview];
+//    
+//    [segmented setTag:111];
+//    
+//    [self.view addSubview:segmented];
+//    [segmented setEnabled:YES forSegmentAtIndex:0];
+//    }
     
 }
 
@@ -164,7 +167,10 @@ int numberResult;
     {
         [self.lblGuide setHidden:YES];
         [self setupView];
+//        [self makeSearch:self.txtSearch.text distance:currentDistance];
+        
         [self makeSearch:self.txtSearch.text distance:currentDistance];
+//
     }
     return  YES;
     
@@ -201,6 +207,30 @@ int numberResult;
     
 }
 
+#pragma mark - Segment change
 
 
+- (IBAction)segmentChange:(id)sender {
+    NSInteger selectIndex = ((UISegmentedControl*)sender).selectedSegmentIndex;
+    
+    if(selectIndex == 0 )
+    {
+        currentDistance = @"0";
+        
+    }
+    else if(selectIndex == 1)
+    {
+        currentDistance = @"3";
+    }
+    else
+    {
+        currentDistance = @"10";
+    }
+    
+    if(![self.txtSearch.text isEqualToString:@""])
+    {
+        [self makeSearch:self.txtSearch.text distance:currentDistance];
+        
+    }
+}
 @end

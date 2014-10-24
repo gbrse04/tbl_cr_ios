@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
+                <outlet property="imgNumberPoint" destination="LwB-a9-44t" id="5ol-XI-lmb"/>
                 <outlet property="imgRestaurant" destination="57n-cu-aex" id="tVY-KO-dip"/>
                 <outlet property="lblAddress" destination="ipa-t9-eXD" id="Rcx-cS-X4n"/>
                 <outlet property="lblName" destination="cnV-1b-vtr" id="dyE-eS-wAE"/>
@@ -127,17 +129,11 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="232" y="142"/>
         </view>
     </objects>
     <resources>
         <image name="bg_number.png" width="61" height="61"/>
         <image name="btn_number.png" width="41" height="40"/>
-        <image name="img_restaurant.png" width="22" height="22"/>
+        <image name="img_restaurant.png" width="11" height="11"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

@@ -25,6 +25,7 @@ CGSize defaultComboBoxTableSize;
 CGRect comboBoxTableViewFrame;
 }
 @property (strong, nonatomic) IBOutlet UIImageView *arrow;
+@property (weak, nonatomic) IBOutlet UILabel *lblContent;
 
 @property (strong, nonatomic) IBOutlet UIView *view;
 @property (strong, nonatomic) UITableView *comboBoxTableView;

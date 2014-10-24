@@ -33,11 +33,11 @@ NSInteger currentTabLogin;
     // Do any additional setup after loading the view from its nib.
 
     [self.navigationController setNavigationBarHidden:NO];
-    self.navigationItem.title = @"サインアップ";
-    [self.txtEmail setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [self.txtPassword setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [self.txtPasswordConfirm setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [self.txtPhone setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    self.navigationItem.title = @"新規会員登録";
+//    [self.txtEmail setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+//    [self.txtPassword setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+//    [self.txtPasswordConfirm setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+//    [self.txtPhone setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
  
     self.navigationItem.hidesBackButton = NO;
     
@@ -84,7 +84,7 @@ NSInteger currentTabLogin;
         [Util showMessage:msg_invalid_email withTitle:kAppNameManager];
         return;
     }
-    if([self.txtEmail.text isEqualToString:@""] || [self.txtPassword.text isEqualToString:@""] || [self.txtPhone.text isEqualToString:@""])
+    if([self.txtEmail.text isEqualToString:@""]|| [self.txtName.text isEqualToString:@""] || [self.txtPassword.text isEqualToString:@""] || [self.txtPhone.text isEqualToString:@""])
     {
         [Util showMessage:msg_input_required_field withTitle:kAppNameManager];
         return;
@@ -101,7 +101,7 @@ NSInteger currentTabLogin;
         {
             START_LOADING ;
             
-            [[APIClient sharedClient] registerWithEmail:self.txtEmail.text pass:self.txtPassword.text phone:self.txtPhone.text birthday:@"" regionId:[Util valueForKey:KEY_AREAID] refUserId:[Util getUDID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [[APIClient sharedClient] registerWithEmail:self.txtEmail.text name:self.txtName.text pass:self.txtPassword.text phone:self.txtPhone.text birthday:@"" regionId:[Util valueForKey:KEY_AREAID] refUserId:[Util getUDID] withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                
                 STOP_LOADING;
                 if([[responseObject objectForKey:@"success"] boolValue])

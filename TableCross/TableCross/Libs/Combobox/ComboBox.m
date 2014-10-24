@@ -115,7 +115,11 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [_button setTitle:[_comboBoxDataArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+    
+//    [_button setTitle:[_comboBoxDataArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+
+    [self.lblContent setText:[_comboBoxDataArray objectAtIndex:indexPath.row]];
+    
     [self closeComboBoxWithAnimation:_comboBoxTableView];
     [self.delegate comboBox:self didSelectRowAtIndexPath:indexPath];
 }
@@ -142,7 +146,8 @@
 }
 
 -(void)setComboBoxTitle:(NSString *)title{
-    [_button setTitle:title forState:UIControlStateNormal];
+//    [_button setTitle:title forState:UIControlStateNormal];
+     [self.lblContent setText:title];
 }
 
 @end

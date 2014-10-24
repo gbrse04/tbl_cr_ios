@@ -49,9 +49,9 @@ static NSString * const BASE_URL = kBaseUrl ;
     [[APIClient sharedClient] getPath:kUrlLogin parameters:@{@"email": email,@"msisdn": phone, @"password": pass, @"loginType": type, @"areaId":areaId} success:success failure:failure];
 }
 
-- (void)registerWithEmail:(NSString*)email pass:(NSString*)pass phone:(NSString*)phone birthday:(NSString*)birthday  regionId:(NSString*)regionId refUserId:(NSString*)refId withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+- (void)registerWithEmail:(NSString*)email name:(NSString*)name  pass:(NSString*)pass phone:(NSString*)phone birthday:(NSString*)birthday  regionId:(NSString*)regionId refUserId:(NSString*)refId withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
     
-      [[APIClient sharedClient] getPath:kUrlRegister parameters:@{@"email": email, @"password": pass, @"deviceId": refId, @"areaId":regionId,@"birthday":birthday,@"msisdn":phone} success:success failure:failure];
+      [[APIClient sharedClient] getPath:kUrlRegister parameters:@{@"email": email,@"name": name, @"password": pass, @"deviceId": refId, @"areaId":regionId,@"birthday":birthday,@"msisdn":phone} success:success failure:failure];
 }
 
 

@@ -63,6 +63,27 @@
         self.lblName.text =self.restaurant.address;
         self.lblNumberMeal.text =self.restaurant.numberOrder;
         
+        self.lblName.numberOfLines= 0 ;
+        [self.lblName sizeToFit];
+        
+        self.lblAddress.numberOfLines = 0;
+        [self.lblAddress sizeToFit];
+        
+        CGFloat heightName = [self.restaurant.name heightOfTextViewToFitWithFont:[UIFont boldSystemFontOfSize:17.0] andWidth:304];
+        
+        CGFloat heightAddress = [self.restaurant.address heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:17.0] andWidth:304];
+        
+        
+        [Util moveDow:self.lblName offset:(heightName - 44)];
+        
+        CGRect currenTopFrame = self.viewTop.frame;
+        
+        currenTopFrame.size.height = heightAddress + heightName +20;
+        
+        self.viewTop.frame =currenTopFrame;
+        
+        [Util moveDow:self.viewDateTime offset:(self.viewTop.frame.size.height-52)];
+        
         
         self.lblShortDescription.text = self.restaurant.shortDescription;
         self.lblShortDescription.numberOfLines = 0 ;

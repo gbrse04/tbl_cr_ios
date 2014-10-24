@@ -23,6 +23,7 @@
 - (IBAction)onLogin:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
+@property (weak, nonatomic) IBOutlet CustomizeTextField *txtName;
 
 @property (weak, nonatomic) IBOutlet CustomizeTextField *txtPasswordConfirm;
 

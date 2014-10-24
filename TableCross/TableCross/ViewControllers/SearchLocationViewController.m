@@ -40,7 +40,9 @@ int numberResult;
     [self.txtSearch setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     numberResult = 0;
     currentDistance = @"1.5";
+    [self.segment setSelectedSegmentIndex:0];
     [self.segment setHidden:TRUE];
+    [self.lblGuide setHidden:YES];
     [tblResult reloadData];
     [self.segment setSelectedSegmentIndex:0];
 }
@@ -165,7 +167,7 @@ int numberResult;
     [textField resignFirstResponder];
     if(![self.txtSearch.text isEqualToString:@""])
     {
-        [self.lblGuide setHidden:YES];
+//        [self.lblGuide setHidden:YES];
         [self setupView];
 //        [self makeSearch:self.txtSearch.text distance:currentDistance];
         

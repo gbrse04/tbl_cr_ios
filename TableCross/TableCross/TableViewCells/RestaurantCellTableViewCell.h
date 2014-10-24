@@ -22,7 +22,9 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgNumberMeal;
 
+@property (nonatomic) CGFloat  rowHeight;
 
 -(void)fillData:(RestaurantObj*)obj;
 -(void)fillData:(RestaurantObj*)obj isShowContent:(BOOL)showContent;
+-(CGFloat)getHeightForRow;
 @end

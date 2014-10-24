@@ -16,15 +16,43 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eCg-DZ-cHB">
-                    <rect key="frame" x="0.0" y="80" width="329" height="1"/>
+                    <rect key="frame" x="0.0" y="100" width="329" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店舗名・その他キーワード" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u97-59-bzo">
+                    <rect key="frame" x="0.0" y="78" width="160" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.5km・3km・10km範囲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uAa-WR-Eu4">
+                    <rect key="frame" x="160" y="78" width="160" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="過去の予約から探す" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G9S-cp-4w6">
+                    <rect key="frame" x="0.0" y="180" width="160" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="和食　洋食　中華" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DOc-B9-0MI">
+                    <rect key="frame" x="160" y="180" width="160" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nCu-az-t99">
-                    <rect key="frame" x="160" y="0.0" width="1" height="160"/>
+                    <rect key="frame" x="160" y="0.0" width="1" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -32,7 +60,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YkY-vq-Lae">
-                    <rect key="frame" x="0.0" y="160" width="329" height="1"/>
+                    <rect key="frame" x="0.0" y="200" width="329" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -40,12 +68,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7aL-ob-ZeR">
-                    <rect key="frame" x="0.0" y="0.0" width="160" height="80"/>
+                    <rect key="frame" x="0.0" y="0.0" width="160" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <inset key="titleEdgeInsets" minX="0.0" minY="50" maxX="0.0" maxY="0.0"/>
-                    <inset key="imageEdgeInsets" minX="65" minY="-20" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="条件から探す " image="ic_search_condition.png">
+                    <inset key="titleEdgeInsets" minX="-25" minY="40" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="67" minY="-20" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="キーワード検索" image="ic_search_condition.png">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -57,10 +85,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bzR-1O-hwz">
-                    <rect key="frame" x="160" y="0.0" width="160" height="80"/>
+                    <rect key="frame" x="160" y="0.0" width="160" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <inset key="titleEdgeInsets" minX="0.0" minY="50" maxX="0.0" maxY="0.0"/>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="40" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="75" minY="-20" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="現在地から探す " image="ic_search_location.png">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -74,10 +102,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lKy-8T-BL9">
-                    <rect key="frame" x="0.0" y="80" width="160" height="80"/>
+                    <rect key="frame" x="0.0" y="100" width="160" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <inset key="titleEdgeInsets" minX="-10" minY="50" maxX="0.0" maxY="0.0"/>
+                    <inset key="titleEdgeInsets" minX="-20" minY="40" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="65" minY="-25" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="履歴から探す " image="ic_search_map.png">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -91,10 +119,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iXI-Uv-wqP">
-                    <rect key="frame" x="160" y="80" width="160" height="80"/>
+                    <rect key="frame" x="160" y="100" width="160" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <inset key="titleEdgeInsets" minX="-14" minY="50" maxX="0.0" maxY="0.0"/>
+                    <inset key="titleEdgeInsets" minX="-14" minY="40" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="67" minY="-20" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="カテゴリー検索" image="ic_search_history.png">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>

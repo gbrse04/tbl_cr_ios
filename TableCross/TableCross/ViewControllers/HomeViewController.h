@@ -14,6 +14,8 @@
 #import "NotificationViewController.h"
 #import "ShareViewController.h"
 #import "UIKeyboardViewController.h"
+#import "NSString+TextSize.h"
+
 
 @interface HomeViewController : BaseViewController<UITabBarControllerDelegate,UIAlertViewDelegate>
 
@@ -35,6 +37,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblNumberMeal;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgNumberPoint;
 @property (nonatomic,retain) UITabBarController *tabbarController;
 @property (nonatomic,retain) UINavigationController *notifNavigationViewController;
 @property (nonatomic,retain) UINavigationController *searchNavigationViewController;

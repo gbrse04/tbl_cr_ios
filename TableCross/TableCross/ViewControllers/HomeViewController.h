@@ -15,6 +15,7 @@
 #import "ShareViewController.h"
 #import "UIKeyboardViewController.h"
 #import "NSString+TextSize.h"
+#import "MarqueeLabel.h"
 
 
 @interface HomeViewController : BaseViewController<UITabBarControllerDelegate,UIAlertViewDelegate>
@@ -22,8 +23,8 @@
 @property (assign, nonatomic) BOOL isNeedLoadData;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgRestaurant;
-@property (weak, nonatomic) IBOutlet UILabel *lblName;
-@property (weak, nonatomic) IBOutlet UILabel *lblAddress;
+@property (weak, nonatomic) IBOutlet MarqueeLabel *lblName;
+@property (weak, nonatomic) IBOutlet MarqueeLabel *lblAddress;
 
 @property (weak, nonatomic) IBOutlet UIButton *number1;
 

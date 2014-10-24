@@ -202,6 +202,7 @@
             [Util setValue:@"1" forKey:KEY_LOGIN_TYPE];
             [Util setValue:[responseObject objectForKey:@"phone"] forKey:KEY_PHONE];
             [Util setValue:[responseObject objectForKey:@"userId"] forKey:KEY_USER_ID];
+            [Util setValue:[NSString stringWithFormat:@"%@ %@",[Util valueForKey:@"FBfirst_name"],[Util valueForKey:@"FBlast_name"]] forKey:KEY_NAME_KANJI];
             [Util setValue:[responseObject objectForKey:@"point"] forKey:KEY_POINT];
             [Util setValue:[Validator getSafeString:[responseObject objectForKey:@"orderCount"]] forKey:KEY_TOTAL_MEAL];
             [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];

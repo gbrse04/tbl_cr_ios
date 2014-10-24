@@ -33,6 +33,7 @@
 - (void)postToLineWithText:(NSString*)text;
 
 -(NSString*)getShareLinkRestaurant:(RestaurantObj*)res;
+-(NSString*)getShareLinkRestaurantForTwitter:(RestaurantObj*)res;
 -(NSString*)getShareLinkRestaurantForLine:(RestaurantObj*)res;
 -(NSString*)getShareLinkApp;
 

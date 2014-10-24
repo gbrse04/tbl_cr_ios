@@ -25,7 +25,7 @@
                   symbolName = "-[SearchLocationViewController makeSearch:distance:]"
                   moduleName = "TableCross"
                   urlString = "file:///Volumes/DATA/NextopDropbox/Dropbox/Free/HienPT/TableCrossApp/TableCross/TableCross/ViewControllers/SearchLocationViewController.m"
-                  timestampString = "435779942.745836"
+                  timestampString = "435867339.135801"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "184"
@@ -39,7 +39,7 @@
                   symbolName = "__52-[SearchLocationViewController makeSearch:distance:]_block_invoke"
                   moduleName = "TableCross"
                   urlString = "file:///Volumes/DATA/NextopDropbox/Dropbox/Free/HienPT/TableCrossApp/TableCross/TableCross/ViewControllers/SearchLocationViewController.m"
-                  timestampString = "435779942.746046"
+                  timestampString = "435867339.136231"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "184"
@@ -101,22 +101,6 @@
             timestampString = "434392982.50052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "-onLogin:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TableCross/ViewControllers/RegisterViewController.m"
-            timestampString = "434392982.50052"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
             endingLineNumber = "133"
             landmarkName = "-login:andPass:"
@@ -145,7 +129,7 @@
                   symbolName = "-[RegisterViewController login:andPass:]"
                   moduleName = "TableCross"
                   urlString = "file:///Volumes/DATA/NextopDropbox/Dropbox/Free/HienPT/TableCrossApp/TableCross/TableCross/ViewControllers/RegisterViewController.m"
-                  timestampString = "435779942.747937"
+                  timestampString = "435867339.138164"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "131"
@@ -159,7 +143,7 @@
                   symbolName = "__40-[RegisterViewController login:andPass:]_block_invoke"
                   moduleName = "TableCross"
                   urlString = "file:///Volumes/DATA/NextopDropbox/Dropbox/Free/HienPT/TableCrossApp/TableCross/TableCross/ViewControllers/RegisterViewController.m"
-                  timestampString = "435779942.748235"
+                  timestampString = "435867339.138339"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "131"
@@ -208,11 +192,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableCross/ViewControllers/RestaurantDetailViewController.m"
-            timestampString = "435779942.443401"
+            timestampString = "435866983.30329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "-onCall:"
             landmarkType = "5">
          </BreakpointContent>
@@ -255,13 +239,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TableCross/TableViewCells/RestaurantCellTableViewCell.m"
-            timestampString = "435777200.210798"
+            filePath = "TableCross/ViewControllers/GalleryListViewController.m"
+            timestampString = "435857990.03719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "-fillData:"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "-loadData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TableCross/ViewControllers/GalleryListViewController.m"
+            timestampString = "435859306.779015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "-onChoice:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TableCross/ViewControllers/GalleryDetailViewController.m"
+            timestampString = "435861890.735371"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TableCross/ViewControllers/RegisterViewController.m"
+            timestampString = "435865395.473242"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-onLogin:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -272,12 +304,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableCross/ViewControllers/HomeViewController.m"
-            timestampString = "435779065.319868"
+            timestampString = "435866105.3001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "-getHomeRestaurant"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-getUserInfo"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -287,13 +319,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TableCross/ViewControllers/RestaurantDetailViewController.m"
-            timestampString = "435779870.133086"
+            filePath = "TableCross/ViewControllers/SettingViewController.m"
+            timestampString = "435866226.118943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "-bindData"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "-onSave:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

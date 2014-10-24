@@ -89,8 +89,8 @@ static NSString * const BASE_URL = kBaseUrl ;
     
 }
 
-- (void)updateUserEmail:(NSString*)email phone:(NSString*)phone birthday:(NSString*)birthday sucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
-      [[APIClient sharedClient] getPath:kUrlUpdateProfile parameters:@{@"email": email, @"mobile": phone, @"birthday": birthday} success:success failure:failure];
+- (void)updateUserEmail:(NSString*)email kanjiName:(NSString*)name phone:(NSString*)phone birthday:(NSString*)birthday sucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+      [[APIClient sharedClient] getPath:kUrlUpdateProfile parameters:@{@"email": email, @"mobile": phone, @"birthday": birthday,@"kanjiName":name} success:success failure:failure];
 }
 
 
@@ -121,6 +121,12 @@ static NSString * const BASE_URL = kBaseUrl ;
      [[APIClient sharedClient] getPath:kUrlGetRestaurantByCategoryId parameters:nil success:success failure:failure];
     else
      [[APIClient sharedClient] getPath:kUrlGetRestaurantByCategoryId parameters:@{@"categoryId":catId} success:success failure:failure];
+}
+
+- (void)getImages:(NSString*)resId withsucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+    
+    [[APIClient sharedClient] getPath:@"getImages" parameters:@{@"restaurantId": resId} success:success failure:failure];
+    
 }
 
 #pragma mark - Parser Functions

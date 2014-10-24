@@ -38,23 +38,25 @@
         
         self.lblAddress.text = obj.address;
         self.lblName.text =obj.name;
-        self.lblName.numberOfLines = 0;
-        [self.lblName sizeToFit];
-        self.lblAddress.numberOfLines= 0;
-        [self.lblAddress sizeToFit];
+//        self.lblName.numberOfLines = 0;
+//        [self.lblName sizeToFit];
+//        self.lblAddress.numberOfLines= 0;
+//        [self.lblAddress sizeToFit];
         self.lblDateTime.text = obj.orderDate;
         
+//        
+//        CGFloat  heightName = [obj.name heightOfTextViewToFitWithFont:[UIFont boldSystemFontOfSize:16.0] andWidth:176];
+//        
+//        
+//        [Util moveDow:self.lblAddress offset:heightName];
+//        
+//        CGFloat  heightAddress = [obj.address heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:15.0] andWidth:176];
+//        
+//        CGFloat  heightShortDesc = [obj.shortDescription heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:16.0] andWidth:300];
+//        
         
-        CGFloat  heightName = [obj.name heightOfTextViewToFitWithFont:[UIFont boldSystemFontOfSize:16.0] andWidth:176];
-        
-        
-        [Util moveDow:self.lblAddress offset:(heightName - 15)];
-        
-        CGFloat  heightAddress = [obj.address heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:15.0] andWidth:176];
-        
-        CGFloat  heightShortDesc = [obj.shortDescription heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:16.0] andWidth:300];
-        
-        
+        [self.lblName setMarqueeType:MLContinuous];
+        [self.lblAddress setMarqueeType:MLContinuous];
         
         if([obj.orderDate isEqualToString:@""])
         {

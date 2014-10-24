@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "RestaurantObj.h"
-
+#import "MarqueeLabel.h"
 @interface RestaurantCellTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgRestaurant;
-@property (weak, nonatomic) IBOutlet UILabel *lblName;
-@property (weak, nonatomic) IBOutlet UILabel *lblAddress;
+@property (weak, nonatomic) IBOutlet MarqueeLabel *lblName;
+@property (weak, nonatomic) IBOutlet MarqueeLabel *lblAddress;
 @property (weak, nonatomic) IBOutlet UIImageView *imgClock;
 @property (weak, nonatomic) IBOutlet UILabel *lblDateTime;
 

@@ -60,7 +60,7 @@
 }
  -(void)initDefaulSetting {
      
-     self.txtUserId.text = [NSString stringWithFormat:@"%@",[Util valueForKey:KEY_USER_ID]];
+     self.txtUserId.text = [NSString stringWithFormat:@"%@",[Util valueForKey:KEY_NAME_KANJI]];
      self.txtEmail.text = [Util valueForKey:KEY_EMAIL];
      self.txtPhone.text= [Util valueForKey:KEY_PHONE];
 
@@ -74,8 +74,8 @@
      [((UIButton*)[self.view viewWithTag:5]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_2 defaultValue:TRUE]];
      [((UIButton*)[self.view viewWithTag:6]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_3 defaultValue:TRUE]];
      
-     if(gIsLoginFacebook)
-         self.txtUserId.text = [NSString stringWithFormat:@"%@ %@",[Util valueForKey:@"FBfirst_name"] ,[Util valueForKey:@"FBlast_name"]];
+//     if(gIsLoginFacebook)
+//         self.txtUserId.text = [NSString stringWithFormat:@"%@ %@",[Util valueForKey:@"FBfirst_name"] ,[Util valueForKey:@"FBlast_name"]];
      
      
 }
@@ -104,7 +104,7 @@
 
 - (void)updateSuccess {
     
-    [Util setValue:self.txtUserId.text forKey:KEY_USER_ID];
+    [Util setValue:self.txtUserId.text forKey:KEY_NAME_KANJI];
     [Util setValue:self.txtEmail.text forKey:KEY_EMAIL];
     [Util setValue:self.txtPhone.text forKey:KEY_PHONE];
     [Util setValue:[Util stringFromDate:currentBirthdayDate withFormat:@"yyyy/MM/dd"] forKey:KEY_BIRTHDAY];
@@ -118,7 +118,7 @@
     if(![self.txtBirthday.text isEqualToString:@""])
         
     START_LOADING;
-    [[APIClient sharedClient] updateUserEmail:self.txtEmail.text phone:self.txtPhone.text birthday:birthday sucess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[APIClient sharedClient] updateUserEmail:self.txtEmail.text kanjiName:self.txtUserId.text phone:self.txtPhone.text birthday:birthday sucess:^(AFHTTPRequestOperation *operation, id responseObject) {
         STOP_LOADING;
         if([[responseObject objectForKey:@"success"] boolValue])
         {

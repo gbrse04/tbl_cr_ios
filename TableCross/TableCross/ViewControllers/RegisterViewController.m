@@ -274,6 +274,7 @@ NSInteger currentTabLogin;
 
 -(void) pushToHomeView
 {
+    gIsShowHome = FALSE;
     self.txtEmail.text = @"";
     self.txtPassword.text = @"";
     [_tabbarController setSelectedIndex:1];

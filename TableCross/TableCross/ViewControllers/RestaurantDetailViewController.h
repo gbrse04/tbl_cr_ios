@@ -15,6 +15,7 @@
 #import "UIPopoverListView.h"
 #import "NSString+TextSize.h"
 #import "MapViewController.h"
+#import "GalleryListViewController.h"
 
 
 @interface RestaurantDetailViewController : BaseViewController<UIAlertViewDelegate,UIKeyboardViewControllerDelegate,PMCalendarControllerDelegate,IQActionSheetPickerView,ConfirmDelegate,UIPopoverListViewDelegate,UIPopoverListViewDataSource>
@@ -49,6 +50,7 @@
 - (IBAction)onOpenWeb:(id)sender;
 - (IBAction)onShowLocation:(id)sender;
 - (IBAction)onShowCalendar:(id)sender;
+- (IBAction)onViewMoreImage:(id)sender;
 
 - (IBAction)onPhoneCall:(id)sender;
 @end

@@ -74,15 +74,15 @@
         CGFloat heightAddress = [self.restaurant.address heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:17.0] andWidth:304];
         
         
-        [Util moveDow:self.lblName offset:(heightName - 44)];
+        [Util moveDow:self.lblName offset:heightName];
         
         CGRect currenTopFrame = self.viewTop.frame;
         
-        currenTopFrame.size.height = heightAddress + heightName +20;
+        currenTopFrame.size.height = heightAddress + heightName ;
         
-        self.viewTop.frame =currenTopFrame;
+        self.viewTop.frame = currenTopFrame;
         
-        [Util moveDow:self.viewDateTime offset:(self.viewTop.frame.size.height-52)];
+        [Util moveDow:self.viewDateTime offset:self.viewTop.frame.size.height];
         
         
         self.lblShortDescription.text = self.restaurant.shortDescription;
@@ -99,7 +99,6 @@
         [Util moveDow:self.lblDescription offset:shortDescriptionHeight+10];
         
         
-     
         CGRect currenFrame = self.viewBottom.frame;
         
         
@@ -107,9 +106,43 @@
         currenFrame.size.height  = shortDescriptionHeight + descriptionHeight + 190;
         
         [self.viewBottom setFrame:currenFrame];
+       
         
-        [self.scrollViewMain setContentSize:CGSizeMake(self.scrollViewMain.frame.size.width, 190 + self.viewBottom.frame.size.height)];
+        [Util moveDow:self.viewButton offset:(self.viewTop.frame.size.height + self.viewDateTime.frame.size.height)];
         
+        [Util moveDow:self.viewBottom offset:(self.viewTop.frame.size.height + self.viewDateTime.frame.size.height + self.viewButton.frame.size.height)];
+        
+        [self.scrollViewMain setContentSize:CGSizeMake(self.scrollViewMain.frame.size.width, self.viewTop.frame.size.height + self.viewDateTime.frame.size.height + self.viewButton.frame.size.height + self.viewBottom.frame.size.height)];
+        
+    }
+    
+    else {
+        
+        START_LOADING;
+        
+        [[APIClient sharedClient] getRestaurantInfo:self.restaurantId
+    withsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        STOP_LOADING;
+        
+        if([[responseObject objectForKey:@"success"] boolValue])
+        {
+            
+            NSDictionary *resDict = [responseObject objectForKey:@"restaurant"];
+            self.restaurant =[[RestaurantObj alloc] initWithDict:resDict];
+            
+            [self bindData];
+        }
+        else
+        {
+            [Util showError:responseObject];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        STOP_LOADING;
+        SHOW_NETWORK_ERROR;
+    }];
     }
 }
 
@@ -154,19 +187,28 @@
 
 - (IBAction)onShowLocation:(id)sender {
     
-    //[Util showMessage:@"Coming soon" withTitle:@"Notice"];
-//    [self showPointOnMap:self.restaurant];
-    
     MapViewController *vc= [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
     vc.restaurant= self.restaurant;
     
     [self.navigationController pushViewController:vc animated:YES];
+    
+    
+   
     
 }
 
 - (IBAction)onShowCalendar:(id)sender {
     
     [self onChangeDateTimeAction];
+}
+
+- (IBAction)onViewMoreImage:(id)sender {
+    
+    GalleryListViewController *vc2 =[[GalleryListViewController alloc] initWithNibName:@"GalleryListViewController" bundle:nil];
+    self.navigationItem.title = @"お店の情報";
+    vc2.restautId= self.restaurant.restaurantId;
+    
+    [self.navigationController pushViewController:vc2 animated:YES];
 }
 
 - (IBAction)onPhoneCall:(id)sender {
@@ -347,7 +389,7 @@
             [self postToFacebookWithText:msg andImage:nil andURL:url];
             break;
         case 1:
-            [self postToTwitterWithText:msg andImage:nil andURL:url];
+            [self postToTwitterWithText:[self getShareLinkRestaurantForTwitter:self.restaurant] andImage:nil andURL:url];
             break;
         case 2:
             [self postToLineWithText:msg];

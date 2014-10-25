@@ -33,14 +33,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
      [self setupTitle:@"写真" isShowSetting:YES andBack:YES];
-
-    [self loadData];
+    if(self.arrData)
+    {
+        [self.tblImage reloadData];
+    }
+//    [self loadData];
     
 }
 -(void)loadData{
     
     START_LOADING;
-    [[APIClient sharedClient] getImages:@"4" withsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[APIClient sharedClient] getImages:self.restautId withsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         STOP_LOADING;
         if([[responseObject objectForKey:@"success"] boolValue])

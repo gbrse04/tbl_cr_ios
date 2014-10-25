@@ -208,12 +208,41 @@
 }
 
 - (IBAction)onViewMoreImage:(id)sender {
+  
+        
+        START_LOADING;
+        [[APIClient sharedClient] getImages:self.restaurant.restaurantId withsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            STOP_LOADING;
+            if([[responseObject objectForKey:@"success"] boolValue])
+            {
+              NSMutableArray *arrData = [responseObject objectForKey:@"items"];
+                if(!arrData)
+                {
+                    [Util showError:responseObject];
+                    //                [self.navigationController popViewControllerAnimated:YES];
+                }
+                else
+                {
+                    GalleryListViewController *vc2 =[[GalleryListViewController alloc] initWithNibName:@"GalleryListViewController" bundle:nil];
+                    vc2.arrData = arrData;
+                    self.navigationItem.title = @"お店の情報";
+                    //vc2.restautId= self.restaurant.restaurantId;
+                    
+                    [self.navigationController pushViewController:vc2 animated:YES];
+                }
+            }
+            else
+            {
+                [Util showError:responseObject];
+            }
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            STOP_LOADING;
+            SHOW_NETWORK_ERROR;
+        }];
     
-    GalleryListViewController *vc2 =[[GalleryListViewController alloc] initWithNibName:@"GalleryListViewController" bundle:nil];
-    self.navigationItem.title = @"お店の情報";
-    vc2.restautId= self.restaurant.restaurantId;
-    
-    [self.navigationController pushViewController:vc2 animated:YES];
 }
 
 - (IBAction)onPhoneCall:(id)sender {

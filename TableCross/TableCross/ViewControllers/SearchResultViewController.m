@@ -9,6 +9,10 @@
 #import "SearchResultViewController.h"
 
 @interface SearchResultViewController ()
+{
+    NSString *currentTitle;
+}
+
 
 @end
 
@@ -27,18 +31,25 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    NSString *title = (self.searchType == SearchByCC)?@"カテゴリー結果":@"条件結果";
+    currentTitle = (self.searchType == SearchByCC)?kSearchSpecificResult:kSearchKeywordResult;
+     // NSString *backTitle = (self.searchType == SearchByCC)?@"カテゴリーから探す":@"キーワード検索";
+    [self setupTitle:currentTitle isShowSetting:YES andBack:YES ];
+
+}
+-(void)viewWillAppear:(BOOL)animated {
     
-    [self setupTitle:title isShowSetting:YES andBack:YES andBackTitle:self.backTitle];
+    [super viewWillAppear:animated];
+    self.navigationItem.title =currentTitle;
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    if(self.searchType == SearchByCC)
-        self.navigationItem.title = @"特集結果" ;
-    else
-        self.navigationItem.title = @"条件結果" ;
+    [super viewWillDisappear:animated];
+    if(currentTitle.length >6)
+    self.navigationItem.title = @"戻る";
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -65,7 +76,7 @@
     }
     
     [cell fillData:[self.arrData objectAtIndex:indexPath.row]];
-    
+      
     [cell.contentView setBackgroundColor:[UIColor clearColor]];
     return cell;
 }
@@ -73,15 +84,14 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    CGFloat  heightDescription = [((RestaurantObj*)[self.arrData objectAtIndex:indexPath.row]).shortDescription heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:16.0] andWidth:300];
-    return heightDescription + 124;
-
+    return     [Util getheightRowForRestaurant:[self.arrData objectAtIndex:indexPath.row] isShowDescription:TRUE];
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     RestaurantDetailViewController *detail=[[RestaurantDetailViewController alloc] initWithNibName:@"RestaurantDetailViewController" bundle:nil];
     detail.backTitle = (self.searchType == SearchByCC)?@"カテゴリー結果":@"履歴結果";
-    if(self.searchType == SearchByCC)
+   if(self.searchType == SearchByCC)
         self.navigationItem.title = @"カテゴリー結果";
     detail.restaurant = [self.arrData objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:detail animated:YES];

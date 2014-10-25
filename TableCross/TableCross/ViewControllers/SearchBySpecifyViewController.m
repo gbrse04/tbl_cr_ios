@@ -9,6 +9,9 @@
 #import "SearchBySpecifyViewController.h"
 
 @interface SearchBySpecifyViewController ()
+{
+    NSString *currentTitle;
+}
 
 @end
 
@@ -27,10 +30,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    if(self.currentDict)
-        [self setupTitle:@"カテゴリー検索" isShowSetting:YES andBack:YES andBackTitle:@"戻る"];
-    else
-        [self setupTitle:@"カテゴリー検索" isShowSetting:YES andBack:YES];
+  
      [self makeSearch];
 }
 
@@ -44,42 +44,37 @@
 -(void)viewWillAppear:(BOOL)animated {
     
     [super  viewWillAppear:animated];
-    // Set title
-    if(!self.currentDict)
-        self.navigationItem.title=@"カテゴリー検索";
+    
+    if(self.currentDict)
+    {
+        currentTitle=[self.currentDict objectForKey:@"name"];
+        [self setupTitle:currentTitle isShowSetting:YES andBack:YES andBackTitle:@"戻る"];
+        [self.navigationController.navigationBar.backItem setTitle:@"戻る"];
+    }
     else
     {
-        self.navigationItem.title = [self.currentDict objectForKey:@"name"];
-        [self.navigationController.navigationBar.backItem setTitle:@"戻る"];
+        currentTitle = kSearchSpecific;
+        [self setupTitle:currentTitle isShowSetting:YES andBack:YES];
         
-        [self addSearchAllInParentCategory];
     }
+    
+    [self addSearchAllInParentCategory];
+
 
   }
-//
-//-(void)viewDidAppear:(BOOL)animated {
-//    
-//    [super viewDidAppear:animated];
-//    
-//    if(!self.currentDict)
-//    {
-//        self.navigationItem.title=@"カテゴリー検索";
-////        [self.navigationController.navigationBar.backItem setTitle:@"戻る"];
-//    }
-//    else
-//    {
-//        self.navigationItem.title = [self.currentDict objectForKey:@"name"];
-//        [self.navigationController.navigationBar.backItem setTitle:@"戻る"];
-//        
-//        [self addSearchAllInParentCategory];
-//    }
-//}
--(void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-//    if(self.currentDict)
-        self.navigationItem.title = @"戻る";
-        [self.navigationController.navigationBar.backItem setTitle:@"戻る"];
+
+-(void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+ 
+    self.navigationItem.title  =currentTitle;
 }
+
+-(void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    if(currentTitle.length>6)
+        self.navigationItem.title = @"戻る";}
 
 
 -(void)makeSearch{
@@ -151,7 +146,7 @@
         vc.categoryId = [[dict objectForKey:@"id"] stringValue];
         vc.currentDict = dict;
         if(self.currentDict)
-          self.navigationItem.title =[self.currentDict objectForKey:@"name"];
+        self.navigationItem.title =[self.currentDict objectForKey:@"name"];
         [self.navigationController pushViewController:vc animated:YES];
         
     }
@@ -199,6 +194,9 @@
                         [Util showMessage:msg_no_result withTitle:kAppNameManager];
         else
         {
+            self.navigationItem.title = @"戻る";
+            [self.navigationController.navigationBar.backItem setTitle:@"戻る"];
+
             [self.navigationController pushViewController:vc animated:YES];
         }
         

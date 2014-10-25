@@ -15,7 +15,31 @@
 #define kCalendarType NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit | NSWeekOfMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSTimeZoneCalendarUnit
 
 @implementation Util
++(CGFloat)getheightRowForRestaurant:(RestaurantObj*)obj isShowDescription:(BOOL)isShowDescription{
+    
+    CGFloat rowHeight = 0;
+    
+    //
+    CGFloat  heightName = [obj.name heightOfTextViewToFitWithFont:[UIFont boldSystemFontOfSize:16.0] andWidth:176];
+    CGFloat  heightAddress = [obj.address heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:15.0] andWidth:176];
+    
+    CGFloat  heightShortDesc = [obj.shortDescription heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:16.0] andWidth:300];
+    
+    CGFloat heightFixed = 25;
+    if(![obj.orderDate isEqualToString:@""])
+    {
+        heightFixed += 25;
+    }
 
+    
+    if(isShowDescription)
+     rowHeight =  heightAddress + heightName + heightShortDesc + heightFixed;
+    else
+        rowHeight = MAX(heightAddress + heightName +  heightFixed,125);
+    
+    
+    return rowHeight;
+}
 +(CGFloat)getHeightForText:(NSString*)string andHeight:(CGFloat)width  andFont:(UIFont*)font {
     
     

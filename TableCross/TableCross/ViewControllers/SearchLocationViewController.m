@@ -36,7 +36,7 @@ int numberResult;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setupTitle:@"現在地から探す" isShowSetting:YES andBack:YES];
+    [self setupTitle:kSearchLocation isShowSetting:YES andBack:YES];
     [self.txtSearch setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     numberResult = 0;
     currentDistance = @"1.5";
@@ -57,12 +57,13 @@ int numberResult;
     
     [super  viewWillAppear:animated];
     // Set title
-    self.navigationItem.title=@"現在地から探す";
+    self.navigationItem.title=kSearchLocation;
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.navigationItem.title=@"現在地結果";
+    self.navigationItem.title = @"戻る";
+    
 }
 
 #pragma mark - Internal Functions
@@ -148,9 +149,7 @@ int numberResult;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat  heightDescription = [((RestaurantObj*)[self.arrData objectAtIndex:indexPath.row]).shortDescription heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:16.0] andWidth:300];
-    return heightDescription + 124;
-
+     return     [Util getheightRowForRestaurant:[self.arrData objectAtIndex:indexPath.row] isShowDescription:TRUE];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

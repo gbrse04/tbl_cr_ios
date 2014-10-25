@@ -30,7 +30,7 @@
      [self setupTitle:@"写真詳細" isShowSetting:YES andBack:YES];
     
   
-    self.scrollMain =[[UIScrollView alloc] initWithFrame:CGRectMake(10, 10, 300, 350)];
+    self.scrollMain =[[UIScrollView alloc] initWithFrame:CGRectMake(0, 10, 320, 350)];
     self.scrollMain.delegate = self;
     
     [self.view addSubview:self.scrollMain];
@@ -64,7 +64,7 @@
     NSDictionary *dictGallery=(NSDictionary*)[self.arrData objectAtIndex:index];
     UIImageView *view;
     
-    view = [[UIImageView alloc] initWithFrame:buttonFrame];
+    view = [[UIImageView alloc] initWithFrame:CGRectMake(buttonFrame.origin.x+5, buttonFrame.origin.y, buttonFrame.size.width-10, buttonFrame.size.height)];
        
     NSString *url = [dictGallery  objectForKey:@"imageUrl"];
     

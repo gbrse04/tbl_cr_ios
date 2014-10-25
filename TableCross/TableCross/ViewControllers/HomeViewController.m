@@ -87,24 +87,23 @@
             //self.lblAddress.text = @"128 basfhjs   jshg dsajh asdghjsdag jhsdgsag hjsdf hsajfh hjashf";
             self.lblName.text = [resDict objectForKey:@"restaurantName"];
             
-            [self.lblAddress setMarqueeType:MLContinuous];
-            [self.lblName setMarqueeType:MLContinuous];
+//            [self.lblAddress setMarqueeType:MLContinuous];
+//            [self.lblName setMarqueeType:MLContinuous];
             
             
-//            self.lblAddress.numberOfLines= 0;
-//            [self.lblAddress sizeToFit];
+            self.lblAddress.numberOfLines= 0;
+           [self.lblAddress sizeToFit];
             
-//            CGFloat heightName = [[resDict objectForKey:@"restaurantName"] heightOfTextViewToFitWithFont:[UIFont boldSystemFontOfSize:17.0] andWidth:190];
-//
-//            CGFloat heightAddress = [ self.lblAddress.text heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:17.0] andWidth:190];
-//
-//            self.lblName.numberOfLines=0;
-//            [self.lblName sizeToFit];
-//            
-//            [Util moveDow:self.lblAddress offset:(heightName - 44)];
-//            
-//            [Util moveDow:self.imgNumberPoint offset:(heightName + heightAddress - 90)];
-//            [Util moveDow:self.lblNumberMeal offset:(heightName + heightAddress - 90)];
+            CGFloat heightName = [[resDict objectForKey:@"restaurantName"] heightOfTextViewToFitWithFont:[UIFont boldSystemFontOfSize:17.0] andWidth:190];
+
+            CGFloat heightAddress = [ self.lblAddress.text heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:17.0] andWidth:190];
+
+            self.lblName.numberOfLines=0;
+            [self.lblName sizeToFit];
+            
+            [Util moveDow:self.lblAddress offset:(heightName - 44)];
+                        [Util moveDow:self.imgNumberPoint offset:(heightName + heightAddress - 90)];
+            [Util moveDow:self.lblNumberMeal offset:(heightName + heightAddress - 90)];
         }
         else
             [Util showError:responseObject];

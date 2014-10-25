@@ -35,7 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self setupTitle:@"条件から探す" isShowSetting:YES andBack:YES];
+    [self setupTitle:kSearchKeyword isShowSetting:YES andBack:YES];
     [self.txtSearch setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     
 //    arrRecent = [[NSMutableArray alloc] initWithObjects:@"Pizza",@"Hotdog",@"KFC",@"Humberger", nil];
@@ -54,15 +54,14 @@
 -(void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-    self.navigationItem.title = @"条件から探す";
+    self.navigationItem.title =kSearchKeyword;
     [self.navigationController.navigationBar.backItem setTitle:@"検索"];
     
 }
+
 -(void)viewWillDisappear:(BOOL)animated {
-    
-    [super viewWillAppear:animated];
-    
-//    self.navigationItem.title = @"履歴検索";
+    [super viewWillDisappear:animated];
+    self.navigationItem.title = @"戻る";
 }
 
 - (void)didReceiveMemoryWarning

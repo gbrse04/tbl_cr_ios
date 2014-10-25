@@ -118,8 +118,9 @@
 
 - (void) setupTitle:(NSString*)title isShowSetting:(BOOL)showSetting andBack:(BOOL)isShowBack andBackTitle:(NSString*)backStr{
 
-    backTitle =  backStr;
-    [self setupTitle:title isShowSetting:showSetting andBack:isShowBack];
+//    backTitle =  backStr;
+     [self setupTitle:title isShowSetting:showSetting andBack:isShowBack];
+    if(isShowBack && backTitle && ![backTitle isEqualToString:@""])
     [self.navigationController.navigationBar.backItem setTitle:backTitle];
 
     if(IS_IOS7)

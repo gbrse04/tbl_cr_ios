@@ -33,14 +33,6 @@
     [super viewDidLoad];
     [self setupTitle:@"検索" isShowSetting:YES andBack:FALSE];
     
-    if(!gIsShowHome && gIsLogin)
-    {
-        HomeViewController *vc =[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
-        
-        vc.isNeedLoadData = TRUE;
-        gIsShowHome = TRUE;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
     
     [self startTrackingNumberUnpush];
     [self addBackLocationButton];
@@ -87,6 +79,16 @@
 {
     self.navigationItem.title = @"検索";
     [super viewWillAppear:animated];
+    
+    if(!gIsShowHome && gIsLogin)
+    {
+        HomeViewController *vc =[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+        
+        vc.isNeedLoadData = TRUE;
+        gIsShowHome = TRUE;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning

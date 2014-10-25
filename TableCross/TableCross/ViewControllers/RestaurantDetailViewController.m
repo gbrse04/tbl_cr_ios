@@ -117,8 +117,7 @@
     }
     
     else {
-        
-        START_LOADING;
+              START_LOADING;
         
         [[APIClient sharedClient] getRestaurantInfo:self.restaurantId
     withsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -131,6 +130,12 @@
             NSDictionary *resDict = [responseObject objectForKey:@"restaurant"];
             self.restaurant =[[RestaurantObj alloc] initWithDict:resDict];
             
+            if([self.restaurant.restaurantId isEqualToString:@""])
+            {
+                [Util showError:responseObject];
+                [self.navigationController popViewControllerAnimated:NO];
+            }
+
             [self bindData];
         }
         else

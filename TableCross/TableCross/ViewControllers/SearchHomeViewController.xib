@@ -122,9 +122,9 @@
                     <rect key="frame" x="160" y="100" width="160" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <inset key="titleEdgeInsets" minX="-14" minY="40" maxX="0.0" maxY="0.0"/>
+                    <inset key="titleEdgeInsets" minX="-20" minY="40" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="67" minY="-20" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="カテゴリー検索" image="ic_search_history.png">
+                    <state key="normal" title="カテゴリーから探す" image="ic_search_history.png">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>

@@ -39,7 +39,15 @@
     
     [super viewWillAppear:animated];
     [self setupData];
+    self.navigationItem.title = @"チャリティカウンター";
 }
+-(void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    
+    self.navigationItem.title = @"戻る";
+}
+
 -(void)setupData{
     
     if(!gIsLogin)

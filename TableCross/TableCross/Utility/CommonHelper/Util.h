@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
-
+#import "RestaurantObj.h"
 
 
 @interface Util : NSObject
 @property (strong, nonatomic) MBProgressHUD *progressView;
+
++(CGFloat)getheightRowForRestaurant:(RestaurantObj*)obj isShowDescription:(BOOL)isShowDescription;
 
 +(CGFloat)getHeightForText:(NSString*)dict andHeight:(CGFloat)height andFont:(UIFont*)font;
 

@@ -9,7 +9,7 @@
 #import "NotificationViewController.h"
 #import "RestaurantDetailViewController.h"
 #import "HomeViewController.h"
-
+#import "RestaurantDetailViewController.h"
 
 
 
@@ -165,9 +165,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NotificationDetailViewController *detail=[[NotificationDetailViewController alloc] initWithNibName:@"NotificationDetailViewController" bundle:nil];
-    detail.dictDetail = [self.arrNotification objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:detail animated:YES];
+    RestaurantDetailViewController *detail=[[RestaurantDetailViewController alloc] initWithNibName:@"RestaurantDetailViewController" bundle:nil];
+//    detail.dictDetail = [self.arrNotification objectAtIndex:indexPath.row];
+    
+    NSString *resId = [((NSDictionary*)[self.arrNotification objectAtIndex:indexPath.row]) objectForKey:@"restaurantId"];
+    detail.restaurantId = resId;
+    if([resId integerValue]>0)
+     [self.navigationController pushViewController:detail animated:YES];
+    
 }
 
 @end

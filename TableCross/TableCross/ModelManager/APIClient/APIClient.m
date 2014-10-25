@@ -90,7 +90,7 @@ static NSString * const BASE_URL = kBaseUrl ;
 }
 
 - (void)updateUserEmail:(NSString*)email kanjiName:(NSString*)name phone:(NSString*)phone birthday:(NSString*)birthday sucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
-      [[APIClient sharedClient] getPath:kUrlUpdateProfile parameters:@{@"email": email, @"mobile": phone, @"birthday": birthday,@"kanjiName":name} success:success failure:failure];
+      [[APIClient sharedClient] getPath:kUrlUpdateProfile parameters:@{@"email": email, @"mobile": phone, @"birthday": birthday,@"nameKanji":name} success:success failure:failure];
 }
 
 

@@ -29,19 +29,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self setupTitle:@"履歴" isShowSetting:YES andBack:YES];
+    [self setupTitle:kSearchHistory isShowSetting:YES andBack:YES];
     [self.txtSearchBar setValue:[UIColor darkGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    
-    self.navigationItem.title = @"履歴から探す";
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    
-    self.navigationItem.title = @"特集結果";
-}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -75,8 +66,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    CGFloat  heightDescription = [((RestaurantObj*)[self.arrData objectAtIndex:indexPath.row]).shortDescription heightOfTextViewToFitWithFont:[UIFont systemFontOfSize:16.0] andWidth:300];
-    return 130;
+ return     [Util getheightRowForRestaurant:[self.arrData objectAtIndex:indexPath.row] isShowDescription:false];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -84,7 +74,7 @@
     
     
     detail.restaurant=  [self.arrData objectAtIndex:indexPath.row];
-    detail.backTitle = @"特集結果";
+//    detail.backTitle = @"特集結果";
     [self.navigationController pushViewController:detail animated:YES];
 }
 

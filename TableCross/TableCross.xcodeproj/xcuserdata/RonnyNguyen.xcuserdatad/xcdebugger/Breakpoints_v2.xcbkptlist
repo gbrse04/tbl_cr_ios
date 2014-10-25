@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableCross/ViewControllers/SearchLocationViewController.m"
-            timestampString = "435776069.327564"
+            timestampString = "435911515.865778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "-makeSearch:distance:"
             landmarkType = "5">
             <Locations>
@@ -25,11 +25,11 @@
                   symbolName = "-[SearchLocationViewController makeSearch:distance:]"
                   moduleName = "TableCross"
                   urlString = "file:///Volumes/DATA/NextopDropbox/Dropbox/Free/HienPT/TableCrossApp/TableCross/TableCross/ViewControllers/SearchLocationViewController.m"
-                  timestampString = "435867339.135801"
+                  timestampString = "435910852.925239"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "184"
-                  endingLineNumber = "184"
+                  startingLineNumber = "181"
+                  endingLineNumber = "181"
                   offsetFromSymbolStart = "164">
                </Location>
                <Location
@@ -39,11 +39,11 @@
                   symbolName = "__52-[SearchLocationViewController makeSearch:distance:]_block_invoke"
                   moduleName = "TableCross"
                   urlString = "file:///Volumes/DATA/NextopDropbox/Dropbox/Free/HienPT/TableCrossApp/TableCross/TableCross/ViewControllers/SearchLocationViewController.m"
-                  timestampString = "435867339.136231"
+                  timestampString = "435910852.925461"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "184"
-                  endingLineNumber = "184"
+                  startingLineNumber = "181"
+                  endingLineNumber = "181"
                   offsetFromSymbolStart = "92">
                </Location>
             </Locations>
@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableCross/Utility/CommonHelper/Util.m"
-            timestampString = "433353945.245409"
+            timestampString = "435905668.634765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "+getHeightForText:andHeight:andFont:"
             landmarkType = "5">
          </BreakpointContent>
@@ -129,7 +129,7 @@
                   symbolName = "-[RegisterViewController login:andPass:]"
                   moduleName = "TableCross"
                   urlString = "file:///Volumes/DATA/NextopDropbox/Dropbox/Free/HienPT/TableCrossApp/TableCross/TableCross/ViewControllers/RegisterViewController.m"
-                  timestampString = "435867339.138164"
+                  timestampString = "435910852.926911"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "131"
@@ -143,7 +143,7 @@
                   symbolName = "__40-[RegisterViewController login:andPass:]_block_invoke"
                   moduleName = "TableCross"
                   urlString = "file:///Volumes/DATA/NextopDropbox/Dropbox/Free/HienPT/TableCrossApp/TableCross/TableCross/ViewControllers/RegisterViewController.m"
-                  timestampString = "435867339.138339"
+                  timestampString = "435910852.927147"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "131"
@@ -176,11 +176,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableCross/ViewControllers/SearchHistoryViewController.m"
-            timestampString = "434479464.17749"
+            timestampString = "435910525.892408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "-makeSearch:"
             landmarkType = "5">
          </BreakpointContent>
@@ -192,60 +192,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TableCross/ViewControllers/RestaurantDetailViewController.m"
-            timestampString = "435866983.30329"
+            timestampString = "435902978.305718"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
             landmarkName = "-onCall:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TableCross/ViewControllers/SearchBySpecifyViewController.m"
-            timestampString = "435434407.812226"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "-viewWillDisappear:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TableCross/ViewControllers/SearchBySpecifyViewController.m"
-            timestampString = "435434407.812226"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "-viewWillAppear:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TableCross/ViewControllers/GalleryListViewController.m"
-            timestampString = "435857990.03719"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "-loadData"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -303,13 +255,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TableCross/ViewControllers/HomeViewController.m"
-            timestampString = "435866105.3001"
+            filePath = "TableCross/ViewControllers/SettingViewController.m"
+            timestampString = "435866226.118943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "-getUserInfo"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "-onSave:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -319,13 +271,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TableCross/ViewControllers/SettingViewController.m"
-            timestampString = "435866226.118943"
+            filePath = "TableCross/ViewControllers/RestaurantDetailViewController.m"
+            timestampString = "435902978.305718"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "-onSave:"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-bindData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TableCross/ViewControllers/HomeViewController.m"
+            timestampString = "435908502.078753"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "-getUserInfo"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

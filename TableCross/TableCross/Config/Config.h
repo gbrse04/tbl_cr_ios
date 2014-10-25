@@ -107,6 +107,19 @@
 
 #pragma mark - Languagee
 
+#define kSearchKeyword  @"キーワード検索"
+#define kSearchKeywordResult  @"キーワード検索"
+
+#define kSearchLocation  @"現在地から探す"
+#define kSearchLocationResult  @"現在地から検索"
+
+#define kSearchHistory  @"履歴から探す"
+#define kSearchHistoryResult  @"履歴から検索"
+
+#define kSearchSpecific  @"カテゴリーから探す"
+#define kSearchSpecificResult  @"キーワード検索"
+
+
 #define msg_confirm_logout          @"本当によろしいですか。"
 #define msg_invalid_email           @"メールアドレスが違います。"
 #define msg_input_required_field    @"要求されたフィールドを入力してください。"

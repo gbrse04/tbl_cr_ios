@@ -211,15 +211,17 @@
   
         
         START_LOADING;
-        [[APIClient sharedClient] getImages:self.restaurant.restaurantId withsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[APIClient sharedClient] getImages:self.restaurant.restaurantId withsucess:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             STOP_LOADING;
             if([[responseObject objectForKey:@"success"] boolValue])
             {
               NSMutableArray *arrData = [responseObject objectForKey:@"items"];
-                if(!arrData)
+                if(!arrData || [arrData count] == 0)
                 {
-                    [Util showError:responseObject];
+//                    [Util showError:responseObject];
+                    
+                    [Util showMessage:[responseObject objectForKey:@"errorMess"] withTitle:kAppNameManager];
                     //                [self.navigationController popViewControllerAnimated:YES];
                 }
                 else

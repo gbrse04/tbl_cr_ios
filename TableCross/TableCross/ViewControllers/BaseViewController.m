@@ -380,7 +380,7 @@
 }
 
 -(NSString*)getShareLinkApp {
-    return [NSString stringWithFormat:@"%@\n(ユーザー紐付け入りのダウンロードURL)\n日本中の飲食店が世界の飢餓を救う予約アプリ登場！\n予約するだけで途上国の給食支援が出来る無料チャリティアプリ テーブルクロス\n はこちらからダウンロード",[Util objectForKey:KEY_SHARELINK]];
+    return [NSString stringWithFormat:@"日本中の飲食店が世界の飢餓を救う予約アプリ登場！\n予約するだけで途上国の給食支援が出来る無料チャリティアプリ テーブルクロス\nはこちらからダウンロード\n%@\n(ユーザー紐付け入りのダウンロードURL)",[Util objectForKey:KEY_SHARELINK]];
 }
 
 @end

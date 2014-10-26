@@ -13,6 +13,7 @@
 
 
 
+
 @interface NotificationViewController ()
 {
     NSArray *arrOnePage;
@@ -152,7 +153,12 @@
     NSDictionary *dict =[self.arrNotification objectAtIndex:indexPath.row];
     
     cell.lblTitle.text = [dict objectForKey:@"notifyShort"];
+    
+    cell.lblTitle.numberOfLines=0;
+    [cell.lblTitle sizeToFit];
     cell.lblTime.text = [dict objectForKey:@"notifyDate"];
+    
+    [Util moveDow:cell.lblContent  offset:cell.lblTitle.frame.size.height - 20];
 //    cell.lblContent.text= [dict objectForKey:@"notifyLong"];
     
     [cell.contentView setBackgroundColor:[UIColor clearColor]];
@@ -161,7 +167,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    
+    CGFloat  heightContent = [[[self.arrNotification objectAtIndex:indexPath.row] objectForKey:@"notifyShort"] heightOfTextViewToFitWithFont:[UIFont boldSystemFontOfSize:14.0] andWidth:303];
+    return heightContent + 50;
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

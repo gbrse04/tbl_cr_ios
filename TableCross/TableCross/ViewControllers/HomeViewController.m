@@ -77,7 +77,12 @@
             NSDictionary *resDict = [responseObject objectForKey:@"restaurant"];
             homeRestaurant =[[RestaurantObj alloc] initWithDict:resDict];
             
-            [self.imgRestaurant setImageWithURL:[NSURL URLWithString:[resDict objectForKey:@"imageUrl"]] placeholderImage:[UIImage imageNamed:@"img_restaurant"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            self.imgRestaurant.clipsToBounds = true;
+            [self.imgRestaurant setContentMode:UIViewContentModeScaleAspectFill];
+            NSString *url= [[resDict objectForKey:@"imageUrl"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            
+
+            [self.imgRestaurant setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"img_restaurant"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 
                 if(image)
                     [self.imgRestaurant setImage:image];
@@ -131,6 +136,10 @@
             [Util setValue:[responseObject objectForKey:@"totalPoint"] forKey:KEY_TOTAL_MEAL_VIAAPP];
             [Util setValue:[responseObject objectForKey:@"totalUserShare"] forKey:KEY_TOTAL_SHARE];
             [Util setValue:[responseObject objectForKey:@"birthday"] forKey:KEY_BIRTHDAY];
+            
+            [Util setValue:[responseObject objectForKey:KEY_NOTIFY_ORDER] forKey:KEY_NOTIFY_ORDER];
+            [Util setValue:[responseObject objectForKey:KEY_NOTIFY_RESTAURANT] forKey:KEY_NOTIFY_RESTAURANT];
+            [Util setValue:[responseObject objectForKey:KEY_NOTIFY_BEFORE_DATE] forKey:KEY_NOTIFY_BEFORE_DATE];
             
             NSString *numberPoint = [NSString stringWithFormat:@"%@",[Util objectForKey:KEY_TOTAL_MEAL]];
 

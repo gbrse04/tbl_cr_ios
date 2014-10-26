@@ -134,10 +134,13 @@
     singleTap.numberOfTapsRequired = 1;
     [view setUserInteractionEnabled:YES];
     [view addGestureRecognizer:singleTap];
-    NSString *url = [dictGallery  objectForKey:@"imageUrl"];
+    NSString *url = [[dictGallery  objectForKey:@"imageUrl"]  stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     [view setImageWithURL:[NSURL URLWithString:url] placeholderImage:Nil usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 
+    view.clipsToBounds = true;
+    [view setContentMode:UIViewContentModeScaleAspectFill];
+    
     return view;
     
 }

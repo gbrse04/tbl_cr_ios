@@ -74,12 +74,12 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+//    
+//    if(![textField.text isEqualToString:@""])
+//    {
     
-    if(![textField.text isEqualToString:@""])
-    {
-        
         [self makeSearch:textField.text];
-    }
+//    }
 
     return  YES;
 }

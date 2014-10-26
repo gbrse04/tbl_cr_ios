@@ -30,6 +30,9 @@
     
     if(obj)
     {
+         self.imageView.clipsToBounds = true;
+        
+        [self.imgNumberMeal setContentMode:UIViewContentModeScaleAspectFill];
         
         [self.imgRestaurant setImageWithURL:[NSURL URLWithString:obj.imageUrl] placeholderImage:[UIImage imageNamed:@"img_restaurant"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
             if(image)

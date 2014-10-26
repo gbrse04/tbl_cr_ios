@@ -39,7 +39,7 @@
 //    31.060795, -88.294256
     CLLocationCoordinate2D coord = {[restaurant.latitude floatValue],[restaurant.longitude floatValue]};
     
-    [self.mapView setCenterCoordinate:coord zoomLevel:12 animated:YES];
+    [self.mapView setCenterCoordinate:coord zoomLevel:16 animated:YES];
 //    CLLocationCoordinate2D coord = {31.060795, -88.294256};
 
     BusAnnotation* busAnno = [[BusAnnotation alloc] init];

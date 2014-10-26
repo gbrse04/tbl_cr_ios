@@ -33,4 +33,10 @@
 @property (weak, nonatomic) IBOutlet CustomizeTextField *txtEmail;
 @property (weak, nonatomic) IBOutlet CustomizeTextField *txtBirthday;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnNotifi1;
+@property (weak, nonatomic) IBOutlet UIButton *btnNotify2;
+@property (weak, nonatomic) IBOutlet UIButton *btnNoitfy3;
+
+
+
 @end

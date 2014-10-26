@@ -29,7 +29,7 @@ typedef void(^TTResponseFailure)(AFHTTPRequestOperation *operation, NSError *err
 - (void)getListAresWithSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 - (void)getUserInfoWithSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 - (void)searchByKeyWord:(NSString*)keyword type:(NSString*)searchType latitude:(NSString*)lat longitude:(NSString*)longitude distance:(NSString*)radius total:(NSString*)total category:(NSString*)category withSuccess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
-- (void)updateUserEmail:(NSString*)email kanjiName:(NSString*)name phone:(NSString*)phone birthday:(NSString*)birthday sucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
+- (void)updateUserEmail:(NSString*)email kanjiName:(NSString*)name phone:(NSString*)phone birthday:(NSString*)birthday notifyOrder:(NSString*)notifyOrder  notifyResrautrant:(NSString*)notifyResrautrant notifyBeforeDate:(NSString*)beforeDate  sucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 - (void)getListNotifyAllStart:(NSString*)from total:(NSString*)total sucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 - (void)getListUnpushNotifiycationWithsucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;
 - (void)getRestaurantInfo:(NSString*)resId withsucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure;

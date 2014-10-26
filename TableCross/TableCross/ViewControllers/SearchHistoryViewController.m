@@ -83,10 +83,10 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
     [textField resignFirstResponder];
-    if(![self.txtSearchBar.text isEqualToString:@""])
-    {
+//    if(![self.txtSearchBar.text isEqualToString:@""])
+//    {
         [self makeSearch:self.txtSearchBar.text];
-    }
+//    }
     return  YES;
 }
 
@@ -96,7 +96,7 @@
     
     START_LOADING;
     [[APIClient sharedClient] searchByKeyWord:keyword type:@"0" latitude:@"" longitude:@"" distance:@"" total:@"-1"  category:@""  withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Response : %@",responseObject);
+        NSLog(@"Response history : %@",responseObject);
         STOP_LOADING;
         if([[responseObject objectForKey:@"success"] boolValue])
             

@@ -41,7 +41,7 @@ int numberResult;
     numberResult = 0;
     currentDistance = @"1.5";
     [self.segment setSelectedSegmentIndex:0];
-    [self.segment setHidden:TRUE];
+    [self.segment setHidden:NO];
     [self.lblGuide setHidden:YES];
     [tblResult reloadData];
     [self.segment setSelectedSegmentIndex:0];
@@ -164,15 +164,15 @@ int numberResult;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    if(![self.txtSearch.text isEqualToString:@""])
-    {
+//    if(![self.txtSearch.text isEqualToString:@""])
+//    {
 //        [self.lblGuide setHidden:YES];
         [self setupView];
 //        [self makeSearch:self.txtSearch.text distance:currentDistance];
         
         [self makeSearch:self.txtSearch.text distance:currentDistance];
 //
-    }
+//    }
     return  YES;
     
 }
@@ -228,10 +228,10 @@ int numberResult;
         currentDistance = @"10";
     }
     
-    if(![self.txtSearch.text isEqualToString:@""])
-    {
+//    if(![self.txtSearch.text isEqualToString:@""])
+//    {
         [self makeSearch:self.txtSearch.text distance:currentDistance];
         
-    }
+//    }
 }
 @end

@@ -89,10 +89,9 @@ static NSString * const BASE_URL = kBaseUrl ;
     
 }
 
-- (void)updateUserEmail:(NSString*)email kanjiName:(NSString*)name phone:(NSString*)phone birthday:(NSString*)birthday sucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
-      [[APIClient sharedClient] getPath:kUrlUpdateProfile parameters:@{@"email": email, @"mobile": phone, @"birthday": birthday,@"nameKanji":name} success:success failure:failure];
+- (void)updateUserEmail:(NSString*)email kanjiName:(NSString*)name phone:(NSString*)phone birthday:(NSString*)birthday notifyOrder:(NSString*)notifyOrder  notifyResrautrant:(NSString*)notifyResrautrant notifyBeforeDate:(NSString*)beforeDate  sucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
+      [[APIClient sharedClient] getPath:kUrlUpdateProfile parameters:@{@"email": email, @"mobile": phone, @"birthday": birthday,@"nameKanji":name,@"notifyOrder":notifyOrder,@"notifyRestaurant":notifyResrautrant,@"notifyBeforeDate":beforeDate} success:success failure:failure];
 }
-
 
 - (void)getListNotifyAllStart:(NSString*)from total:(NSString*)total sucess:(TTResponseSuccess)success failure:(TTResponseFailure)failure {
      [[APIClient sharedClient] getPath:kUrlGetListNotification parameters:@{@"from": from, @"total": total} success:success failure:failure];

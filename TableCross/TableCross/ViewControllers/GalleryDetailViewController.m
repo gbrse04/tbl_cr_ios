@@ -66,7 +66,8 @@
     
     view = [[UIImageView alloc] initWithFrame:CGRectMake(buttonFrame.origin.x+5, buttonFrame.origin.y, buttonFrame.size.width-10, buttonFrame.size.height)];
        
-    NSString *url = [dictGallery  objectForKey:@"imageUrl"];
+    NSString *url = [[dictGallery  objectForKey:@"imageUrl"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
     
     [view setImageWithURL:[NSURL URLWithString:url] placeholderImage:Nil usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     

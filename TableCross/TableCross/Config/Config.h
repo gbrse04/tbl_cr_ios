@@ -88,6 +88,11 @@
 #define  KEY_LOGIN_TYPE @"LOGIN_TYPE"
 #define  KEY_SESSION_ID @"KEY_SESSION_ID"
 
+#define  KEY_NOTIFY_BEFORE_DATE     @"notifyBeforeDate"
+#define  KEY_NOTIFY_ORDER           @"notifyOrder"
+#define  KEY_NOTIFY_RESTAURANT      @"notifyRestaurant"
+
+
 #define  KEY_NOTIF_SETTING_1 @"KEY_NOTIF_SETTING_1"
 #define  KEY_NOTIF_SETTING_2 @"KEY_NOTIF_SETTING_2"
 #define  KEY_NOTIF_SETTING_3 @"KEY_NOTIF_SETTING_3"

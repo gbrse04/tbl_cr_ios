@@ -28,6 +28,10 @@
         self.descriptionRestaurant = [Validator getSafeString:[dict objectForKey:@"description"]];
         self.shortDescription = [Validator getSafeString:[dict objectForKey:@"shortDescription"]];
         self.imageUrl = [Validator getSafeString:[dict objectForKey:@"imageUrl"]];
+        
+        if(self.imageUrl)
+            self.imageUrl = [self.imageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
         self.orderDate = [Validator getSafeString:[dict objectForKey:@"orderDate"]];
         self.shareLink = [Validator getSafeString:[dict objectForKey:@"shareLink"]];
         self.orderWebUrl = [Validator getSafeString:[dict objectForKey:@"orderWebUrl"]];

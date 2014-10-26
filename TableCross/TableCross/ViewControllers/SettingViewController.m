@@ -70,9 +70,9 @@
          self.txtBirthday.text = [Util stringFromDate:currentBirthdayDate withFormat:@"yyyy年MM月dd日"];
      }
 
-     [((UIButton*)[self.view viewWithTag:4]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_1 defaultValue:TRUE]];
-     [((UIButton*)[self.view viewWithTag:5]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_2 defaultValue:TRUE]];
-     [((UIButton*)[self.view viewWithTag:6]) setSelected:[Util getBoolValueForKey:KEY_NOTIF_SETTING_3 defaultValue:TRUE]];
+     [self.btnNotifi1 setSelected:[Util getBoolValueForKey:KEY_NOTIFY_ORDER defaultValue:TRUE]];
+     [self.btnNotify2 setSelected:[Util getBoolValueForKey:KEY_NOTIFY_BEFORE_DATE defaultValue:TRUE]];
+     [self.btnNoitfy3 setSelected:[Util getBoolValueForKey:KEY_NOTIFY_RESTAURANT defaultValue:TRUE]];
      
 //     if(gIsLoginFacebook)
 //         self.txtUserId.text = [NSString stringWithFormat:@"%@ %@",[Util valueForKey:@"FBfirst_name"] ,[Util valueForKey:@"FBlast_name"]];
@@ -107,6 +107,11 @@
     [Util setValue:self.txtUserId.text forKey:KEY_NAME_KANJI];
     [Util setValue:self.txtEmail.text forKey:KEY_EMAIL];
     [Util setValue:self.txtPhone.text forKey:KEY_PHONE];
+    
+    [Util setBoolValue:self.btnNotifi1.isSelected forKey:KEY_NOTIFY_ORDER];
+    [Util setBoolValue:self.btnNotify2.isSelected forKey:KEY_NOTIFY_BEFORE_DATE];
+    [Util setBoolValue:self.btnNoitfy3.isSelected forKey:KEY_NOTIFY_RESTAURANT];
+    
     [Util setValue:[Util stringFromDate:currentBirthdayDate withFormat:@"yyyy/MM/dd"] forKey:KEY_BIRTHDAY];
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -118,13 +123,10 @@
     if(![self.txtBirthday.text isEqualToString:@""])
         
     START_LOADING;
-    [[APIClient sharedClient] updateUserEmail:self.txtEmail.text kanjiName:self.txtUserId.text phone:self.txtPhone.text birthday:birthday sucess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[APIClient sharedClient] updateUserEmail:self.txtEmail.text kanjiName:self.txtUserId.text phone:self.txtPhone.text birthday:birthday notifyOrder:(self.btnNotifi1.isSelected?@"1":@"0") notifyResrautrant:(self.btnNoitfy3.isSelected?@"1":@"0") notifyBeforeDate:(self.btnNotify2.isSelected?@"1":@"0") sucess:^(AFHTTPRequestOperation *operation, id responseObject) {
         STOP_LOADING;
-        if([[responseObject objectForKey:@"success"] boolValue])
-        {
-
+        if([[responseObject objectForKey:@"success"] boolValue]) {
             [self updateSuccess];
-            
         }
         else
             [Util showError:responseObject];
@@ -141,19 +143,19 @@
     
     UIButton *btn = sender;
     [btn setSelected:![btn isSelected]];
-    switch (btn.tag) {
-        case 4:
-            [Util setBoolValue:btn.isSelected forKey:KEY_NOTIF_SETTING_1];
-            break;
-        case 5:
-            [Util setBoolValue:btn.isSelected forKey:KEY_NOTIF_SETTING_2];
-            break;
-        case 6:
-            [Util setBoolValue:btn.isSelected forKey:KEY_NOTIF_SETTING_3];
-            break;
-        default:
-            break;
-    }
+//    switch (btn.tag) {
+//        case 4:
+//            [Util setBoolValue:btn.isSelected forKey:KEY_NOTIF_SETTING_1];
+//            break;
+//        case 5:
+//            [Util setBoolValue:btn.isSelected forKey:KEY_NOTIF_SETTING_2];
+//            break;
+//        case 6:
+//            [Util setBoolValue:btn.isSelected forKey:KEY_NOTIF_SETTING_3];
+//            break;
+//        default:
+//            break;
+//    }
 }
 
 - (IBAction)onSaveBottom:(id)sender {

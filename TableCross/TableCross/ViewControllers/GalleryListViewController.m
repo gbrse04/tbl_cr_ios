@@ -79,7 +79,8 @@
 #pragma mark - Tableview Delegate and DataSources
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return (NSInteger)[self.arrData count]/kNumberColum;
+    
+    return ceil((float)[self.arrData count]/kNumberColum);;
 
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
